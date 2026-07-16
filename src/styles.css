@@ -1004,6 +1004,15 @@ h3 {
   line-height: 0.85;
 }
 
+.review-stars {
+  display: inline-flex;
+  margin: -6px 0 16px;
+  color: var(--gold);
+  font-size: 1.02rem;
+  letter-spacing: 0.18em;
+  text-shadow: 0 8px 22px rgba(185, 60, 95, 0.14);
+}
+
 .review-card p {
   margin-bottom: 0;
   color: var(--muted);
