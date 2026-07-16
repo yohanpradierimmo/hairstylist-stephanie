@@ -1182,26 +1182,81 @@ h3 {
 
   .entry-stage {
     min-height: calc(100vh - 68px);
-    padding-top: 38px;
+    padding: 24px 18px 70px;
   }
 
   .entry-content {
-    justify-items: stretch;
-    text-align: left;
+    justify-items: center;
+    text-align: center;
   }
 
   .entry-logo {
-    justify-self: start;
-    width: 126px;
+    justify-self: center;
+    width: clamp(104px, 31vw, 132px);
+    margin-bottom: 16px;
+  }
+
+  .entry-content .kicker {
+    margin-bottom: 8px;
+    font-size: 0.68rem;
+  }
+
+  .entry-content h1 {
+    max-width: 354px;
+    margin-bottom: 14px;
+    font-size: clamp(3.25rem, 17vw, 4.85rem);
+  }
+
+  .script-name {
+    margin-bottom: -0.02em;
+  }
+
+  .entry-content p:not(.kicker) {
+    max-width: 340px;
+    font-size: 0.98rem;
+    line-height: 1.58;
+  }
+
+  .entry-content .hero-actions {
+    width: min(100%, 330px);
+    margin-top: 20px;
+    gap: 9px;
   }
 
   .entry-stats {
-    justify-content: flex-start;
+    justify-content: center;
+    width: min(100%, 330px);
+    margin-top: 16px;
+    gap: 7px;
+  }
+
+  .entry-stats span {
+    padding: 7px 9px;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+  }
+
+  .scroll-cue {
+    bottom: 12px;
+    font-size: 0.62rem;
+  }
+
+  .scroll-cue::after {
+    height: 22px;
+    margin-top: 7px;
+  }
+
+  #accueil.hero {
+    padding-top: 58px;
+  }
+
+  #accueil .hero-logo-card {
+    display: none;
   }
 
   .hero-media {
     grid-template-columns: 1fr 1fr;
-    min-height: 360px;
+    min-height: 310px;
   }
 
   h1 {
