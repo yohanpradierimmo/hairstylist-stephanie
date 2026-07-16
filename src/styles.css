@@ -1237,13 +1237,7 @@ h3 {
   }
 
   .scroll-cue {
-    bottom: 12px;
-    font-size: 0.62rem;
-  }
-
-  .scroll-cue::after {
-    height: 22px;
-    margin-top: 7px;
+    display: none;
   }
 
   #accueil.hero {
