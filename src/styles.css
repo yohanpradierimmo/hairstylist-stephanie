@@ -390,6 +390,7 @@ a {
 }
 
 .page-hero-copy {
+  min-width: 0;
   max-width: 820px;
 }
 
@@ -399,6 +400,8 @@ a {
 }
 
 .page-hero-media {
+  min-width: 0;
+  max-width: 100%;
   min-height: 420px;
   overflow: hidden;
   border: 1px solid var(--line);
