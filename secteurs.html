@@ -9,11 +9,13 @@
     <link rel="canonical" href="https://hairstylist-stephanie.com/secteurs.html">
     <meta property="og:title" content="Secteurs d'intervention - Stéphanie Hairstylist">
     <meta property="og:description" content="Coiffure à domicile autour de Montbrison, dans la Plaine du Forez, à Roche-la-Molière, Saint-Genest-Lerpt et communes voisines.">
-    <meta property="og:image" content="https://hairstylist-stephanie.com/assets/brand/logo.png">
+    <meta property="og:image" content="https://stephanie-hairstylist.yohanpradier-immo.chatgpt.site/assets/brand/logo.png">
     <meta property="og:url" content="https://hairstylist-stephanie.com/secteurs.html">
     <meta property="og:type" content="website">
     <link rel="icon" href="https://stephanie-hairstylist.yohanpradier-immo.chatgpt.site/assets/brand/logo.png">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="stylesheet" href="src/styles.css">
+    <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script defer src="src/content.js"></script>
     <script defer src="src/app.js"></script>
   </head>
@@ -58,28 +60,10 @@
           <p>Pour une demande hors secteur, contactez Stéphanie afin de vérifier les possibilités de déplacement selon la durée de route et la prestation.</p>
         </div>
         <div class="service-area-layout">
-          <div class="area-map custom-service-map" role="img" aria-label="Carte personnalisée des zones de chalandise autour de Montbrison, Roche-la-Molière et Saint-Genest-Lerpt">
-            <span class="map-texture texture-a"></span>
-            <span class="map-texture texture-b"></span>
-            <span class="map-road road-1"></span>
-            <span class="map-road road-2"></span>
-            <span class="map-road road-3"></span>
-            <span class="coverage-zone forez-zone"><strong>Plaine du Forez</strong></span>
-            <span class="coverage-zone saint-etienne-zone"><strong>Secteur ouest stéphanois</strong></span>
-            <span class="map-pin main-pin" style="--x: 43%; --y: 45%;">Montbrison</span>
-            <span class="map-pin" style="--x: 54%; --y: 42%;">Savigneux</span>
-            <span class="map-pin" style="--x: 54%; --y: 56%;">St-Romain-le-Puy</span>
-            <span class="map-pin" style="--x: 64%; --y: 64%;">Sury-le-Comtal</span>
-            <span class="map-pin" style="--x: 72%; --y: 69%;">Bonson</span>
-            <span class="map-pin" style="--x: 78%; --y: 77%;">St-Just-St-Rambert</span>
-            <span class="map-pin" style="--x: 82%; --y: 88%;">Roche-la-Molière</span>
-            <span class="map-pin" style="--x: 72%; --y: 87%;">St-Genest-Lerpt</span>
-            <span class="map-pin" style="--x: 28%; --y: 34%;">Champdieu</span>
-            <span class="map-pin" style="--x: 25%; --y: 53%;">Lézigneux</span>
-            <span class="map-pin" style="--x: 33%; --y: 71%;">St-Marcellin</span>
-            <span class="map-pin" style="--x: 73%; --y: 31%;">Montrond</span>
-            <span class="map-pin" style="--x: 19%; --y: 21%;">Boën</span>
-            <span class="map-pin" style="--x: 84%; --y: 18%;">Feurs</span>
+          <div class="area-map leaflet-service-map" id="serviceMap" aria-label="Carte interactive des secteurs desservis autour de Montbrison">
+            <div class="map-fallback">
+              <p>Carte des secteurs desservis autour de Montbrison, Roche-la-Molière et Saint-Genest-Lerpt.</p>
+            </div>
           </div>
           <div class="area-cities">
             <span>Communes desservies</span>
