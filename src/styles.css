@@ -1818,6 +1818,12 @@ h3 {
     min-height: 0;
   }
 
+  .page-hero h1 {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    font-size: clamp(3rem, 16vw, 4.8rem);
+  }
+
   .page-hero-media,
   .page-hero-media img {
     min-height: 320px;
