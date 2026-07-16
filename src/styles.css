@@ -12,7 +12,7 @@
   --blush-300: #ff7fa1;
   --rose: #e4587c;
   --berry: #b93c5f;
-  --gold: #b69b7b;
+  --gold: #d4af37;
   --copper: #9e5f4b;
   --line: rgba(185, 60, 95, 0.16);
   --shadow: 0 24px 80px rgba(185, 60, 95, 0.16);
@@ -1010,7 +1010,7 @@ h3 {
   color: var(--gold);
   font-size: 1.02rem;
   letter-spacing: 0.18em;
-  text-shadow: 0 8px 22px rgba(185, 60, 95, 0.14);
+  text-shadow: 0 8px 22px rgba(212, 175, 55, 0.34);
 }
 
 .review-card p {
