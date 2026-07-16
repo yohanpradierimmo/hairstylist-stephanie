@@ -867,6 +867,13 @@ h3 {
   word-break: normal;
 }
 
+.inline-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
 .contact-photo-stack {
   position: relative;
   min-height: 520px;
@@ -1076,6 +1083,44 @@ h3 {
 .faq-page-list {
   grid-template-columns: minmax(0, 1fr);
   max-width: 980px;
+}
+
+.appointment-section {
+  background:
+    linear-gradient(180deg, rgba(255, 253, 249, 0.96), rgba(255, 233, 237, 0.72)),
+    var(--cream);
+}
+
+.appointment-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.appointment-steps article {
+  min-height: 300px;
+  padding: clamp(22px, 3vw, 36px);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 253, 249, 0.76);
+}
+
+.appointment-steps span {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: var(--rose);
+  font-family: var(--script);
+  font-size: clamp(2.4rem, 4vw, 3.5rem);
+  line-height: 0.85;
+}
+
+.appointment-steps p {
+  color: var(--muted);
+}
+
+.appointment-checklist {
+  background: var(--cream);
 }
 
 .faq-section {
@@ -1583,7 +1628,8 @@ h3 {
   .feature-strip,
   .page-link-grid,
   .gallery-grid,
-  .experience-steps {
+  .experience-steps,
+  .appointment-steps {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1785,6 +1831,7 @@ h3 {
   .page-link-grid,
   .gallery-grid,
   .experience-steps,
+  .appointment-steps,
   .editorial-grid,
   .mood-grid,
   .reviews-layout,
