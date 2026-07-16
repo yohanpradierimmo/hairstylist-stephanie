@@ -1009,12 +1009,26 @@ h3 {
   color: var(--muted);
 }
 
+.review-card small {
+  display: block;
+  margin-top: 18px;
+  color: var(--rose);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
 .compact-reviews {
   grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1fr);
 }
 
 .compact-reviews .review-card {
   min-height: 240px;
+}
+
+.real-reviews {
+  grid-template-columns: minmax(260px, 0.9fr) repeat(2, minmax(0, 1fr));
 }
 
 .faq-section {
