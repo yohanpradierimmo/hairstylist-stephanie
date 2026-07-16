@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://hairstylist-stephanie.com/sitemap.xml
