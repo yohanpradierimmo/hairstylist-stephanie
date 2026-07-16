@@ -6,6 +6,7 @@ const pricingTabs = document.querySelector("#pricingTabs");
 const pricingList = document.querySelector("#pricingList");
 const navToggle = document.querySelector(".nav-toggle");
 const mainNav = document.querySelector(".main-nav");
+const serviceMap = document.querySelector("#serviceMap");
 let selectedCategory = "Tout";
 let selectedPriceTab = "Femmes";
 
@@ -57,6 +58,92 @@ function renderPrices() {
     .join("");
 }
 
+function initServiceMap() {
+  if (!serviceMap || !window.L) return;
+
+  const map = L.map(serviceMap, {
+    scrollWheelZoom: true,
+    zoomControl: true
+  }).setView([45.585, 4.17], 10);
+
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 18,
+    attribution: "&copy; OpenStreetMap"
+  }).addTo(map);
+
+  const mainCoverage = [
+    [45.774, 3.99],
+    [45.758, 4.24],
+    [45.638, 4.34],
+    [45.505, 4.29],
+    [45.468, 4.18],
+    [45.512, 4.02],
+    [45.615, 3.93]
+  ];
+
+  const westSaintEtienneCoverage = [
+    [45.482, 4.272],
+    [45.474, 4.365],
+    [45.415, 4.376],
+    [45.398, 4.292],
+    [45.437, 4.235]
+  ];
+
+  const zoneStyle = {
+    color: "#b93c5f",
+    weight: 2,
+    fillColor: "#ffc9d4",
+    fillOpacity: 0.34
+  };
+
+  L.polygon(mainCoverage, zoneStyle).addTo(map).bindPopup("Zone principale: Montbrison et Plaine du Forez");
+  L.polygon(westSaintEtienneCoverage, {
+    ...zoneStyle,
+    fillColor: "#ffe9ed",
+    dashArray: "7 6"
+  }).addTo(map).bindPopup("Secteur Roche-la-Molière et Saint-Genest-Lerpt");
+
+  const cities = [
+    ["Montbrison", 45.607, 4.065],
+    ["Savigneux", 45.616, 4.083],
+    ["Saint-Romain-le-Puy", 45.558, 4.123],
+    ["Sury-le-Comtal", 45.536, 4.185],
+    ["Bonson", 45.522, 4.217],
+    ["Saint-Just-Saint-Rambert", 45.499, 4.242],
+    ["Andrézieux-Bouthéon", 45.526, 4.260],
+    ["Veauche", 45.563, 4.277],
+    ["Saint-Galmier", 45.592, 4.317],
+    ["Montrond-les-Bains", 45.643, 4.231],
+    ["Feurs", 45.743, 4.227],
+    ["Boën-sur-Lignon", 45.746, 4.006],
+    ["Champdieu", 45.645, 4.047],
+    ["Précieux", 45.588, 4.151],
+    ["Lézigneux", 45.566, 4.061],
+    ["Saint-Marcellin-en-Forez", 45.496, 4.169],
+    ["Roche-la-Molière", 45.434, 4.322],
+    ["Saint-Genest-Lerpt", 45.445, 4.336]
+  ];
+
+  const markerOptions = {
+    radius: 6,
+    color: "#b93c5f",
+    weight: 2,
+    fillColor: "#fffdf9",
+    fillOpacity: 1
+  };
+
+  cities.forEach(([name, lat, lng]) => {
+    L.circleMarker([lat, lng], markerOptions).addTo(map).bindPopup(name);
+  });
+
+  L.circleMarker([45.607, 4.065], {
+    ...markerOptions,
+    radius: 8,
+    color: "#292827",
+    fillColor: "#ffc9d4"
+  }).addTo(map).bindPopup("Montbrison");
+}
+
 if (galleryFilters) {
   galleryFilters.addEventListener("click", (event) => {
     const button = event.target.closest("button[data-filter]");
@@ -96,3 +183,4 @@ if (legalDialog && legalToggle && legalClose) {
 renderServices();
 renderGallery();
 renderPrices();
+initServiceMap();
