@@ -700,7 +700,8 @@ h3 {
 }
 
 .editorial-card.tall {
-  grid-row: span 2;
+  grid-column: span 2;
+  grid-row: auto;
   background:
     linear-gradient(180deg, rgba(255, 253, 249, 0.78), rgba(255, 201, 212, 0.58)),
     var(--blush-50);
@@ -1750,6 +1751,7 @@ h3 {
   }
 
   .editorial-card.tall {
+    grid-column: 1 / -1;
     grid-row: auto;
   }
 
