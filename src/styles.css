@@ -945,6 +945,68 @@ h3 {
   gap: 14px;
 }
 
+.home-reviews-layout {
+  grid-template-columns: minmax(260px, 0.75fr) minmax(0, 2.25fr);
+  align-items: stretch;
+}
+
+.reviews-marquee {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(185, 60, 95, 0.14);
+  background: rgba(255, 253, 249, 0.46);
+  box-shadow: 0 18px 54px rgba(185, 60, 95, 0.08);
+}
+
+.reviews-marquee::before,
+.reviews-marquee::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  width: min(92px, 13vw);
+  content: "";
+  pointer-events: none;
+}
+
+.reviews-marquee::before {
+  left: 0;
+  background: linear-gradient(90deg, rgba(255, 233, 237, 0.98), rgba(255, 233, 237, 0));
+}
+
+.reviews-marquee::after {
+  right: 0;
+  background: linear-gradient(270deg, rgba(255, 253, 249, 0.98), rgba(255, 253, 249, 0));
+}
+
+.reviews-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 14px;
+  padding: 14px;
+  animation: reviewsMarquee 46s linear infinite;
+  will-change: transform;
+}
+
+.reviews-marquee:hover .reviews-marquee-track {
+  animation-play-state: paused;
+}
+
+.reviews-marquee .review-card {
+  flex: 0 0 clamp(260px, 30vw, 390px);
+}
+
+@keyframes reviewsMarquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 7px));
+  }
+}
+
 .reviews-score,
 .review-card {
   min-width: 0;
@@ -1647,6 +1709,10 @@ h3 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .home-reviews-layout {
+    grid-template-columns: 1fr;
+  }
+
   .review-page-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1839,6 +1905,14 @@ h3 {
   .faq-list,
   .contact-methods {
     grid-template-columns: 1fr;
+  }
+
+  .reviews-marquee-track {
+    animation-duration: 58s;
+  }
+
+  .reviews-marquee .review-card {
+    flex-basis: min(82vw, 340px);
   }
 
   .image-card img,
