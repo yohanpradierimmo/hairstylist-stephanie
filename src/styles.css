@@ -199,6 +199,55 @@ a {
   color: var(--blush-100);
 }
 
+.home-slogan {
+  position: relative;
+  width: fit-content;
+  max-width: min(100%, 760px);
+  margin: 0 0 22px;
+  padding: 8px 20px 12px;
+  color: var(--blush-100);
+  font-family: var(--script);
+  font-size: clamp(2.15rem, 5.2vw, 4.8rem);
+  font-weight: 400;
+  line-height: 0.95;
+  text-shadow: 0 12px 34px rgba(185, 60, 95, 0.32);
+}
+
+.home-slogan::before {
+  content: "";
+  position: absolute;
+  inset: 50% 0 auto;
+  height: 0.58em;
+  border-radius: 999px;
+  background: rgba(255, 201, 212, 0.34);
+  transform: translateY(-38%);
+  z-index: -1;
+}
+
+.home-slogan span {
+  display: inline-block;
+  margin-left: 0.08em;
+  color: var(--blush-50);
+  font-family: var(--serif);
+  font-size: 0.72em;
+  transform: translateY(-0.02em) rotate(8deg);
+}
+
+.home-slogan.dark {
+  justify-self: start;
+  color: var(--berry);
+  font-size: clamp(2rem, 3.8vw, 4.15rem);
+  text-shadow: none;
+}
+
+.home-slogan.dark::before {
+  background: rgba(255, 201, 212, 0.55);
+}
+
+.home-slogan.dark span {
+  color: var(--rose);
+}
+
 .entry-content p:not(.kicker) {
   max-width: 720px;
   color: rgba(255, 253, 249, 0.88);
@@ -1942,6 +1991,14 @@ h3 {
 
   .script-name {
     margin-bottom: -0.02em;
+  }
+
+  .home-slogan {
+    max-width: 330px;
+    margin-bottom: 16px;
+    padding: 6px 12px 10px;
+    font-size: clamp(2rem, 11vw, 3.2rem);
+    line-height: 1;
   }
 
   .entry-content p:not(.kicker) {
