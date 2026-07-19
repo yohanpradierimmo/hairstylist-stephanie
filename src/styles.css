@@ -1206,6 +1206,96 @@ h3 {
   background: var(--cream);
 }
 
+.hours-section {
+  background:
+    linear-gradient(135deg, rgba(255, 233, 237, 0.78), rgba(255, 253, 249, 0.96)),
+    var(--paper);
+}
+
+.hours-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1fr);
+  gap: 14px;
+  align-items: stretch;
+}
+
+.hours-card,
+.hours-list {
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 54px rgba(185, 60, 95, 0.1);
+}
+
+.hours-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 420px;
+  padding: clamp(28px, 4vw, 48px);
+  color: var(--cream);
+  background:
+    linear-gradient(145deg, rgba(185, 60, 95, 0.96), rgba(228, 88, 124, 0.86)),
+    var(--berry);
+}
+
+.hours-card span {
+  display: inline-block;
+  margin-bottom: 22px;
+  color: var(--blush-50);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hours-card p {
+  color: rgba(255, 253, 249, 0.86);
+}
+
+.hours-card .button {
+  align-self: flex-start;
+  margin-top: 18px;
+  color: var(--berry);
+  border-color: var(--cream);
+  background: var(--cream);
+}
+
+.hours-list {
+  display: grid;
+  background: rgba(255, 253, 249, 0.84);
+}
+
+.hours-list div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 20px;
+  align-items: center;
+  min-height: 82px;
+  padding: 0 clamp(22px, 3.4vw, 42px);
+  border-bottom: 1px solid var(--line);
+}
+
+.hours-list div:last-child {
+  border-bottom: 0;
+}
+
+.hours-list strong {
+  font-family: var(--serif);
+  font-size: clamp(1.45rem, 2.6vw, 2rem);
+  font-weight: 600;
+}
+
+.hours-list span {
+  color: var(--berry);
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hours-list .closed span {
+  color: var(--muted);
+}
+
 .faq-section {
   background: linear-gradient(180deg, var(--cream), rgba(255, 233, 237, 0.72));
 }
@@ -1722,7 +1812,8 @@ h3 {
 
   .contact-section,
   .intro-section,
-  .contact-luxe {
+  .contact-luxe,
+  .hours-layout {
     grid-template-columns: 1fr;
   }
 
@@ -1955,6 +2046,17 @@ h3 {
 
   .service-card {
     min-height: 0;
+  }
+
+  .hours-card {
+    min-height: 0;
+  }
+
+  .hours-list div {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding-top: 18px;
+    padding-bottom: 18px;
   }
 
   .page-hero {
