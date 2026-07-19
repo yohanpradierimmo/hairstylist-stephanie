@@ -36,25 +36,16 @@ window.STEPHANIE_SITE = {
     { src: "assets/gallery/28-blond-lisse-long.svg", title: "Blond lisse long", category: "Coiffage" },
     { src: "assets/gallery/29-balayage-miel-domicile.svg", title: "Balayage miel wavy", category: "Balayage" },
     { src: "assets/gallery/30-cuivre-wavy-exterieur.svg", title: "Cuivré wavy lumineux", category: "Couleur" },
-    { src: "assets/gallery/12-blond-beige.webp", title: "Balayage blond beige", category: "Balayage" },
-    { src: "assets/gallery/06-blond-froid.webp", title: "Blond froid wavy", category: "Balayage" },
-    { src: "assets/gallery/07-ombre-hair.webp", title: "Ombré hair lumineux", category: "Balayage" },
-    { src: "assets/gallery/09-balayage-carre.webp", title: "Balayage sur carré", category: "Balayage" },
     { src: "assets/gallery/14-blond-wavy-froid.svg", title: "Blond froid wavy", category: "Balayage" },
     { src: "assets/gallery/17-blond-beige-wavy.svg", title: "Blond beige wavy", category: "Balayage" },
     { src: "assets/gallery/23-blond-wavy-lumineux.svg", title: "Blond wavy lumineux", category: "Balayage" },
     { src: "assets/gallery/24-balayage-miel-wavy.svg", title: "Balayage miel wavy", category: "Balayage" },
-    { src: "assets/gallery/13-lisse-blond.webp", title: "Lissage blond", category: "Coiffage" },
     { src: "assets/gallery/19-wavy-brun-gloss.svg", title: "Wavy brun gloss", category: "Coiffage" },
     { src: "assets/gallery/20-lissage-brun-glossy.svg", title: "Lissage brun glossy", category: "Coiffage" },
     { src: "assets/gallery/25-brun-wavy-naturel.svg", title: "Brun wavy naturel", category: "Coiffage" },
-    { src: "assets/gallery/11-cuivre-lumineux.webp", title: "Cuivré lumineux", category: "Couleur" },
     { src: "assets/gallery/16-cuivre-acajou-wavy.svg", title: "Cuivré acajou wavy", category: "Couleur" },
     { src: "assets/gallery/22-reflets-roses-wavy.svg", title: "Reflets rosés wavy", category: "Couleur" },
-    { src: "assets/gallery/21-tresses-collees.svg", title: "Tresses collées", category: "Tresses" },
-    { src: "assets/gallery/08-brun-wavy.webp", title: "Brun wavy", category: "Coiffage" },
-    { src: "assets/gallery/03-blond-polaire.webp", title: "Blond polaire", category: "Couleur" },
-    { src: "assets/gallery/02-blond-wavy.webp", title: "Wavy blond", category: "Coiffage" }
+    { src: "assets/gallery/21-tresses-collees.svg", title: "Tresses collées", category: "Tresses" }
   ],
   prices: {
     Femmes: [
