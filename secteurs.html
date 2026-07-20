@@ -9,6 +9,114 @@
     <link rel="canonical" href="https://hairstylist-stephanie.com/secteurs.html">
     <meta property="og:title" content="Secteurs d'intervention - Stéphanie Hairstylist">
     <meta property="og:description" content="Coiffure à domicile autour de Montbrison, dans la Plaine du Forez, à Roche-la-Molière, Saint-Genest-Lerpt et communes voisines.">
+    <meta property="og:image" content="https://hairstylist-stephanie.com/assets/brand/logo-real.svg">
+    <meta property="og:url" content="https://hairstylist-stephanie.com/secteurs.html">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="/assets/brand/logo-real.svg">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="/src/styles.css?v=20260719-horaires">
+    <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script defer src="/src/content.js?v=20260720-reallogo"></script>
+    <script defer src="/src/app.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Accueil Stéphanie Hairstylist">
+        <img src="/assets/brand/logo-real.svg" alt="Logo Stéphanie Hairstylist">
+        <span>Stéphanie Hairstylist</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="/prestations.html">Prestations & tarifs</a>
+        <a href="/realisations.html">Réalisations</a>
+        <a class="active" href="/secteurs.html">Secteurs</a>
+        <a href="/horaires.html">Horaires</a>
+        <a href="/avis.html">Avis</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/rdv.html">RDV</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero page-hero-luxe">
+        <div class="page-hero-copy">
+          <p class="kicker">Secteurs d'intervention</p>
+          <h1><span class="script-name">À domicile</span> autour de Montbrison.</h1>
+          <p>Stéphanie Hairstylist se déplace à domicile selon disponibilité à Montbrison, dans la Plaine du Forez, vers Roche-la-Molière, Saint-Genest-Lerpt et les communes voisines.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="tel:+33786108335">Vérifier mon secteur</a>
+            <a class="button secondary" href="/prestations.html">Voir les frais</a>
+          </div>
+        </div>
+        <div class="page-hero-media" aria-hidden="true">
+          <img src="/assets/gallery/assets/gallery/36-balayage-brun-froid.svg" alt="">
+        </div>
+      </section>
+
+      <section class="section service-promise">
+        <div class="promise-grid">
+          <article><span>01</span><h3>Zone confirmée</h3><p>La commune et le temps de route sont vérifiés avant le rendez-vous.</p></article>
+          <article><span>02</span><h3>Frais clairs</h3><p>Le déplacement est offert à moins de 30 minutes, puis indiqué selon la durée.</p></article>
+          <article><span>03</span><h3>Organisation simple</h3><p>Un appel ou un message suffit pour valider la prestation et le créneau.</p></article>
+        </div>
+      </section>
+
+      <section class="section service-area-section">
+        <div class="section-heading">
+          <p class="section-label">Zone de chalandise</p>
+          <h2>Coiffure à domicile dans la Plaine du Forez.</h2>
+          <p>Pour une demande hors secteur, contactez Stéphanie afin de vérifier les possibilités de déplacement selon la durée de route et la prestation.</p>
+        </div>
+        <div class="service-area-layout">
+          <div class="area-map leaflet-service-map" id="serviceMap" aria-label="Carte interactive des secteurs desservis autour de Montbrison">
+            <div class="map-fallback">
+              <p>Carte des secteurs desservis autour de Montbrison, Roche-la-Molière et Saint-Genest-Lerpt.</p>
+            </div>
+          </div>
+          <div class="area-cities">
+            <span>Communes desservies</span>
+            <h3>Autour de Montbrison</h3>
+            <p>Montbrison, Savigneux, Saint-Romain-le-Puy, Sury-le-Comtal, Bonson, Saint-Just-Saint-Rambert, Saint-Marcellin-en-Forez, Andrézieux-Bouthéon, Veauche, Saint-Galmier, Montrond-les-Bains, Feurs, Boën-sur-Lignon, Roche-la-Molière, Saint-Genest-Lerpt, Champdieu, Précieux, Lézigneux, Écotay-l'Olme, Bard, Essertines-en-Châtelneuf, Chalain-d'Uzore, Saint-Georges-Haute-Ville et Saint-Thomas-la-Garde.</p>
+            <small>Les déplacements restent confirmés selon la durée de route, les disponibilités et la prestation demandée.</small>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div><strong>Stéphanie Hairstylist</strong><span>Coiffure à domicile</span></div>
+      <button class="footer-link" type="button" id="legalToggle">Mentions légales</button>
+    </footer>
+    <dialog class="legal-dialog" id="legalDialog">
+      <button class="dialog-close" type="button" id="legalClose" aria-label="Fermer">×</button>
+      <h2>Mentions légales</h2>
+      <dl>
+        <div><dt>Entreprise</dt><dd>Stéphanie Hairstylist</dd></div>
+        <div><dt>SIREN</dt><dd>991 918 376</dd></div>
+        <div><dt>SIRET du siège social</dt><dd>991 918 376 00013</dd></div>
+        <div><dt>Numéro de TVA</dt><dd>FR04991918376</dd></div>
+        <div><dt>Date de création</dt><dd>06 octobre 2025</dd></div>
+        <div><dt>Activité</dt><dd>Coiffure - 9602A</dd></div>
+        <div><dt>Forme juridique</dt><dd>Entrepreneur individuel</dd></div>
+      </dl>
+    </dialog>
+  </body>
+</html>
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Secteurs coiffure à domicile Montbrison - Stéphanie Hairstylist</title>
+    <meta name="description" content="Zone de déplacement de Stéphanie Hairstylist autour de Montbrison: Savigneux, Saint-Romain-le-Puy, Sury-le-Comtal, Roche-la-Molière, Saint-Genest-Lerpt, Feurs, Boën-sur-Lignon et Plaine du Forez.">
+    <meta name="keywords" content="coiffeuse à domicile Montbrison, coiffeuse Savigneux, coiffeuse Saint-Romain-le-Puy, coiffeuse Sury-le-Comtal, coiffeuse Roche-la-Molière, coiffeuse Saint-Genest-Lerpt, coiffeuse Feurs, coiffure Plaine du Forez">
+    <link rel="canonical" href="https://hairstylist-stephanie.com/secteurs.html">
+    <meta property="og:title" content="Secteurs d'intervention - Stéphanie Hairstylist">
+    <meta property="og:description" content="Coiffure à domicile autour de Montbrison, dans la Plaine du Forez, à Roche-la-Molière, Saint-Genest-Lerpt et communes voisines.">
     <meta property="og:image" content="https://hairstylist-stephanie.com/assets/brand/logo-clean.svg">
     <meta property="og:url" content="https://hairstylist-stephanie.com/secteurs.html">
     <meta property="og:type" content="website">
