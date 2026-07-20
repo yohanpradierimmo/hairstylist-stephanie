@@ -1177,6 +1177,24 @@ h3 {
   -webkit-line-clamp: 5;
 }
 
+.review-page-grid .review-card {
+  aspect-ratio: auto;
+  min-height: 390px;
+}
+
+.review-page-grid .review-card span {
+  font-size: clamp(1.85rem, 2.25vw, 2.7rem);
+  line-height: 0.94;
+}
+
+.review-page-grid .review-card p {
+  display: block;
+  overflow: visible;
+  font-size: clamp(0.84rem, 0.9vw, 0.96rem);
+  line-height: 1.38;
+  -webkit-line-clamp: unset;
+}
+
 .review-card small {
   display: block;
   align-self: end;
