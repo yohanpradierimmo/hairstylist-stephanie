@@ -1179,6 +1179,7 @@ h3 {
 
 .review-page-grid .review-card {
   aspect-ratio: auto;
+  height: 390px;
   min-height: 390px;
 }
 
@@ -1188,11 +1189,12 @@ h3 {
 }
 
 .review-page-grid .review-card p {
-  display: block;
-  overflow: visible;
+  display: -webkit-box;
+  overflow: hidden;
   font-size: clamp(0.84rem, 0.9vw, 0.96rem);
   line-height: 1.38;
-  -webkit-line-clamp: unset;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 7;
 }
 
 .review-card small {
