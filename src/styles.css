@@ -1064,7 +1064,7 @@ h3 {
 }
 
 .reviews-marquee .review-card {
-  flex: 0 0 clamp(300px, 31vw, 430px);
+  flex: 0 0 clamp(300px, 29vw, 370px);
 }
 
 @keyframes reviewsMarquee {
@@ -1134,46 +1134,55 @@ h3 {
 }
 
 .review-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  align-content: stretch;
+  justify-items: start;
   aspect-ratio: 1 / 1;
   min-height: 330px;
   min-width: 0;
-  padding: clamp(28px, 3.3vw, 52px);
+  padding: clamp(24px, 2.4vw, 34px);
+  overflow: hidden;
 }
 
 .review-card span {
   display: block;
-  margin-bottom: clamp(20px, 2.4vw, 30px);
+  max-width: 100%;
+  margin-bottom: clamp(14px, 1.4vw, 18px);
   color: var(--rose);
   font-family: var(--script);
-  font-size: clamp(3rem, 5.7vw, 5rem);
-  line-height: 0.78;
+  font-size: clamp(2.05rem, 2.85vw, 3.15rem);
+  line-height: 0.9;
+  overflow-wrap: anywhere;
 }
 
 .review-stars {
   display: inline-flex;
-  margin: 0 0 clamp(18px, 2vw, 28px);
+  margin: 0 0 clamp(12px, 1.2vw, 16px);
   color: var(--gold);
-  font-size: clamp(1.15rem, 1.5vw, 1.45rem);
-  letter-spacing: 0.14em;
+  font-size: clamp(0.98rem, 1.1vw, 1.15rem);
+  letter-spacing: 0.12em;
   text-shadow: 0 8px 22px rgba(212, 175, 55, 0.34);
 }
 
 .review-card p {
   margin-bottom: 0;
   color: var(--muted);
-  font-size: clamp(1rem, 1.2vw, 1.22rem);
-  line-height: 1.62;
+  font-size: clamp(0.9rem, 0.96vw, 1.02rem);
+  line-height: 1.45;
   overflow-wrap: anywhere;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
 }
 
 .review-card small {
   display: block;
-  margin-top: clamp(22px, 2.4vw, 32px);
+  align-self: end;
+  margin-top: clamp(14px, 1.35vw, 18px);
   color: var(--rose);
-  font-size: clamp(0.72rem, 0.85vw, 0.86rem);
+  font-size: clamp(0.64rem, 0.75vw, 0.76rem);
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -2084,21 +2093,22 @@ h3 {
   }
 
   .reviews-marquee .review-card {
-    flex-basis: min(82vw, 360px);
-    min-height: min(82vw, 360px);
-    padding: 26px;
+    flex-basis: min(82vw, 340px);
+    min-height: min(82vw, 340px);
+    padding: 22px;
   }
 
   .review-card {
-    min-height: min(92vw, 380px);
+    min-height: min(92vw, 360px);
   }
 
   .review-card span {
-    font-size: clamp(2.55rem, 13vw, 3.9rem);
+    font-size: clamp(2rem, 9.6vw, 2.95rem);
   }
 
   .review-card p {
-    font-size: 0.98rem;
+    font-size: 0.9rem;
+    line-height: 1.42;
   }
 
   .image-card img,
