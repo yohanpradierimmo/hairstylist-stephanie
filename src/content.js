@@ -17,35 +17,16 @@ window.STEPHANIE_SITE = {
       text: "Soin nutrition, soin intense, attaches, coiffures et chignons mariage sur demande."
     }
   ],
-  galleryFilters: ["Tout", "Balayage", "Couleur", "Coupe", "Coiffage", "Tresses"],
+  galleryFilters: ["Tout", "Balayage", "Couleur", "Coupe", "Coiffage"],
   gallery: [
     { src: "assets/gallery/assets/gallery/31-blond-vanille-carre.svg", title: "Blond vanille court", category: "Balayage" },
     { src: "assets/gallery/assets/gallery/32-brun-moka-wavy.svg", title: "Brun moka wavy", category: "Coiffage" },
-    { src: "assets/gallery/assets/gallery/33-carre-cuivre-glossy.svg", title: "Cuivré court glossy", category: "Couleur" },
     { src: "assets/gallery/assets/gallery/34-blond-creme-boucles.svg", title: "Blond crème bouclé", category: "Coiffage" },
-    { src: "assets/gallery/assets/gallery/35-rouge-cerise-wavy.svg", title: "Rouge cerise wavy", category: "Couleur" },
     { src: "assets/gallery/assets/gallery/36-balayage-brun-froid.svg", title: "Balayage brun froid", category: "Balayage" },
     { src: "assets/gallery/assets/gallery/37-lissage-miel-long.svg", title: "Lissage miel long", category: "Coiffage" },
-    { src: "assets/gallery/assets/gallery/38-rose-framboise-wavy.svg", title: "Rose framboise wavy", category: "Couleur" },
     { src: "assets/gallery/assets/gallery/39-blond-sable-carre.svg", title: "Blond sable court", category: "Balayage" },
-    { src: "assets/gallery/assets/gallery/40-lissage-caramel-long.svg", title: "Lissage caramel long", category: "Coiffage" },
     { src: "assets/gallery/assets/gallery/41-carre-brun-meche.svg", title: "Court brun méché", category: "Coupe" },
-    { src: "assets/gallery/assets/gallery/42-rouge-glossy-carre.svg", title: "Rouge glossy court", category: "Couleur" },
-    { src: "assets/gallery/26-blond-wavy-domicile.svg", title: "Blond wavy à domicile", category: "Balayage" },
-    { src: "assets/gallery/27-balayage-blond-urbain.svg", title: "Balayage blond lumineux", category: "Balayage" },
-    { src: "assets/gallery/28-blond-lisse-long.svg", title: "Blond lisse long", category: "Coiffage" },
-    { src: "assets/gallery/29-balayage-miel-domicile.svg", title: "Balayage miel wavy", category: "Balayage" },
-    { src: "assets/gallery/30-cuivre-wavy-exterieur.svg", title: "Cuivré wavy lumineux", category: "Couleur" },
-    { src: "assets/gallery/14-blond-wavy-froid.svg", title: "Blond froid wavy", category: "Balayage" },
-    { src: "assets/gallery/17-blond-beige-wavy.svg", title: "Blond beige wavy", category: "Balayage" },
-    { src: "assets/gallery/23-blond-wavy-lumineux.svg", title: "Blond wavy lumineux", category: "Balayage" },
-    { src: "assets/gallery/24-balayage-miel-wavy.svg", title: "Balayage miel wavy", category: "Balayage" },
-    { src: "assets/gallery/19-wavy-brun-gloss.svg", title: "Wavy brun gloss", category: "Coiffage" },
-    { src: "assets/gallery/20-lissage-brun-glossy.svg", title: "Lissage brun glossy", category: "Coiffage" },
-    { src: "assets/gallery/25-brun-wavy-naturel.svg", title: "Brun wavy naturel", category: "Coiffage" },
-    { src: "assets/gallery/16-cuivre-acajou-wavy.svg", title: "Cuivré acajou wavy", category: "Couleur" },
-    { src: "assets/gallery/22-reflets-roses-wavy.svg", title: "Reflets rosés wavy", category: "Couleur" },
-    { src: "assets/gallery/21-tresses-collees.svg", title: "Tresses collées", category: "Tresses" }
+    { src: "assets/gallery/assets/gallery/42-rouge-glossy-carre.svg", title: "Rouge glossy court", category: "Couleur" }
   ],
   prices: {
     Femmes: [
