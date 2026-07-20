@@ -19,14 +19,26 @@ window.STEPHANIE_SITE = {
   ],
   galleryFilters: ["Tout", "Balayage", "Couleur", "Coupe", "Coiffage"],
   gallery: [
+    { src: "assets/gallery/assets/gallery/48-blond-polaire-lisse.svg", title: "Blond polaire lisse", category: "Balayage" },
+    { src: "assets/gallery/assets/gallery/50-balayage-blond-wavy.svg", title: "Balayage blond wavy", category: "Balayage" },
     { src: "assets/gallery/assets/gallery/31-blond-vanille-carre.svg", title: "Blond vanille court", category: "Balayage" },
     { src: "assets/gallery/assets/gallery/32-brun-moka-wavy.svg", title: "Brun moka wavy", category: "Coiffage" },
+    { src: "assets/gallery/assets/gallery/33-carre-cuivre-glossy.svg", title: "Carré cuivré glossy", category: "Couleur" },
     { src: "assets/gallery/assets/gallery/34-blond-creme-boucles.svg", title: "Blond crème bouclé", category: "Coiffage" },
+    { src: "assets/gallery/assets/gallery/35-rouge-cerise-wavy.svg", title: "Rouge cerise wavy", category: "Couleur" },
     { src: "assets/gallery/assets/gallery/36-balayage-brun-froid.svg", title: "Balayage brun froid", category: "Balayage" },
     { src: "assets/gallery/assets/gallery/37-lissage-miel-long.svg", title: "Lissage miel long", category: "Coiffage" },
+    { src: "assets/gallery/assets/gallery/38-rose-framboise-wavy.svg", title: "Rose framboise wavy", category: "Couleur" },
     { src: "assets/gallery/assets/gallery/39-blond-sable-carre.svg", title: "Blond sable court", category: "Balayage" },
+    { src: "assets/gallery/assets/gallery/40-lissage-caramel-long.svg", title: "Lissage caramel long", category: "Coiffage" },
     { src: "assets/gallery/assets/gallery/41-carre-brun-meche.svg", title: "Court brun méché", category: "Coupe" },
-    { src: "assets/gallery/assets/gallery/42-rouge-glossy-carre.svg", title: "Rouge glossy court", category: "Couleur" }
+    { src: "assets/gallery/assets/gallery/42-rouge-glossy-carre.svg", title: "Rouge glossy court", category: "Couleur" },
+    { src: "assets/gallery/assets/gallery/43-rouge-bordeaux-wavy.svg", title: "Rouge bordeaux wavy", category: "Couleur" },
+    { src: "assets/gallery/assets/gallery/44-boucles-brunes-longues.svg", title: "Boucles brunes longues", category: "Coiffage" },
+    { src: "assets/gallery/assets/gallery/45-carre-balayage-contour.svg", title: "Carré balayage contour", category: "Balayage" },
+    { src: "assets/gallery/assets/gallery/46-rose-framboise-boucles.svg", title: "Rose framboise bouclé", category: "Couleur" },
+    { src: "assets/gallery/assets/gallery/47-lissage-caramel-dore.svg", title: "Lissage caramel doré", category: "Coiffage" },
+    { src: "assets/gallery/assets/gallery/49-meches-brunes-lisses.svg", title: "Mèches brunes lisses", category: "Balayage" }
   ],
   prices: {
     Femmes: [
