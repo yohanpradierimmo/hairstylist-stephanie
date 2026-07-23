@@ -1222,6 +1222,21 @@ h3 {
   text-transform: uppercase;
 }
 
+.review-card .review-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  justify-self: stretch;
+  text-align: center;
+}
+
+.review-card .local-guide {
+  color: #d4af37;
+  letter-spacing: 0.1em;
+  text-shadow: 0 8px 20px rgba(212, 175, 55, 0.24);
+}
+
 .compact-reviews {
   grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1fr);
 }
