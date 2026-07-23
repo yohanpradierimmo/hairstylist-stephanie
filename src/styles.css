@@ -1216,11 +1216,13 @@ h3 {
 .review-card small {
   display: block;
   align-self: end;
+  justify-self: stretch;
   margin-top: clamp(14px, 1.35vw, 18px);
   color: var(--rose);
   font-size: clamp(0.64rem, 0.75vw, 0.76rem);
   font-weight: 800;
   letter-spacing: 0.12em;
+  text-align: center;
   text-transform: uppercase;
 }
 
@@ -1245,7 +1247,7 @@ h3 {
   letter-spacing: 0.12em;
 }
 
-.review-card .local-guide {
+.review-card .review-meta .local-guide {
   color: #d4af37;
   font-family: var(--sans);
   letter-spacing: 0.1em;
