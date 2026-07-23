@@ -1148,7 +1148,7 @@ h3 {
   overflow: hidden;
 }
 
-.review-card span {
+.review-card > span {
   display: block;
   max-width: 100%;
   margin-bottom: clamp(14px, 1.4vw, 18px);
@@ -1180,7 +1180,7 @@ h3 {
   -webkit-line-clamp: 5;
 }
 
-.review-card.long-review span {
+.review-card.long-review > span {
   font-size: clamp(1.8rem, 2.25vw, 2.65rem);
 }
 
@@ -1196,7 +1196,7 @@ h3 {
   min-height: 440px;
 }
 
-.review-page-grid .review-card span {
+.review-page-grid .review-card > span {
   font-size: clamp(1.85rem, 2.25vw, 2.7rem);
   line-height: 0.94;
 }
@@ -1230,11 +1230,24 @@ h3 {
   align-items: center;
   gap: 5px;
   justify-self: stretch;
+  margin-bottom: 0;
   text-align: center;
+}
+
+.review-card .review-meta span {
+  display: block;
+  margin-bottom: 0;
+  color: var(--rose);
+  font-family: var(--sans);
+  font-size: inherit;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: 0.12em;
 }
 
 .review-card .local-guide {
   color: #d4af37;
+  font-family: var(--sans);
   letter-spacing: 0.1em;
   text-shadow: 0 8px 20px rgba(212, 175, 55, 0.24);
 }
