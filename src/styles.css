@@ -2168,8 +2168,14 @@ h3 {
     min-height: min(92vw, 360px);
   }
 
-  .review-card span {
+  .review-card > span {
     font-size: clamp(2rem, 9.6vw, 2.95rem);
+  }
+
+  .review-card .review-meta span {
+    font-family: var(--sans);
+    font-size: clamp(0.64rem, 2.8vw, 0.76rem);
+    line-height: 1.25;
   }
 
   .review-card p {
