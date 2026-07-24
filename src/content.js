@@ -17,7 +17,7 @@ window.STEPHANIE_SITE = {
       text: "Soin nutrition, soin intense, attaches, coiffures et chignons mariage sur demande."
     }
   ],
-  galleryFilters: ["Tout", "Balayage", "Couleur", "Coupe", "Coiffage"],
+  galleryFilters: ["Tout", "Balayage", "Couleur", "Coupe", "Coiffage", "Homme"],
   gallery: [
     { src: "/assets/gallery/48-blond-polaire-lisse.svg", title: "Blond polaire lisse", category: "Balayage" },
     { src: "/assets/gallery/50-balayage-blond-wavy.svg", title: "Balayage blond wavy", category: "Balayage" },
@@ -35,7 +35,12 @@ window.STEPHANIE_SITE = {
     { src: "/assets/gallery/45-carre-balayage-contour.svg", title: "Carré balayage contour", category: "Balayage" },
     { src: "/assets/gallery/46-rose-framboise-boucles.svg", title: "Rose framboise bouclé", category: "Couleur" },
     { src: "/assets/gallery/47-lissage-caramel-dore.svg", title: "Lissage caramel doré", category: "Coiffage" },
-    { src: "/assets/gallery/49-meches-brunes-lisses.svg", title: "Mèches brunes lisses", category: "Balayage" }
+    { src: "/assets/gallery/49-meches-brunes-lisses.svg", title: "Mèches brunes lisses", category: "Balayage" },
+    { src: "/assets/gallery/51-coupe-homme-degrade-barbe.jpg", title: "Dégradé homme avec barbe", category: "Homme" },
+    { src: "/assets/gallery/52-coupe-homme-texture.jpg", title: "Coupe homme texturée", category: "Homme" },
+    { src: "/assets/gallery/53-coupe-homme-boucle-degrade.jpg", title: "Dégradé bouclé homme", category: "Homme" },
+    { src: "/assets/gallery/54-coupe-homme-longue-bouclee.jpg", title: "Coupe homme longue bouclée", category: "Homme" },
+    { src: "/assets/gallery/55-coupe-homme-degrade-naturel.jpg", title: "Dégradé naturel homme", category: "Homme" }
   ],
   prices: {
     Femmes: [
