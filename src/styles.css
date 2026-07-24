@@ -776,7 +776,7 @@ h3 {
   gap: 14px;
   width: max-content;
   padding: 8px clamp(18px, 4vw, 58px);
-  animation: ribbonFlow 34s linear infinite;
+  animation: ribbonFlow 100s linear infinite alternate;
 }
 
 .beauty-ribbon:hover .beauty-ribbon-track {
@@ -2472,7 +2472,7 @@ h3 {
   }
 
   to {
-    transform: translateX(-50%);
+    transform: translateX(calc(-100% + 100vw));
   }
 }
 
