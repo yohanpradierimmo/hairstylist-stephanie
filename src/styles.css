@@ -485,6 +485,143 @@ a {
   object-fit: contain;
 }
 
+.wedding-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.82fr);
+  gap: clamp(26px, 5vw, 76px);
+  align-items: center;
+  min-height: clamp(620px, calc(100svh - 78px), 840px);
+  padding: clamp(44px, 6vw, 92px) clamp(18px, 4vw, 58px);
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background:
+    linear-gradient(135deg, rgba(255, 233, 237, 0.96), rgba(255, 253, 249, 0.9) 58%),
+    var(--paper);
+}
+
+.wedding-hero-gallery {
+  display: grid;
+  grid-template-columns: 1.15fr 0.72fr 0.72fr;
+  grid-template-rows: repeat(2, minmax(190px, 1fr));
+  gap: 12px;
+  min-height: clamp(460px, 52vw, 660px);
+}
+
+.wedding-hero-gallery figure,
+.wedding-creation-grid figure {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--cream);
+  box-shadow: 0 18px 60px rgba(185, 60, 95, 0.12);
+}
+
+.wedding-hero-main {
+  grid-row: 1 / 3;
+}
+
+.wedding-hero-gallery img,
+.wedding-creation-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 420ms ease, filter 420ms ease;
+}
+
+.wedding-hero-gallery figure:hover img,
+.wedding-creation-grid figure:hover img {
+  filter: saturate(1.06) contrast(1.02);
+  transform: scale(1.045);
+}
+
+.wedding-hero-copy {
+  min-width: 0;
+}
+
+.wedding-hero-copy p:not(.kicker) {
+  color: var(--muted);
+  font-size: clamp(1rem, 1.6vw, 1.22rem);
+}
+
+.wedding-intro,
+.wedding-creations {
+  background: var(--cream);
+}
+
+.wedding-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.wedding-steps article {
+  min-height: 290px;
+  padding: clamp(24px, 3.3vw, 42px);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 233, 237, 0.42);
+}
+
+.wedding-steps span {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: var(--rose);
+  font-family: var(--script);
+  font-size: 2.8rem;
+  line-height: 1;
+}
+
+.wedding-steps p {
+  color: var(--muted);
+}
+
+.wedding-care {
+  background:
+    linear-gradient(180deg, rgba(255, 253, 249, 0.9), rgba(255, 233, 237, 0.92)),
+    var(--paper);
+}
+
+.wedding-creation-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) repeat(2, minmax(220px, 0.72fr));
+  grid-auto-rows: minmax(300px, 34vw);
+  gap: 12px;
+}
+
+.wedding-creation-large {
+  grid-row: span 2;
+}
+
+.wedding-creation-grid figcaption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 58px 18px 18px;
+  color: var(--cream);
+  background: linear-gradient(to top, rgba(41, 40, 39, 0.74), transparent);
+  font-size: 1.05rem;
+}
+
+.wedding-creation-grid figcaption span {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--blush-100);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.wedding-pricing {
+  border-top: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, var(--blush-50), var(--cream)),
+    var(--paper);
+}
+
 .kicker,
 .section-label {
   margin: 0 0 14px;
@@ -1920,6 +2057,15 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .wedding-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .wedding-hero-gallery {
+    order: 2;
+    min-height: clamp(380px, 64vw, 520px);
+  }
+
   .hero-media {
     min-height: clamp(360px, 48vw, 430px);
     order: 2;
@@ -1931,8 +2077,15 @@ h3 {
   .page-link-grid,
   .gallery-grid,
   .experience-steps,
-  .appointment-steps {
+  .appointment-steps,
+  .wedding-steps,
+  .wedding-creation-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .wedding-creation-large {
+    grid-column: 1 / -1;
+    grid-row: auto;
   }
 
   .service-area-layout {
@@ -2147,6 +2300,8 @@ h3 {
   .gallery-grid,
   .experience-steps,
   .appointment-steps,
+  .wedding-steps,
+  .wedding-creation-grid,
   .editorial-grid,
   .mood-grid,
   .reviews-layout,
@@ -2154,6 +2309,38 @@ h3 {
   .faq-list,
   .contact-methods {
     grid-template-columns: 1fr;
+  }
+
+  .wedding-hero {
+    min-height: auto;
+    padding-top: 42px;
+  }
+
+  .wedding-hero-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: none;
+    min-height: 0;
+  }
+
+  .wedding-hero-main {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .wedding-hero-gallery figure {
+    min-height: 210px;
+  }
+
+  .wedding-hero-gallery .wedding-hero-main {
+    min-height: 320px;
+  }
+
+  .wedding-steps article {
+    min-height: auto;
+  }
+
+  .wedding-creation-grid {
+    grid-auto-rows: minmax(300px, auto);
   }
 
   .reviews-marquee-track {
