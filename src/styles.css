@@ -746,6 +746,17 @@ a {
 .wedding-group {
   display: grid;
   gap: 18px;
+  padding: 22px;
+  border: 1px solid rgba(255, 235, 198, 0.14);
+  background: rgba(255, 253, 249, 0.04);
+}
+
+.wedding-group-featured {
+  border-color: rgba(255, 235, 198, 0.22);
+}
+
+.group-heading {
+  max-width: 900px;
 }
 
 .group-heading h3 {
@@ -776,6 +787,23 @@ a {
 
 .wedding-overview-grid {
   margin-top: 18px;
+}
+
+.wedding-style-nav {
+  background:
+    linear-gradient(180deg, rgba(84, 19, 40, 0.96), rgba(41, 40, 39, 0.96)),
+    var(--berry);
+  color: var(--cream);
+}
+
+.wedding-style-nav .section-label,
+.wedding-style-nav h2,
+.wedding-style-nav p {
+  color: var(--cream);
+}
+
+.wedding-style-nav .section-label {
+  color: var(--gold);
 }
 
 .wedding-creations-dark .wedding-creation-grid figure {
@@ -2559,6 +2587,14 @@ h3 {
   .wedding-style-nav .style-links a {
     width: calc(50% - 4px);
     justify-content: center;
+  }
+
+  .wedding-group {
+    padding: 16px;
+  }
+
+  .wedding-group .wedding-creation-grid {
+    grid-auto-rows: minmax(190px, auto);
   }
 
   .wedding-hero-main {
