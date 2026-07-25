@@ -63,7 +63,13 @@ window.STEPHANIE_SITE = {
     { src: "/assets/gallery/52-coupe-homme-texture.jpg", title: "Coupe homme texturée", category: "Homme" },
     { src: "/assets/gallery/53-coupe-homme-boucle-degrade.jpg", title: "Dégradé bouclé homme", category: "Homme" },
     { src: "/assets/gallery/54-coupe-homme-longue-bouclee.jpg", title: "Coupe homme longue bouclée", category: "Homme" },
-    { src: "/assets/gallery/55-coupe-homme-degrade-naturel.jpg", title: "Dégradé naturel homme", category: "Homme" }
+    { src: "/assets/gallery/55-coupe-homme-degrade-naturel.jpg", title: "Dégradé naturel homme", category: "Homme" },
+    { src: "/assets/homme/codex-clipboard-8e6dac6a-ccc5-4b49-90c0-f9670b055e3d.jpg", title: "Coupe homme naturel en lumière dorée", category: "Homme" },
+    { src: "/assets/homme/codex-clipboard-05c6ee0b-7695-4b1d-ada2-12fd46596fd2.jpg", title: "Coupe homme barbe et volume urbain", category: "Homme" },
+    { src: "/assets/homme/codex-clipboard-d5243a38-d0f3-4e5e-ab60-feb4e8b10f4e.jpg", title: "Coupe homme dégradé moderne", category: "Homme" },
+    { src: "/assets/homme/codex-clipboard-cab016f2-52ed-4c7f-b7bf-13b621d523ee.jpg", title: "Coupe homme esprit nature", category: "Homme" },
+    { src: "/assets/homme/codex-clipboard-1c58c98a-18e3-417d-bc35-ca9e4a66d842.jpg", title: "Coupe homme élégante en ville", category: "Homme" },
+    { src: "/assets/homme/codex-clipboard-bd2f6b21-feef-4ff8-8a04-1fb283969ea7.jpg", title: "Coupe homme wavy bord de mer", category: "Homme" }
   ],
   prices: {
     Femmes: [
