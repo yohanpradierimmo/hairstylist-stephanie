@@ -673,6 +673,13 @@ a {
   color: var(--cream);
 }
 
+.wedding-hero-premium .entry-stats {
+  justify-content: center;
+  width: min(100%, 620px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .wedding-luxe-intro {
   background:
     linear-gradient(180deg, rgba(78, 17, 33, 0.97), rgba(114, 27, 54, 0.95)),
