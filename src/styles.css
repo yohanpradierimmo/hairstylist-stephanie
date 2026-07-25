@@ -488,11 +488,11 @@ a {
 .wedding-hero {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.82fr);
-  gap: clamp(26px, 5vw, 76px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+  gap: clamp(20px, 4vw, 54px);
   align-items: center;
   min-height: clamp(620px, calc(100svh - 78px), 840px);
-  padding: clamp(44px, 6vw, 92px) clamp(18px, 4vw, 58px);
+  padding: clamp(44px, 6vw, 92px) clamp(28px, 5vw, 86px);
   overflow: hidden;
   border-bottom: 1px solid var(--line);
   background:
@@ -538,6 +538,19 @@ a {
 
 .wedding-hero-copy {
   min-width: 0;
+  max-width: 640px;
+  justify-self: center;
+  text-align: center;
+}
+
+.wedding-hero-copy .hero-actions,
+.wedding-hero-copy .entry-stats {
+  justify-content: center;
+}
+
+.wedding-hero-copy .hero-actions {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .wedding-hero-copy p:not(.kicker) {
