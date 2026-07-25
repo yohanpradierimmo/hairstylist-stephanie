@@ -2588,13 +2588,42 @@ h3 {
     display: none;
   }
 
-  .wedding-style-nav .style-links {
+  .wedding-style-nav {
+    background:
+      radial-gradient(circle at top center, rgba(255, 221, 170, 0.52), transparent 34%),
+      linear-gradient(180deg, rgba(255, 247, 249, 0.98), rgba(248, 236, 216, 0.96) 56%, rgba(255, 251, 245, 0.99)),
+      var(--cream);
+  }
+
+  .wedding-creations-dark {
+    background:
+      radial-gradient(circle at top center, rgba(255, 233, 196, 0.6), transparent 34%),
+      linear-gradient(180deg, rgba(255, 252, 247, 0.99), rgba(248, 239, 222, 0.98) 48%, rgba(255, 249, 238, 0.99)),
+      var(--cream);
+  }
+
+  .wedding-highlight-strip {
+    background:
+      linear-gradient(180deg, rgba(255, 248, 250, 0.99), rgba(248, 236, 216, 0.96)),
+      var(--cream);
+  }
+
+  .wedding-contact {
+    background:
+      radial-gradient(circle at top center, rgba(255, 220, 168, 0.34), transparent 28%),
+      linear-gradient(135deg, rgba(255, 246, 248, 0.99), rgba(249, 236, 214, 0.96) 58%, rgba(255, 250, 244, 0.99)),
+      var(--cream);
+  }
+
+  .wedding-gallery-filters {
     gap: 8px;
   }
 
-  .wedding-style-nav .style-links a {
+  .wedding-gallery-filters button {
     width: calc(50% - 4px);
     justify-content: center;
+    background: rgba(255, 251, 245, 0.94);
+    border-color: rgba(181, 140, 59, 0.24);
   }
 
   .wedding-group {
