@@ -730,19 +730,20 @@ a {
 .wedding-creations-dark {
   position: relative;
   background:
-    linear-gradient(180deg, rgba(84, 19, 40, 0.98), rgba(41, 40, 39, 0.96)),
-    var(--berry);
-  color: var(--cream);
+    radial-gradient(circle at top right, rgba(255, 235, 198, 0.86), transparent 32%),
+    linear-gradient(180deg, rgba(255, 253, 249, 0.98), rgba(249, 239, 214, 0.98) 42%, rgba(255, 248, 234, 0.98)),
+    var(--cream);
+  color: var(--ink);
 }
 
 .wedding-creations-dark .section-label,
 .wedding-creations-dark h2,
 .wedding-creations-dark p {
-  color: var(--cream);
+  color: var(--ink);
 }
 
 .wedding-creations-dark .section-label {
-  color: var(--gold);
+  color: var(--copper);
 }
 
 .wedding-lookbook-compact {
@@ -781,16 +782,16 @@ a {
 .wedding-gallery-filters button {
   min-height: 38px;
   padding: 0 16px;
-  border: 1px solid rgba(255, 235, 198, 0.24);
-  color: var(--cream);
-  background: transparent;
+  border: 1px solid rgba(181, 140, 59, 0.28);
+  color: var(--ink);
+  background: rgba(255, 253, 249, 0.74);
   cursor: pointer;
   font: inherit;
 }
 
 .wedding-gallery-filters button.active {
-  color: var(--berry);
-  background: var(--gold);
+  color: var(--ink);
+  background: linear-gradient(135deg, #f2d38a, #f7e5b7);
 }
 
 .wedding-gallery-grid {
@@ -798,21 +799,13 @@ a {
 }
 
 .wedding-gallery-grid .gallery-item {
-  border: 1px solid rgba(255, 235, 198, 0.16);
-  background: rgba(255, 253, 249, 0.04);
+  border: 1px solid rgba(181, 140, 59, 0.18);
+  background: rgba(255, 253, 249, 0.82);
+  box-shadow: 0 18px 50px rgba(181, 140, 59, 0.14);
 }
 
 .wedding-gallery-grid .gallery-item img {
   aspect-ratio: 4 / 5;
-}
-
-.wedding-creations-dark .wedding-creation-grid figure {
-  border-color: rgba(255, 235, 198, 0.18);
-  box-shadow: 0 18px 60px rgba(18, 8, 10, 0.24);
-}
-
-.wedding-creations-dark .wedding-creation-grid figcaption span {
-  color: var(--gold);
 }
 
 .wedding-highlight-strip {
