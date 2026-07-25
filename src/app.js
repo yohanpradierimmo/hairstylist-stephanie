@@ -150,11 +150,11 @@ function initWeddingCollections() {
   if (!weddingCollections) return;
 
   const groups = Array.from(weddingCollections.querySelectorAll(".wedding-group"));
-  const links = Array.from(document.querySelectorAll(".style-links a[data-style]"));
+  const controls = Array.from(document.querySelectorAll(".style-links [data-style]"));
 
   const applyWeddingStyle = (style) => {
     selectedWeddingStyle = style;
-    links.forEach((link) => link.classList.toggle("active", link.dataset.style === style));
+    controls.forEach((control) => control.classList.toggle("active", control.dataset.style === style));
 
     groups.forEach((group) => {
       const isVisible = style === "all" || group.id === style;
@@ -167,10 +167,10 @@ function initWeddingCollections() {
     }
   };
 
-  links.forEach((link) => {
-    link.addEventListener("click", (event) => {
+  controls.forEach((control) => {
+    control.addEventListener("click", (event) => {
       event.preventDefault();
-      applyWeddingStyle(link.dataset.style);
+      applyWeddingStyle(control.dataset.style);
       weddingCollections.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   });
