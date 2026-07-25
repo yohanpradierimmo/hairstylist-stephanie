@@ -726,15 +726,56 @@ a {
 }
 
 .wedding-lookbook-compact {
-  grid-auto-rows: minmax(240px, 26vw);
+  grid-auto-rows: minmax(220px, 24vw);
 }
 
 .wedding-lookbook-compact figure {
-  min-height: 240px;
+  min-height: 220px;
 }
 
 .wedding-lookbook-compact .wedding-creation-large {
   grid-row: span 2;
+}
+
+.wedding-collection-groups {
+  display: grid;
+  gap: 28px;
+  margin-top: 18px;
+}
+
+.wedding-group {
+  display: grid;
+  gap: 18px;
+}
+
+.group-heading h3 {
+  margin-bottom: 0;
+  color: var(--gold);
+  font-size: clamp(1.45rem, 2.6vw, 2.4rem);
+}
+
+.style-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.style-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 235, 198, 0.24);
+  color: var(--cream);
+  background: rgba(255, 253, 249, 0.06);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.wedding-overview-grid {
+  margin-top: 18px;
 }
 
 .wedding-creations-dark .wedding-creation-grid figure {
@@ -2497,6 +2538,29 @@ h3 {
     min-height: 0;
   }
 
+  .wedding-hero-premium {
+    background-position: center 22%;
+  }
+
+  .wedding-hero-premium::before {
+    background:
+      linear-gradient(180deg, rgba(36, 17, 20, 0.42), rgba(36, 17, 20, 0.32)),
+      linear-gradient(90deg, rgba(36, 17, 20, 0.56), rgba(36, 17, 20, 0.24));
+  }
+
+  .wedding-hero-premium .wedding-hero-gallery {
+    display: none;
+  }
+
+  .wedding-style-nav .style-links {
+    gap: 8px;
+  }
+
+  .wedding-style-nav .style-links a {
+    width: calc(50% - 4px);
+    justify-content: center;
+  }
+
   .wedding-hero-main {
     grid-column: 1 / -1;
     grid-row: auto;
@@ -2516,6 +2580,18 @@ h3 {
 
   .wedding-creation-grid {
     grid-auto-rows: minmax(300px, auto);
+  }
+
+  .wedding-lookbook-compact {
+    grid-auto-rows: minmax(200px, auto);
+  }
+
+  .wedding-lookbook-compact figure {
+    min-height: 200px;
+  }
+
+  .wedding-overview-grid {
+    grid-auto-rows: minmax(190px, auto);
   }
 
   .reviews-marquee-track {
