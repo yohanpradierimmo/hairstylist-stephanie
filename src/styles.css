@@ -665,9 +665,12 @@ a {
 
 .wedding-hero-premium .kicker,
 .wedding-hero-premium .section-label,
-.wedding-hero-premium h1,
-.wedding-hero-premium p {
+.wedding-hero-premium h1 {
   color: var(--cream);
+}
+
+.wedding-hero-premium p {
+  color: #f3dfb4;
 }
 
 .wedding-hero-premium .script-name {
