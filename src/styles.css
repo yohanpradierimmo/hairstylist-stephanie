@@ -639,7 +639,7 @@ a {
 .wedding-hero-premium {
   background:
     linear-gradient(180deg, rgba(41, 40, 39, 0.22), rgba(41, 40, 39, 0.18)),
-    url("/assets/mariage/chateau-fond.jpg") center/cover no-repeat;
+    url("../assets/mariage/chateau-fond.jpg") center/cover no-repeat;
   color: var(--cream);
 }
 
@@ -757,65 +757,6 @@ a {
   grid-row: span 2;
 }
 
-.wedding-collection-groups {
-  display: grid;
-  gap: 28px;
-  margin-top: 18px;
-}
-
-.wedding-group {
-  display: grid;
-  gap: 18px;
-  padding: 22px;
-  border: 1px solid rgba(255, 235, 198, 0.14);
-  background: rgba(255, 253, 249, 0.04);
-}
-
-.wedding-group-featured {
-  border-color: rgba(255, 235, 198, 0.22);
-}
-
-.group-heading {
-  max-width: 900px;
-}
-
-.group-heading h3 {
-  margin-bottom: 0;
-  color: var(--gold);
-  font-size: clamp(1.45rem, 2.6vw, 2.4rem);
-}
-
-.style-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.style-links button {
-  display: inline-flex;
-  align-items: center;
-  min-height: 40px;
-  padding: 0 16px;
-  border: 1px solid rgba(255, 235, 198, 0.24);
-  color: var(--cream);
-  background: rgba(255, 253, 249, 0.06);
-  cursor: pointer;
-  font: inherit;
-  font-size: 0.76rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.style-links button.active {
-  color: var(--berry);
-  background: var(--gold);
-}
-
-.wedding-overview-grid {
-  margin-top: 18px;
-}
-
 .wedding-style-nav {
   background:
     linear-gradient(180deg, rgba(84, 19, 40, 0.96), rgba(41, 40, 39, 0.96)),
@@ -831,6 +772,38 @@ a {
 
 .wedding-style-nav .section-label {
   color: var(--gold);
+}
+
+.wedding-gallery-filters {
+  margin-bottom: 28px;
+}
+
+.wedding-gallery-filters button {
+  min-height: 38px;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 235, 198, 0.24);
+  color: var(--cream);
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+}
+
+.wedding-gallery-filters button.active {
+  color: var(--berry);
+  background: var(--gold);
+}
+
+.wedding-gallery-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.wedding-gallery-grid .gallery-item {
+  border: 1px solid rgba(255, 235, 198, 0.16);
+  background: rgba(255, 253, 249, 0.04);
+}
+
+.wedding-gallery-grid .gallery-item img {
+  aspect-ratio: 4 / 5;
 }
 
 .wedding-creations-dark .wedding-creation-grid figure {

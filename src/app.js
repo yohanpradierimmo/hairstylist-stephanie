@@ -7,10 +7,39 @@ const pricingList = document.querySelector("#pricingList");
 const navToggle = document.querySelector(".nav-toggle");
 const mainNav = document.querySelector(".main-nav");
 const serviceMap = document.querySelector("#serviceMap");
-const weddingCollections = document.querySelector("#weddingCollections");
+const weddingStyleFilters = document.querySelector("#weddingStyleFilters");
+const weddingGalleryGrid = document.querySelector("#weddingGalleryGrid");
 let selectedCategory = "Tout";
 let selectedPriceTab = "Femmes";
-let selectedWeddingStyle = "all";
+let selectedWeddingStyle = "Tout";
+
+const weddingGalleryData = [
+  { src: "./assets/mariage/01-chignon-tresse-rousse.jpg", title: "Tresse rousse fleurie", category: "Chignons" },
+  { src: "./assets/mariage/02-chignon-banane-brun.jpg", title: "Banane elegante", category: "Chignons" },
+  { src: "./assets/mariage/05-chignon-bas-brun.jpg", title: "Brun sophistique", category: "Chignons" },
+  { src: "./assets/mariage/12-chignon-blond-lac.jpg", title: "Blond romantique", category: "Chignons" },
+  { src: "./assets/mariage/17-chignon-flou-roux.jpg", title: "Flou roux", category: "Chignons" },
+  { src: "./assets/mariage/20-chignon-bas-roux.jpg", title: "Bas roux minimaliste", category: "Chignons" },
+  { src: "./assets/mariage/21-chignon-tresse-perles.jpg", title: "Tresse et perles", category: "Chignons" },
+  { src: "./assets/mariage/23-chignon-haut-brun.jpg", title: "Haut brun", category: "Chignons" },
+  { src: "./assets/mariage/04-tresse-basse-brune.jpg", title: "Attache basse fleurie", category: "Tresses" },
+  { src: "./assets/mariage/06-tresse-basse-rousse.jpg", title: "Rousse et fleurie", category: "Tresses" },
+  { src: "./assets/mariage/07-chignon-tresse-brun.jpg", title: "Tresse brune", category: "Tresses" },
+  { src: "./assets/mariage/08-tresse-longue-fleurie.jpg", title: "Longue et boheme", category: "Tresses" },
+  { src: "./assets/mariage/13-tresse-bulle-brune.jpg", title: "Bulle brune", category: "Tresses" },
+  { src: "./assets/mariage/16-chignon-tresse-rousse-bijou.jpg", title: "Rousse precieuse", category: "Tresses" },
+  { src: "./assets/mariage/03-attache-basse-blonde.jpg", title: "Blond lumineux", category: "Attaches" },
+  { src: "./assets/mariage/11-queue-basse-brune.jpg", title: "Queue basse souple", category: "Attaches" },
+  { src: "./assets/mariage/14-demi-attache-brune.jpg", title: "Demi-attache naturelle", category: "Attaches" },
+  { src: "./assets/mariage/15-queue-haute-blonde.jpg", title: "Queue haute blonde", category: "Attaches" },
+  { src: "./assets/mariage/22-chignon-bas-brun-verriere.jpg", title: "Bas brun naturel", category: "Attaches" },
+  { src: "./assets/mariage/09-carre-wavy-blond.jpg", title: "Carre blond", category: "Wavy" },
+  { src: "./assets/mariage/10-wavy-long-brun.jpg", title: "Longueurs brunes", category: "Wavy" },
+  { src: "./assets/mariage/18-tresse-longue-blonde.jpg", title: "Longue blonde", category: "Wavy" },
+  { src: "./assets/mariage/19-wavy-blond-bijou.jpg", title: "Blond avec bijou", category: "Wavy" }
+];
+
+const weddingStyleLabels = ["Tout", "Chignons", "Tresses", "Attaches", "Wavy"];
 
 function renderServices() {
   if (!servicesGrid) return;
@@ -146,36 +175,25 @@ function initServiceMap() {
   }).addTo(map).bindPopup("Montbrison");
 }
 
-function initWeddingCollections() {
-  if (!weddingCollections) return;
+function renderWeddingGallery() {
+  if (!weddingGalleryGrid || !weddingStyleFilters) return;
 
-  const groups = Array.from(weddingCollections.querySelectorAll(".wedding-group"));
-  const controls = Array.from(document.querySelectorAll(".style-links [data-style]"));
+  weddingStyleFilters.innerHTML = weddingStyleLabels
+    .map((label) => `<button type="button" class="${label === selectedWeddingStyle ? "active" : ""}" data-style="${label}">${label}</button>`)
+    .join("");
 
-  const applyWeddingStyle = (style) => {
-    selectedWeddingStyle = style;
-    controls.forEach((control) => control.classList.toggle("active", control.dataset.style === style));
+  const visibleItems = weddingGalleryData.filter((item) => selectedWeddingStyle === "Tout" || item.category === selectedWeddingStyle);
 
-    groups.forEach((group) => {
-      const isVisible = style === "all" || group.id === style;
-      group.hidden = !isVisible;
-    });
-
-    const overview = weddingCollections.nextElementSibling;
-    if (overview && overview.classList.contains("wedding-overview-grid")) {
-      overview.hidden = style !== "all";
-    }
-  };
-
-  controls.forEach((control) => {
-    control.addEventListener("click", (event) => {
-      event.preventDefault();
-      applyWeddingStyle(control.dataset.style);
-      weddingCollections.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  });
-
-  applyWeddingStyle(selectedWeddingStyle);
+  weddingGalleryGrid.innerHTML = visibleItems
+    .map(
+      (item) => `
+        <figure class="gallery-item">
+          <img src="${item.src}" alt="${item.title}" loading="lazy">
+          <figcaption><span>${item.category}</span>${item.title}</figcaption>
+        </figure>
+      `
+    )
+    .join("");
 }
 
 if (galleryFilters) {
@@ -193,6 +211,15 @@ if (pricingTabs) {
     if (!button) return;
     selectedPriceTab = button.dataset.tab;
     renderPrices();
+  });
+}
+
+if (weddingStyleFilters) {
+  weddingStyleFilters.addEventListener("click", (event) => {
+    const button = event.target.closest("button[data-style]");
+    if (!button) return;
+    selectedWeddingStyle = button.dataset.style;
+    renderWeddingGallery();
   });
 }
 
@@ -216,6 +243,6 @@ if (legalDialog && legalToggle && legalClose) {
 
 renderServices();
 renderGallery();
+renderWeddingGallery();
 renderPrices();
 initServiceMap();
-initWeddingCollections();
