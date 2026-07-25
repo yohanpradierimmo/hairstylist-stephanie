@@ -486,6 +486,7 @@ a {
 }
 
 .wedding-hero {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.82fr);
   gap: clamp(26px, 5vw, 76px);
@@ -586,7 +587,7 @@ a {
 .wedding-creation-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) repeat(2, minmax(220px, 0.72fr));
-  grid-auto-rows: minmax(300px, 34vw);
+  grid-auto-rows: minmax(270px, 30vw);
   gap: 12px;
 }
 
@@ -624,19 +625,78 @@ a {
 
 .wedding-hero-premium {
   background:
-    radial-gradient(circle at top left, rgba(185, 60, 95, 0.11), transparent 34%),
-    linear-gradient(135deg, rgba(255, 245, 247, 0.98), rgba(255, 253, 249, 0.95) 62%),
-    var(--paper);
+    linear-gradient(180deg, rgba(41, 40, 39, 0.22), rgba(41, 40, 39, 0.18)),
+    url("/assets/mariage/chateau-fond.jpg") center/cover no-repeat;
+  color: var(--cream);
+}
+
+.wedding-hero-premium::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(36, 17, 20, 0.82), rgba(36, 17, 20, 0.38) 54%, rgba(36, 17, 20, 0.72)),
+    linear-gradient(180deg, rgba(24, 12, 15, 0.32), rgba(24, 12, 15, 0.18));
+  pointer-events: none;
+}
+
+.wedding-hero-premium .wedding-hero-copy,
+.wedding-hero-premium .wedding-hero-gallery {
+  position: relative;
+  z-index: 1;
 }
 
 .wedding-points {
   margin-top: 22px;
 }
 
+.wedding-hero-premium .kicker,
+.wedding-hero-premium .section-label,
+.wedding-hero-premium h1,
+.wedding-hero-premium p {
+  color: var(--cream);
+}
+
+.wedding-hero-premium .script-name {
+  color: var(--gold);
+}
+
+.wedding-hero-premium .button.secondary {
+  color: var(--cream);
+  border-color: rgba(255, 235, 198, 0.44);
+  background: rgba(255, 235, 198, 0.08);
+}
+
+.wedding-hero-premium .entry-stats span {
+  border-color: rgba(255, 235, 198, 0.26);
+  background: rgba(255, 253, 249, 0.08);
+  color: var(--cream);
+}
+
 .wedding-luxe-intro {
   background:
-    linear-gradient(180deg, rgba(255, 253, 249, 0.96), rgba(255, 233, 237, 0.82)),
-    var(--paper);
+    linear-gradient(180deg, rgba(78, 17, 33, 0.97), rgba(114, 27, 54, 0.95)),
+    var(--berry);
+  color: var(--cream);
+}
+
+.wedding-luxe-intro .section-label,
+.wedding-luxe-intro h2,
+.wedding-luxe-intro p,
+.wedding-luxe-intro .wedding-steps p {
+  color: var(--cream);
+}
+
+.wedding-luxe-intro .section-label {
+  color: var(--gold);
+}
+
+.wedding-luxe-intro .wedding-steps article {
+  background: rgba(255, 253, 249, 0.07);
+}
+
+.wedding-luxe-intro .wedding-steps span {
+  color: var(--gold);
 }
 
 .wedding-editorial-grid {
@@ -647,32 +707,94 @@ a {
   margin-top: 18px;
 }
 
+.wedding-creations-dark {
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(84, 19, 40, 0.98), rgba(41, 40, 39, 0.96)),
+    var(--berry);
+  color: var(--cream);
+}
+
+.wedding-creations-dark .section-label,
+.wedding-creations-dark h2,
+.wedding-creations-dark p {
+  color: var(--cream);
+}
+
+.wedding-creations-dark .section-label {
+  color: var(--gold);
+}
+
+.wedding-lookbook-compact {
+  grid-auto-rows: minmax(240px, 26vw);
+}
+
+.wedding-lookbook-compact figure {
+  min-height: 240px;
+}
+
+.wedding-lookbook-compact .wedding-creation-large {
+  grid-row: span 2;
+}
+
+.wedding-creations-dark .wedding-creation-grid figure {
+  border-color: rgba(255, 235, 198, 0.18);
+  box-shadow: 0 18px 60px rgba(18, 8, 10, 0.24);
+}
+
+.wedding-creations-dark .wedding-creation-grid figcaption span {
+  color: var(--gold);
+}
+
 .wedding-highlight-strip {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
   padding: 0 clamp(18px, 4vw, 58px) clamp(18px, 4vw, 58px);
-  background: var(--cream);
+  background: linear-gradient(180deg, rgba(84, 19, 40, 0.96), rgba(64, 14, 32, 0.96));
 }
 
 .highlight-card {
   padding: clamp(26px, 4vw, 42px);
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 235, 198, 0.16);
   background:
-    linear-gradient(180deg, rgba(255, 253, 249, 0.94), rgba(255, 233, 237, 0.6)),
-    var(--paper);
-  box-shadow: 0 18px 54px rgba(185, 60, 95, 0.08);
+    linear-gradient(180deg, rgba(255, 253, 249, 0.08), rgba(255, 235, 198, 0.04)),
+    rgba(41, 40, 39, 0.18);
+  box-shadow: 0 18px 54px rgba(18, 8, 10, 0.2);
+  color: var(--cream);
 }
 
 .highlight-card.accent {
   background:
-    linear-gradient(180deg, rgba(255, 201, 212, 0.52), rgba(255, 253, 249, 0.9)),
-    var(--blush-50);
+    linear-gradient(180deg, rgba(255, 235, 198, 0.12), rgba(255, 201, 212, 0.08)),
+    rgba(41, 40, 39, 0.18);
 }
 
 .highlight-card p:last-child {
-  color: var(--muted);
+  color: rgba(255, 253, 249, 0.82);
   max-width: 58ch;
+}
+
+.wedding-contact {
+  border-top: 1px solid rgba(255, 235, 198, 0.14);
+  background:
+    linear-gradient(135deg, rgba(84, 19, 40, 0.98), rgba(41, 40, 39, 0.94)),
+    var(--berry);
+}
+
+.wedding-contact h2,
+.wedding-contact p,
+.wedding-contact .section-label {
+  color: var(--cream);
+}
+
+.wedding-contact .section-label {
+  color: var(--gold);
+}
+
+.wedding-contact .button.secondary {
+  color: var(--cream);
+  border-color: rgba(255, 235, 198, 0.34);
 }
 
 .kicker,
