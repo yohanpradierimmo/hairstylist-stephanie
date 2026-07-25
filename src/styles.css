@@ -792,6 +792,11 @@ a {
   text-transform: uppercase;
 }
 
+.style-links a.active {
+  color: var(--berry);
+  background: var(--gold);
+}
+
 .wedding-overview-grid {
   margin-top: 18px;
 }

@@ -7,8 +7,10 @@ const pricingList = document.querySelector("#pricingList");
 const navToggle = document.querySelector(".nav-toggle");
 const mainNav = document.querySelector(".main-nav");
 const serviceMap = document.querySelector("#serviceMap");
+const weddingCollections = document.querySelector("#weddingCollections");
 let selectedCategory = "Tout";
 let selectedPriceTab = "Femmes";
+let selectedWeddingStyle = "all";
 
 function renderServices() {
   if (!servicesGrid) return;
@@ -144,6 +146,38 @@ function initServiceMap() {
   }).addTo(map).bindPopup("Montbrison");
 }
 
+function initWeddingCollections() {
+  if (!weddingCollections) return;
+
+  const groups = Array.from(weddingCollections.querySelectorAll(".wedding-group"));
+  const links = Array.from(document.querySelectorAll(".style-links a[data-style]"));
+
+  const applyWeddingStyle = (style) => {
+    selectedWeddingStyle = style;
+    links.forEach((link) => link.classList.toggle("active", link.dataset.style === style));
+
+    groups.forEach((group) => {
+      const isVisible = style === "all" || group.id === style;
+      group.hidden = !isVisible;
+    });
+
+    const overview = weddingCollections.nextElementSibling;
+    if (overview && overview.classList.contains("wedding-overview-grid")) {
+      overview.hidden = style !== "all";
+    }
+  };
+
+  links.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      applyWeddingStyle(link.dataset.style);
+      weddingCollections.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+
+  applyWeddingStyle(selectedWeddingStyle);
+}
+
 if (galleryFilters) {
   galleryFilters.addEventListener("click", (event) => {
     const button = event.target.closest("button[data-filter]");
@@ -184,3 +218,4 @@ renderServices();
 renderGallery();
 renderPrices();
 initServiceMap();
+initWeddingCollections();
