@@ -676,14 +676,19 @@ a {
 
 .wedding-hero-premium .button.secondary {
   color: var(--cream);
-  border-color: rgba(255, 235, 198, 0.44);
-  background: rgba(255, 235, 198, 0.08);
+  border-color: rgba(255, 240, 214, 0.54);
+  background: rgba(255, 245, 231, 0.14);
 }
 
 .wedding-hero-premium .entry-stats span {
-  border-color: rgba(255, 235, 198, 0.26);
-  background: rgba(255, 253, 249, 0.08);
+  border-color: rgba(255, 240, 214, 0.28);
+  background: rgba(255, 245, 231, 0.12);
   color: var(--cream);
+}
+
+.wedding-contact .button.primary,
+.wedding-gallery-filters button.active {
+  box-shadow: 0 14px 34px rgba(190, 153, 89, 0.16);
 }
 
 .wedding-hero-premium .entry-stats {
@@ -695,24 +700,27 @@ a {
 
 .wedding-luxe-intro {
   background:
-    linear-gradient(180deg, rgba(78, 17, 33, 0.97), rgba(114, 27, 54, 0.95)),
-    var(--berry);
-  color: var(--cream);
+    radial-gradient(circle at top left, rgba(255, 228, 235, 0.9), transparent 34%),
+    linear-gradient(180deg, rgba(255, 247, 249, 0.98), rgba(250, 238, 217, 0.96) 50%, rgba(255, 250, 242, 0.98)),
+    var(--cream);
+  color: var(--ink);
 }
 
 .wedding-luxe-intro .section-label,
 .wedding-luxe-intro h2,
 .wedding-luxe-intro p,
 .wedding-luxe-intro .wedding-steps p {
-  color: var(--cream);
+  color: var(--ink);
 }
 
 .wedding-luxe-intro .section-label {
-  color: var(--gold);
+  color: var(--copper);
 }
 
 .wedding-luxe-intro .wedding-steps article {
-  background: rgba(255, 253, 249, 0.07);
+  background:
+    linear-gradient(180deg, rgba(255, 253, 249, 0.92), rgba(255, 238, 224, 0.88)),
+    var(--paper);
 }
 
 .wedding-luxe-intro .wedding-steps span {
@@ -760,19 +768,20 @@ a {
 
 .wedding-style-nav {
   background:
-    linear-gradient(180deg, rgba(84, 19, 40, 0.96), rgba(41, 40, 39, 0.96)),
-    var(--berry);
-  color: var(--cream);
+    radial-gradient(circle at right top, rgba(255, 215, 156, 0.44), transparent 28%),
+    linear-gradient(180deg, rgba(255, 243, 246, 0.98), rgba(249, 236, 214, 0.96) 58%, rgba(255, 249, 240, 0.98)),
+    var(--cream);
+  color: var(--ink);
 }
 
 .wedding-style-nav .section-label,
 .wedding-style-nav h2,
 .wedding-style-nav p {
-  color: var(--cream);
+  color: var(--ink);
 }
 
 .wedding-style-nav .section-label {
-  color: var(--gold);
+  color: var(--copper);
 }
 
 .wedding-gallery-filters {
@@ -784,14 +793,16 @@ a {
   padding: 0 16px;
   border: 1px solid rgba(181, 140, 59, 0.28);
   color: var(--ink);
-  background: rgba(255, 253, 249, 0.74);
+  background: rgba(255, 250, 244, 0.88);
   cursor: pointer;
   font: inherit;
+  box-shadow: 0 10px 24px rgba(181, 140, 59, 0.08);
 }
 
 .wedding-gallery-filters button.active {
   color: var(--ink);
-  background: linear-gradient(135deg, #f2d38a, #f7e5b7);
+  border-color: rgba(181, 140, 59, 0.4);
+  background: linear-gradient(135deg, #f0d189, #f7e6bf 64%, #fff8ea);
 }
 
 .wedding-gallery-grid {
@@ -813,50 +824,54 @@ a {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
   padding: 0 clamp(18px, 4vw, 58px) clamp(18px, 4vw, 58px);
-  background: linear-gradient(180deg, rgba(84, 19, 40, 0.96), rgba(64, 14, 32, 0.96));
+  background:
+    linear-gradient(180deg, rgba(255, 248, 250, 0.98), rgba(249, 236, 214, 0.94)),
+    var(--cream);
 }
 
 .highlight-card {
   padding: clamp(26px, 4vw, 42px);
-  border: 1px solid rgba(255, 235, 198, 0.16);
+  border: 1px solid rgba(190, 153, 89, 0.2);
   background:
-    linear-gradient(180deg, rgba(255, 253, 249, 0.08), rgba(255, 235, 198, 0.04)),
-    rgba(41, 40, 39, 0.18);
-  box-shadow: 0 18px 54px rgba(18, 8, 10, 0.2);
-  color: var(--cream);
+    linear-gradient(180deg, rgba(255, 253, 249, 0.96), rgba(255, 238, 224, 0.86)),
+    var(--paper);
+  box-shadow: 0 18px 54px rgba(181, 140, 59, 0.12);
+  color: var(--ink);
 }
 
 .highlight-card.accent {
   background:
-    linear-gradient(180deg, rgba(255, 235, 198, 0.12), rgba(255, 201, 212, 0.08)),
-    rgba(41, 40, 39, 0.18);
+    linear-gradient(180deg, rgba(255, 245, 231, 0.96), rgba(255, 229, 236, 0.88)),
+    var(--blush-50);
 }
 
 .highlight-card p:last-child {
-  color: rgba(255, 253, 249, 0.82);
+  color: var(--muted);
   max-width: 58ch;
 }
 
 .wedding-contact {
-  border-top: 1px solid rgba(255, 235, 198, 0.14);
+  border-top: 1px solid rgba(190, 153, 89, 0.18);
   background:
-    linear-gradient(135deg, rgba(84, 19, 40, 0.98), rgba(41, 40, 39, 0.94)),
-    var(--berry);
+    radial-gradient(circle at top right, rgba(255, 215, 156, 0.3), transparent 24%),
+    linear-gradient(135deg, rgba(255, 243, 246, 0.98), rgba(249, 236, 214, 0.95) 58%, rgba(255, 250, 244, 0.98)),
+    var(--cream);
 }
 
 .wedding-contact h2,
 .wedding-contact p,
 .wedding-contact .section-label {
-  color: var(--cream);
+  color: var(--ink);
 }
 
 .wedding-contact .section-label {
-  color: var(--gold);
+  color: var(--copper);
 }
 
 .wedding-contact .button.secondary {
-  color: var(--cream);
-  border-color: rgba(255, 235, 198, 0.34);
+  color: var(--ink);
+  border-color: rgba(190, 153, 89, 0.28);
+  background: rgba(255, 253, 249, 0.86);
 }
 
 .kicker,
