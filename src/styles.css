@@ -670,17 +670,26 @@ a {
 }
 
 .wedding-hero-premium p {
-  color: #f3dfb4;
+  color: #f0cf84;
+  text-shadow: 0 2px 14px rgba(32, 16, 10, 0.28);
 }
 
 .wedding-hero-premium .script-name {
   color: var(--gold);
 }
 
+.wedding-hero-premium .button.primary {
+  color: #3e2130;
+  border-color: rgba(255, 226, 165, 0.7);
+  background: linear-gradient(135deg, #f3d48a, #efd89f 55%, #fff0cb);
+  box-shadow: 0 18px 42px rgba(191, 147, 58, 0.3);
+}
+
 .wedding-hero-premium .button.secondary {
-  color: var(--cream);
-  border-color: rgba(255, 240, 214, 0.54);
-  background: rgba(255, 245, 231, 0.14);
+  color: #f6dca1;
+  border-color: rgba(255, 223, 157, 0.58);
+  background: rgba(255, 244, 220, 0.12);
+  box-shadow: 0 14px 36px rgba(36, 17, 20, 0.18);
 }
 
 .wedding-hero-premium .entry-stats span {
