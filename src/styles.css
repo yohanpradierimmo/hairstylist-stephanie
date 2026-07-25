@@ -669,9 +669,13 @@ a {
   color: var(--cream);
 }
 
-.wedding-hero-premium p {
-  color: #f0cf84;
-  text-shadow: 0 2px 14px rgba(32, 16, 10, 0.28);
+.wedding-hero-premium .wedding-hero-copy p:not(.kicker) {
+  color: #f6dfab;
+  text-shadow: 0 2px 16px rgba(20, 9, 6, 0.52);
+  background: linear-gradient(90deg, rgba(36, 17, 20, 0.34), rgba(36, 17, 20, 0.18));
+  padding: 10px 14px;
+  border-radius: 14px;
+  backdrop-filter: blur(3px);
 }
 
 .wedding-hero-premium .script-name {
