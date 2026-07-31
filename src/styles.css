@@ -1591,6 +1591,16 @@ h3 {
   -webkit-line-clamp: 8;
 }
 
+.review-card.dense-review > span {
+  font-size: clamp(1.7rem, 2.05vw, 2.35rem);
+}
+
+.review-card.dense-review p {
+  font-size: clamp(0.73rem, 0.78vw, 0.82rem);
+  line-height: 1.26;
+  -webkit-line-clamp: 11;
+}
+
 .review-page-grid .review-card {
   aspect-ratio: auto;
   height: 440px;
@@ -1612,6 +1622,11 @@ h3 {
 .review-page-grid .review-card.long-review p {
   font-size: clamp(0.76rem, 0.78vw, 0.84rem);
   line-height: 1.32;
+}
+
+.review-page-grid .review-card.dense-review p {
+  font-size: clamp(0.72rem, 0.74vw, 0.78rem);
+  line-height: 1.24;
 }
 
 .review-card small {
