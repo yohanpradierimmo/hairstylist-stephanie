@@ -17,7 +17,7 @@ window.STEPHANIE_SITE = {
       text: "Soin nutrition, soin intense, attaches, coiffures et chignons mariage sur demande."
     }
   ],
-  galleryFilters: ["Tout", "Balayage", "Couleur", "Coupe", "Coiffage", "Mariage", "Homme"],
+  galleryFilters: ["Tout", "Balayage", "Couleur", "Coupe", "Coiffage", "Tresses", "Mariage", "Homme"],
   gallery: [
     { src: "/assets/gallery/48-blond-polaire-lisse.svg", title: "Blond polaire lisse", category: "Balayage" },
     { src: "/assets/gallery/50-balayage-blond-wavy.svg", title: "Balayage blond wavy", category: "Balayage" },
@@ -39,6 +39,13 @@ window.STEPHANIE_SITE = {
     { src: "/assets/gallery/56-balayage-beige-lisse.jpg", title: "Balayage beige lisse", category: "Balayage" },
     { src: "/assets/gallery/57-balayage-caramel-long.jpg", title: "Balayage caramel long", category: "Balayage" },
     { src: "/assets/gallery/58-cuivre-wavy.jpg", title: "Cuivré wavy", category: "Couleur" },
+    { src: "/assets/gallery/59-tresse-couronne-blond.jpg", title: "Tresse couronne blonde", category: "Tresses" },
+    { src: "/assets/gallery/60-noir-rouge-wavy.jpg", title: "Noir rouge intense", category: "Couleur" },
+    { src: "/assets/gallery/61-brun-caramel-wavy.jpg", title: "Brun caramel wavy", category: "Coiffage" },
+    { src: "/assets/gallery/62-brun-froid-wavy.jpg", title: "Brun froid wavy", category: "Balayage" },
+    { src: "/assets/gallery/63-blond-polaire-wavy.jpg", title: "Blond polaire wavy", category: "Balayage" },
+    { src: "/assets/gallery/64-bordeaux-wavy.jpg", title: "Bordeaux profond", category: "Couleur" },
+    { src: "/assets/gallery/65-tresse-avec-ruban.jpg", title: "Tresse avec ruban", category: "Tresses" },
     { src: "/assets/mariage/01-chignon-tresse-rousse.jpg", title: "Chignon tressé roux", category: "Mariage" },
     { src: "/assets/mariage/02-chignon-banane-brun.jpg", title: "Chignon banane brun", category: "Mariage" },
     { src: "/assets/mariage/03-attache-basse-blonde.jpg", title: "Attache basse blonde", category: "Mariage" },
