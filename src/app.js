@@ -12,6 +12,7 @@ const weddingGalleryGrid = document.querySelector("#weddingGalleryGrid");
 let selectedCategory = "Tout";
 let selectedPriceTab = "Femmes";
 let selectedWeddingStyle = "Tout";
+let mobileGalleryLightbox = null;
 
 const weddingGalleryData = [
   { src: "./assets/mariage/01-chignon-tresse-rousse.jpg", title: "Tresse rousse fleurie", category: "Chignons" },
@@ -57,14 +58,65 @@ function renderGallery() {
   const visibleItems = data.gallery.filter((item) => selectedCategory === "Tout" || item.category === selectedCategory);
   galleryGrid.innerHTML = visibleItems
     .map(
-      (item) => `
-        <figure class="gallery-item">
+      (item, index) => `
+        <figure class="gallery-item" data-gallery-index="${index}">
           <img src="${item.src}" alt="${item.title}" loading="lazy">
           <figcaption><span>${item.category}</span>${item.title}</figcaption>
         </figure>
       `
     )
     .join("");
+}
+
+function isMobileViewport() {
+  return window.matchMedia("(max-width: 760px)").matches;
+}
+
+function ensureMobileGalleryLightbox() {
+  if (mobileGalleryLightbox) return mobileGalleryLightbox;
+
+  const overlay = document.createElement("dialog");
+  overlay.className = "mobile-gallery-lightbox";
+  overlay.setAttribute("aria-label", "Photo agrandie");
+  overlay.innerHTML = `
+    <button type="button" class="mobile-gallery-close" aria-label="Fermer">×</button>
+    <img src="" alt="">
+  `;
+
+  document.body.appendChild(overlay);
+
+  const closeButton = overlay.querySelector(".mobile-gallery-close");
+  closeButton.addEventListener("click", () => overlay.close());
+  overlay.addEventListener("click", (event) => {
+    if (event.target === overlay) overlay.close();
+  });
+
+  mobileGalleryLightbox = overlay;
+  return overlay;
+}
+
+function openMobileGalleryItem(source, alt) {
+  const overlay = ensureMobileGalleryLightbox();
+  const image = overlay.querySelector("img");
+  image.src = source;
+  image.alt = alt;
+  if (!overlay.open) overlay.showModal();
+}
+
+function initMobileGalleryInteractions() {
+  if (!galleryGrid) return;
+
+  galleryGrid.addEventListener("click", (event) => {
+    if (!isMobileViewport()) return;
+
+    const item = event.target.closest(".gallery-item");
+    if (!item) return;
+
+    const image = item.querySelector("img");
+    if (!image) return;
+
+    openMobileGalleryItem(image.currentSrc || image.src, image.alt || "Photo réalisation");
+  });
 }
 
 function renderPrices() {
@@ -265,3 +317,4 @@ renderGallery();
 renderWeddingGallery();
 renderPrices();
 initServiceMap();
+initMobileGalleryInteractions();

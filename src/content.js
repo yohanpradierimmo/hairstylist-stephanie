@@ -141,6 +141,40 @@ window.STEPHANIE_SITE = {
         ]
       }
     ],
+    Enfants: [
+      {
+        group: "Coupes enfants & jeunes",
+        items: [
+          ["Coupe enfant -10 ans", "10 €"],
+          ["Coupe homme -20 ans", "17 €"],
+          ["Coupe fille -20 ans", "25 €"]
+        ]
+      }
+    ],
+    Mariage: [
+      {
+        group: "Coiffures cérémonie",
+        items: [
+          ["Chignon, attache ou coiffure événementielle", "30 € à 65 €"],
+          ["Le tarif varie selon la complexité, la longueur, les accessoires et le temps de réalisation", ""]
+        ]
+      },
+      {
+        group: "Accompagnement mariée",
+        items: [
+          ["Forfait mariée", "Sur devis"],
+          ["Selon la coiffure souhaitée, les préparatifs, les éventuels essais et la durée de la prestation", ""],
+          ["La pose d'extensions n'est pas proposée", ""]
+        ]
+      },
+      {
+        group: "Invitées & proches",
+        items: [
+          ["Témoins, demoiselles d'honneur, famille", "Sur devis"],
+          ["Possibilité d'organiser plusieurs coiffures le même jour selon le planning des préparatifs", ""]
+        ]
+      }
+    ],
     Déplacement: [
       {
         group: "Frais de déplacement",
