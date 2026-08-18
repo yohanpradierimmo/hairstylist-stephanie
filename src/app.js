@@ -75,24 +75,34 @@ function isMobileViewport() {
 function ensureMobileGalleryLightbox() {
   if (mobileGalleryLightbox) return mobileGalleryLightbox;
 
-  const overlay = document.createElement("dialog");
+  const overlay = document.createElement("div");
   overlay.className = "mobile-gallery-lightbox";
   overlay.setAttribute("aria-label", "Photo agrandie");
+  overlay.setAttribute("aria-hidden", "true");
   overlay.innerHTML = `
-    <button type="button" class="mobile-gallery-close" aria-label="Fermer">×</button>
-    <img src="" alt="">
+    <div class="mobile-gallery-shell">
+      <button type="button" class="mobile-gallery-close" aria-label="Fermer">×</button>
+      <img src="" alt="">
+    </div>
   `;
 
   document.body.appendChild(overlay);
 
   const closeButton = overlay.querySelector(".mobile-gallery-close");
-  closeButton.addEventListener("click", () => overlay.close());
+  closeButton.addEventListener("click", closeMobileGalleryItem);
   overlay.addEventListener("click", (event) => {
-    if (event.target === overlay) overlay.close();
+    if (event.target === overlay) closeMobileGalleryItem();
   });
 
   mobileGalleryLightbox = overlay;
   return overlay;
+}
+
+function closeMobileGalleryItem() {
+  if (!mobileGalleryLightbox) return;
+  mobileGalleryLightbox.classList.remove("open");
+  mobileGalleryLightbox.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("lightbox-open");
 }
 
 function openMobileGalleryItem(source, alt) {
@@ -100,7 +110,9 @@ function openMobileGalleryItem(source, alt) {
   const image = overlay.querySelector("img");
   image.src = source;
   image.alt = alt;
-  if (!overlay.open) overlay.showModal();
+  overlay.classList.add("open");
+  overlay.setAttribute("aria-hidden", "false");
+  document.body.classList.add("lightbox-open");
 }
 
 function initMobileGalleryInteractions() {
@@ -327,6 +339,10 @@ if (legalDialog && legalToggle && legalClose) {
   legalToggle.addEventListener("click", () => legalDialog.showModal());
   legalClose.addEventListener("click", () => legalDialog.close());
 }
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeMobileGalleryItem();
+});
 
 renderServices();
 renderGallery();
