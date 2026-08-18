@@ -2653,6 +2653,29 @@ h3 {
     letter-spacing: 0.1em;
   }
 
+  .wedding-creations .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .wedding-creations .gallery-item {
+    border-radius: 14px;
+  }
+
+  .wedding-creations .gallery-item img {
+    aspect-ratio: 1 / 1.15;
+  }
+
+  .wedding-creations .gallery-item figcaption {
+    padding: 28px 10px 10px;
+    font-size: 0.8rem;
+  }
+
+  .wedding-creations .gallery-item span {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+  }
+
   .wedding-hero-gallery {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: none;

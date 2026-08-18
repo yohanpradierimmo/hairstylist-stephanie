@@ -119,6 +119,22 @@ function initMobileGalleryInteractions() {
   });
 }
 
+function initMobileWeddingGalleryInteractions() {
+  if (!weddingGalleryGrid) return;
+
+  weddingGalleryGrid.addEventListener("click", (event) => {
+    if (!isMobileViewport()) return;
+
+    const item = event.target.closest(".gallery-item");
+    if (!item) return;
+
+    const image = item.querySelector("img");
+    if (!image) return;
+
+    openMobileGalleryItem(image.currentSrc || image.src, image.alt || "Photo mariage");
+  });
+}
+
 function renderPrices() {
   if (!pricingTabs || !pricingList) return;
   pricingTabs.innerHTML = Object.keys(data.prices)
@@ -318,3 +334,4 @@ renderWeddingGallery();
 renderPrices();
 initServiceMap();
 initMobileGalleryInteractions();
+initMobileWeddingGalleryInteractions();
