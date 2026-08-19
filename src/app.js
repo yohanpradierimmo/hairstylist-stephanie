@@ -13,6 +13,7 @@ let selectedCategory = "Tout";
 let selectedPriceTab = "Femmes";
 let selectedWeddingStyle = "Tout";
 let mobileGalleryLightbox = null;
+let mobileReviewLightbox = null;
 
 const weddingGalleryData = [
   { src: "./assets/mariage/01-chignon-tresse-rousse.jpg", title: "Tresse rousse fleurie", category: "Chignons" },
@@ -144,6 +145,68 @@ function initMobileWeddingGalleryInteractions() {
     if (!image) return;
 
     openMobileGalleryItem(image.currentSrc || image.src, image.alt || "Photo mariage");
+  });
+}
+
+function ensureMobileReviewLightbox() {
+  if (mobileReviewLightbox) return mobileReviewLightbox;
+
+  const overlay = document.createElement("div");
+  overlay.className = "mobile-review-lightbox";
+  overlay.setAttribute("aria-label", "Avis agrandi");
+  overlay.setAttribute("aria-hidden", "true");
+  overlay.innerHTML = `
+    <div class="mobile-review-shell">
+      <button type="button" class="mobile-review-close" aria-label="Fermer">×</button>
+      <div class="mobile-review-content"></div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  overlay.querySelector(".mobile-review-close")?.addEventListener("click", closeMobileReviewItem);
+  overlay.addEventListener("click", (event) => {
+    if (event.target === overlay) closeMobileReviewItem();
+  });
+
+  mobileReviewLightbox = overlay;
+  return overlay;
+}
+
+function closeMobileReviewItem() {
+  if (!mobileReviewLightbox) return;
+  mobileReviewLightbox.classList.remove("open");
+  mobileReviewLightbox.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("lightbox-open");
+}
+
+function openMobileReviewItem(card) {
+  const overlay = ensureMobileReviewLightbox();
+  const content = overlay.querySelector(".mobile-review-content");
+  if (!content) return;
+
+  const clone = card.cloneNode(true);
+  clone.removeAttribute("aria-hidden");
+  clone.classList.add("mobile-review-expanded-card");
+  content.replaceChildren(clone);
+
+  overlay.classList.add("open");
+  overlay.setAttribute("aria-hidden", "false");
+  document.body.classList.add("lightbox-open");
+}
+
+function initMobileReviewInteractions() {
+  const reviewCards = document.querySelectorAll(".review-card");
+  if (!reviewCards.length) return;
+
+  reviewCards.forEach((card) => {
+    if (card.getAttribute("aria-hidden") === "true") return;
+
+    card.addEventListener("click", (event) => {
+      if (!isMobileViewport()) return;
+      if (event.target.closest("a")) return;
+      openMobileReviewItem(card);
+    });
   });
 }
 
@@ -341,7 +404,10 @@ if (legalDialog && legalToggle && legalClose) {
 }
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") closeMobileGalleryItem();
+  if (event.key === "Escape") {
+    closeMobileGalleryItem();
+    closeMobileReviewItem();
+  }
 });
 
 renderServices();
@@ -351,3 +417,4 @@ renderPrices();
 initServiceMap();
 initMobileGalleryInteractions();
 initMobileWeddingGalleryInteractions();
+initMobileReviewInteractions();
