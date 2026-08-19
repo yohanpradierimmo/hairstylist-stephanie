@@ -2782,7 +2782,8 @@ body.lightbox-open {
   }
 
   .editorial-grid,
-  .mood-grid {
+  .mood-grid,
+  .signature-panel {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -2857,6 +2858,8 @@ body.lightbox-open {
   .entry-content {
     justify-items: center;
     text-align: center;
+    width: min(100%, 360px);
+    margin-inline: auto;
   }
 
   .entry-logo {
@@ -2921,6 +2924,11 @@ body.lightbox-open {
     padding-top: 58px;
   }
 
+  #accueil .hero-copy {
+    width: min(100%, 360px);
+    margin-inline: auto;
+  }
+
   #accueil .hero-logo-card {
     display: none;
   }
@@ -2942,6 +2950,25 @@ body.lightbox-open {
   .contact-actions {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .signature-panel {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 18px;
+  }
+
+  .signature-visual {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .signature-visual img {
+    min-height: 190px;
+  }
+
+  .signature-visual img:last-child {
+    margin-top: 0;
   }
 
   .button {
@@ -3147,8 +3174,13 @@ body.lightbox-open {
   .image-card img,
   .mood-grid figure,
   .mood-grid .mood-large,
-  .contact-photo-stack {
+  .contact-photo-stack,
+  .signature-visual img {
     min-height: 320px;
+  }
+
+  .signature-visual img {
+    min-height: 190px;
   }
 
   .contact-photo-stack img {
