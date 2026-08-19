@@ -643,6 +643,13 @@ a {
   color: var(--cream);
 }
 
+.wedding-hero-ultra {
+  background:
+    linear-gradient(90deg, rgba(36, 17, 24, 0.18), rgba(36, 17, 24, 0.06)),
+    linear-gradient(135deg, rgba(255, 245, 248, 0.98), rgba(250, 239, 216, 0.96) 58%, rgba(255, 251, 244, 0.98)),
+    url("../assets/mariage/chateau-fond.jpg") center/cover no-repeat;
+}
+
 .wedding-hero-premium::before {
   content: "";
   position: absolute;
@@ -651,6 +658,28 @@ a {
     linear-gradient(90deg, rgba(36, 17, 20, 0.82), rgba(36, 17, 20, 0.38) 54%, rgba(36, 17, 20, 0.72)),
     linear-gradient(180deg, rgba(24, 12, 15, 0.32), rgba(24, 12, 15, 0.18));
   pointer-events: none;
+}
+
+.wedding-hero-ultra .wedding-hero-copy {
+  position: relative;
+  padding: clamp(30px, 3.4vw, 44px);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  background: linear-gradient(145deg, rgba(255, 253, 249, 0.88), rgba(255, 242, 230, 0.74));
+  box-shadow: 0 32px 90px rgba(94, 49, 62, 0.14);
+  backdrop-filter: blur(5px);
+}
+
+.wedding-hero-ultra .wedding-hero-copy::after {
+  position: absolute;
+  inset: 16px;
+  border: 1px solid rgba(212, 175, 55, 0.14);
+  content: "";
+  pointer-events: none;
+}
+
+.wedding-hero-ultra .wedding-hero-gallery figure {
+  border-color: rgba(212, 175, 55, 0.18);
+  box-shadow: 0 24px 64px rgba(94, 49, 62, 0.16);
 }
 
 .wedding-hero-premium .wedding-hero-copy,
@@ -766,6 +795,18 @@ a {
   color: var(--copper);
 }
 
+.wedding-creations-ultra::after {
+  position: absolute;
+  right: clamp(18px, 4vw, 58px);
+  top: 26px;
+  color: rgba(190, 153, 89, 0.14);
+  font-family: var(--script);
+  font-size: clamp(4rem, 9vw, 7rem);
+  line-height: 1;
+  content: "Mariage";
+  pointer-events: none;
+}
+
 .wedding-lookbook-compact {
   grid-auto-rows: minmax(220px, 24vw);
 }
@@ -855,6 +896,13 @@ a {
   background:
     linear-gradient(180deg, rgba(255, 245, 231, 0.96), rgba(255, 229, 236, 0.88)),
     var(--blush-50);
+}
+
+.wedding-care-ultra .editorial-card,
+.wedding-care-ultra .image-card,
+.wedding-highlight-ultra .highlight-card {
+  border-color: rgba(190, 153, 89, 0.18);
+  box-shadow: 0 22px 62px rgba(181, 140, 59, 0.12);
 }
 
 .highlight-card p:last-child {
@@ -1008,6 +1056,26 @@ h3 {
     var(--paper);
 }
 
+.beauty-showcase-luxe {
+  position: relative;
+  background:
+    radial-gradient(circle at top right, rgba(212, 175, 55, 0.1), transparent 24%),
+    linear-gradient(180deg, rgba(255, 253, 249, 0.98), rgba(255, 239, 243, 0.94) 68%, rgba(255, 250, 244, 0.98)),
+    var(--paper);
+}
+
+.beauty-showcase-luxe::after {
+  position: absolute;
+  right: 4vw;
+  top: 30px;
+  color: rgba(212, 175, 55, 0.14);
+  font-family: var(--script);
+  font-size: clamp(4rem, 9vw, 8rem);
+  line-height: 1;
+  content: "Beauté";
+  pointer-events: none;
+}
+
 .beauty-ribbon {
   position: relative;
   margin: 0 calc(clamp(18px, 4vw, 58px) * -1) clamp(28px, 4vw, 54px);
@@ -1127,6 +1195,12 @@ h3 {
   background: var(--cream);
 }
 
+.intro-section-luxe {
+  background:
+    linear-gradient(135deg, rgba(255, 253, 249, 0.98), rgba(255, 239, 243, 0.82) 58%, rgba(248, 233, 210, 0.72)),
+    var(--cream);
+}
+
 .intro-copy {
   max-width: 850px;
 }
@@ -1136,6 +1210,13 @@ h3 {
 .service-promise,
 .contact-luxe {
   background: var(--cream);
+}
+
+.portfolio-mood-luxe {
+  background:
+    radial-gradient(circle at left top, rgba(255, 214, 222, 0.24), transparent 28%),
+    linear-gradient(180deg, rgba(255, 253, 249, 0.98), rgba(255, 239, 243, 0.88)),
+    var(--cream);
 }
 
 .editorial-grid {
@@ -1256,6 +1337,50 @@ h3 {
   font-size: 1.6rem;
   line-height: 1;
   text-align: center;
+}
+
+.signature-section {
+  background:
+    radial-gradient(circle at top right, rgba(212, 175, 55, 0.12), transparent 24%),
+    linear-gradient(180deg, rgba(255, 250, 244, 0.98), rgba(255, 241, 245, 0.96)),
+    var(--cream);
+}
+
+.signature-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.9fr);
+  gap: clamp(18px, 3vw, 34px);
+  align-items: center;
+  padding: clamp(24px, 3vw, 34px);
+  border: 1px solid rgba(212, 175, 55, 0.16);
+  background:
+    linear-gradient(145deg, rgba(255, 253, 249, 0.94), rgba(255, 239, 243, 0.76)),
+    var(--paper);
+  box-shadow: 0 28px 72px rgba(94, 49, 62, 0.1);
+}
+
+.signature-copy p:last-of-type {
+  max-width: 56ch;
+}
+
+.signature-visual {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  gap: 12px;
+  align-items: stretch;
+}
+
+.signature-visual img {
+  width: 100%;
+  min-height: 420px;
+  height: 100%;
+  object-fit: cover;
+  border: 1px solid rgba(212, 175, 55, 0.14);
+  box-shadow: 0 20px 54px rgba(94, 49, 62, 0.14);
+}
+
+.signature-visual img:last-child {
+  margin-top: 46px;
 }
 
 .promise-grid {
@@ -2107,6 +2232,23 @@ h3 {
   color: var(--cream);
 }
 
+.gallery-section-luxe {
+  position: relative;
+  background:
+    radial-gradient(circle at top right, rgba(255, 214, 160, 0.18), transparent 18%),
+    linear-gradient(135deg, #8f2f4b, #b93c5f 42%, #7b2641 100%);
+}
+
+.gallery-section-luxe::before {
+  position: absolute;
+  left: clamp(18px, 4vw, 58px);
+  top: 28px;
+  width: 140px;
+  height: 1px;
+  background: rgba(255, 240, 207, 0.42);
+  content: "";
+}
+
 .gallery-section .section-label {
   color: var(--blush-100);
 }
@@ -2153,6 +2295,12 @@ h3 {
   margin: 0;
   overflow: hidden;
   background: #111;
+}
+
+.gallery-section-luxe .gallery-item,
+.wedding-creations-ultra .gallery-item {
+  border: 1px solid rgba(255, 235, 206, 0.18);
+  box-shadow: 0 16px 44px rgba(36, 17, 24, 0.22);
 }
 
 .gallery-item img {
