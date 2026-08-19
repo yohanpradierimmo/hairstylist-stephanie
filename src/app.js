@@ -175,7 +175,7 @@ function initServiceMap() {
   const map = L.map(serviceMap, {
     scrollWheelZoom: true,
     zoomControl: true
-  }).setView([45.585, 4.17], 10);
+  }).setView([45.5622913, 4.2892399], 10);
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 18,
@@ -207,7 +207,7 @@ function initServiceMap() {
     fillOpacity: 0.34
   };
 
-  L.polygon(mainCoverage, zoneStyle).addTo(map).bindPopup("Zone principale: Montbrison et Plaine du Forez");
+  L.polygon(mainCoverage, zoneStyle).addTo(map).bindPopup("Zone principale: Veauche et Plaine du Forez");
   L.polygon(westSaintEtienneCoverage, {
     ...zoneStyle,
     fillColor: "#ffe9ed",
@@ -266,12 +266,12 @@ function initServiceMap() {
     L.circleMarker([lat, lng], markerOptions).addTo(map).bindPopup(name);
   });
 
-  L.circleMarker([45.607, 4.065], {
+  L.circleMarker([45.5622913, 4.2892399], {
     ...markerOptions,
     radius: 8,
     color: "#292827",
     fillColor: "#ffc9d4"
-  }).addTo(map).bindPopup("Montbrison");
+  }).addTo(map).bindPopup("Veauche");
 }
 
 function renderWeddingGallery() {

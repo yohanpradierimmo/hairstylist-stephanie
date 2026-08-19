@@ -1114,13 +1114,13 @@ h3 {
 .intro-section,
 .section,
 .contact-section {
-  padding: clamp(70px, 9vw, 128px) clamp(18px, 4vw, 58px);
+  padding: clamp(56px, 7vw, 96px) clamp(18px, 4vw, 58px);
 }
 
 .intro-section {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(280px, 380px);
-  gap: clamp(28px, 6vw, 80px);
+  gap: clamp(20px, 4vw, 48px);
   align-items: end;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -1897,7 +1897,7 @@ h3 {
 
 .section-heading {
   max-width: 860px;
-  margin-bottom: clamp(28px, 5vw, 56px);
+  margin-bottom: clamp(22px, 3.6vw, 38px);
 }
 
 .section-heading.compact {
@@ -2022,7 +2022,7 @@ h3 {
 .service-area-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
-  gap: clamp(22px, 4vw, 48px);
+  gap: clamp(16px, 2.4vw, 28px);
   align-items: stretch;
 }
 
@@ -2234,9 +2234,37 @@ h3 {
 .contact-section {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 28px;
+  gap: 18px;
   align-items: center;
   background: linear-gradient(135deg, var(--blush-100), var(--blush-50));
+}
+
+@media (min-width: 761px) {
+  .hero {
+    gap: clamp(18px, 3vw, 42px);
+    padding: clamp(24px, 4vw, 56px) clamp(18px, 4vw, 58px);
+  }
+
+  .page-hero {
+    gap: clamp(18px, 3vw, 42px);
+    min-height: clamp(380px, 50svh, 540px);
+    padding: clamp(42px, 5vw, 76px) clamp(18px, 4vw, 58px);
+  }
+
+  .wedding-hero {
+    gap: clamp(16px, 3vw, 36px);
+    min-height: clamp(560px, calc(100svh - 78px), 760px);
+    padding: clamp(34px, 4vw, 68px) clamp(24px, 4vw, 68px);
+  }
+
+  .feature-strip article,
+  .page-link-card,
+  .service-card,
+  .area-grid article,
+  .area-cities,
+  .pricing-panel {
+    padding: clamp(18px, 2.2vw, 28px);
+  }
 }
 
 .contact-section h2 {
