@@ -1524,6 +1524,29 @@ h3 {
   align-items: stretch;
 }
 
+.contact-luxe-page {
+  position: relative;
+  margin: clamp(18px, 3vw, 28px) clamp(18px, 4vw, 34px) 0;
+  padding: clamp(24px, 3.6vw, 42px);
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  border-radius: 38px;
+  background:
+    radial-gradient(circle at top right, rgba(255, 224, 170, 0.24), transparent 28%),
+    linear-gradient(135deg, rgba(255, 253, 249, 0.995), rgba(255, 244, 247, 0.96) 58%, rgba(255, 248, 229, 0.92)),
+    var(--cream);
+  box-shadow: 0 30px 90px rgba(94, 49, 62, 0.1);
+  overflow: hidden;
+}
+
+.contact-luxe-page::before {
+  content: "";
+  position: absolute;
+  inset: 24px;
+  border: 1px solid rgba(212, 175, 55, 0.16);
+  border-radius: 30px;
+  pointer-events: none;
+}
+
 .contact-luxe-card {
   padding: clamp(28px, 5vw, 58px);
   border: 1px solid rgba(212, 175, 55, 0.26);
@@ -1535,6 +1558,17 @@ h3 {
   box-shadow: 0 28px 80px rgba(94, 49, 62, 0.11);
   position: relative;
   overflow: hidden;
+}
+
+.contact-luxe-page .contact-luxe-card {
+  min-height: 100%;
+  padding: clamp(32px, 4vw, 56px);
+  border-color: rgba(212, 175, 55, 0.22);
+  background:
+    radial-gradient(circle at top right, rgba(255, 223, 162, 0.16), transparent 32%),
+    linear-gradient(135deg, rgba(255, 253, 249, 0.98), rgba(255, 246, 248, 0.94) 54%, rgba(255, 250, 239, 0.9)),
+    var(--cream);
+  box-shadow: 0 26px 72px rgba(94, 49, 62, 0.08);
 }
 
 .contact-luxe-card::before {
@@ -1558,14 +1592,44 @@ h3 {
   color: #50313b;
 }
 
+.contact-luxe-page .contact-luxe-card h1 {
+  margin: 0 0 16px;
+  color: #49323b;
+  font-size: clamp(4rem, 7vw, 6.3rem);
+  line-height: 0.9;
+}
+
+.contact-luxe-page .contact-luxe-card .script-name {
+  display: block;
+  margin-bottom: -0.04em;
+  color: #f2bccb;
+  font-family: var(--script);
+  font-size: 0.78em;
+  font-weight: 400;
+}
+
 .contact-luxe-card p {
   color: var(--muted);
+}
+
+.contact-luxe-intro {
+  max-width: 760px;
+  margin-bottom: 0;
+  color: #78656e;
+  font-size: clamp(1rem, 1.45vw, 1.18rem);
+  line-height: 1.7;
 }
 
 .contact-methods {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
+  margin-top: 30px;
+}
+
+.contact-luxe-page .contact-methods {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
   margin-top: 30px;
 }
 
@@ -1605,6 +1669,32 @@ h3 {
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 24px;
+}
+
+.contact-luxe-page .inline-actions {
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.contact-luxe-page .inline-actions .button {
+  min-height: 56px;
+  border-radius: 18px;
+  padding-inline: 22px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+.contact-luxe-page .inline-actions .button.primary {
+  background: linear-gradient(135deg, #be3d67, #d45d84);
+  color: #fffaf6;
+  border-color: rgba(190, 61, 103, 0.3);
+  box-shadow: 0 16px 34px rgba(190, 61, 103, 0.2);
+}
+
+.contact-luxe-page .inline-actions .button.secondary {
+  border-color: rgba(185, 138, 47, 0.24);
+  background: rgba(255, 253, 249, 0.84);
+  color: #5d4550;
 }
 
 .contact-photo-stack {
@@ -3127,6 +3217,14 @@ body.lightbox-open {
     grid-template-columns: 1fr;
   }
 
+  .contact-luxe-page {
+    margin-inline: 14px;
+  }
+
+  .contact-luxe-page .contact-methods {
+    grid-template-columns: 1fr;
+  }
+
   .reviews-layout {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -3346,6 +3444,43 @@ body.lightbox-open {
 
   .button {
     width: 100%;
+  }
+
+  .contact-luxe-page {
+    margin: 12px 12px 0;
+    padding: 18px;
+    border-radius: 24px;
+  }
+
+  .contact-luxe-page::before {
+    inset: 12px;
+    border-radius: 18px;
+  }
+
+  .contact-luxe-page .contact-luxe-card {
+    padding: 24px 18px;
+    border-radius: 24px;
+  }
+
+  .contact-luxe-page .contact-luxe-card h1 {
+    font-size: clamp(3.2rem, 15vw, 4.7rem);
+    line-height: 0.93;
+  }
+
+  .contact-luxe-intro {
+    font-size: 0.98rem;
+    line-height: 1.62;
+  }
+
+  .contact-luxe-page .inline-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .contact-luxe-page .inline-actions .button {
+    width: 100%;
+    min-height: 54px;
+    border-radius: 16px;
   }
 
   .services-grid,
