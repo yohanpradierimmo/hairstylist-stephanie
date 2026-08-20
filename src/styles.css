@@ -1538,6 +1538,18 @@ h3 {
   overflow: hidden;
 }
 
+.contact-luxe-page::after {
+  content: "";
+  position: absolute;
+  right: -56px;
+  top: -56px;
+  width: 220px;
+  height: 220px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 222, 167, 0.28), rgba(255, 222, 167, 0.02) 68%);
+  pointer-events: none;
+}
+
 .contact-luxe-page::before {
   content: "";
   position: absolute;
@@ -1571,6 +1583,17 @@ h3 {
   box-shadow: 0 26px 72px rgba(94, 49, 62, 0.08);
 }
 
+.contact-luxe-page .contact-luxe-card::after {
+  content: "";
+  position: absolute;
+  inset: auto 24px 20px auto;
+  width: 160px;
+  height: 160px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(244, 189, 205, 0.16), transparent 70%);
+  pointer-events: none;
+}
+
 .contact-luxe-card::before {
   content: "";
   position: absolute;
@@ -1597,6 +1620,7 @@ h3 {
   color: #49323b;
   font-size: clamp(4rem, 7vw, 6.3rem);
   line-height: 0.9;
+  text-wrap: balance;
 }
 
 .contact-luxe-page .contact-luxe-card .script-name {
@@ -1640,6 +1664,18 @@ h3 {
   border-radius: 20px;
   background: rgba(255, 253, 249, 0.82);
   box-shadow: 0 14px 30px rgba(94, 49, 62, 0.08);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.contact-methods a:hover {
+  transform: translateY(-2px);
+  border-color: rgba(185, 138, 47, 0.38);
+  box-shadow: 0 18px 34px rgba(94, 49, 62, 0.12);
+  background: rgba(255, 253, 249, 0.94);
 }
 
 .contact-methods span,
@@ -1707,18 +1743,21 @@ h3 {
   width: 68%;
   height: 68%;
   object-fit: cover;
-  box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 253, 249, 0.72);
+  box-shadow: 0 24px 64px rgba(94, 49, 62, 0.14);
 }
 
 .contact-photo-stack img:first-child {
   top: 0;
   left: 0;
+  border-radius: 34px 34px 120px 34px;
 }
 
 .contact-photo-stack img:last-child {
   right: 0;
   bottom: 0;
   border: 10px solid var(--cream);
+  border-radius: 120px 34px 34px 34px;
 }
 
 .quick-contact {
