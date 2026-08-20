@@ -2575,6 +2575,80 @@ h3 {
   margin-bottom: 0;
 }
 
+.site-conversion-banner {
+  margin: clamp(28px, 5vw, 48px) clamp(18px, 4vw, 58px) 0;
+  padding: clamp(26px, 4vw, 38px);
+  border: 1px solid rgba(212, 175, 55, 0.24);
+  border-radius: 32px;
+  background:
+    linear-gradient(135deg, rgba(255, 253, 249, 0.98), rgba(255, 238, 244, 0.84) 52%, rgba(255, 248, 226, 0.92)),
+    var(--cream);
+  box-shadow: 0 26px 72px rgba(94, 49, 62, 0.1);
+}
+
+.site-conversion-banner__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) auto;
+  gap: 22px;
+  align-items: center;
+}
+
+.site-conversion-banner__content h2 {
+  margin-bottom: 10px;
+}
+
+.site-conversion-banner__content p {
+  max-width: 700px;
+  margin: 0;
+  color: var(--muted);
+}
+
+.site-conversion-banner__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: flex-end;
+}
+
+.site-conversion-banner .button {
+  min-width: 198px;
+  justify-content: center;
+}
+
+.floating-whatsapp {
+  position: fixed;
+  right: clamp(14px, 2vw, 24px);
+  bottom: clamp(16px, 2.2vw, 26px);
+  z-index: 35;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border-radius: 999px;
+  color: #fff;
+  background: linear-gradient(135deg, #2ed573, #1ea952);
+  box-shadow: 0 16px 34px rgba(30, 169, 82, 0.32);
+  font-size: 0.96rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+.floating-whatsapp::before {
+  content: "✆";
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 1rem;
+}
+
+.floating-whatsapp:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 38px rgba(30, 169, 82, 0.38);
+}
+
 .footer {
   display: flex;
   justify-content: space-between;
@@ -3334,6 +3408,36 @@ body.lightbox-open {
   .legal-dialog dl div {
     grid-template-columns: 1fr;
     gap: 2px;
+  }
+
+  .site-conversion-banner {
+    margin-top: 22px;
+    border-radius: 24px;
+    padding: 22px 18px;
+  }
+
+  .site-conversion-banner__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .site-conversion-banner__actions {
+    justify-content: stretch;
+  }
+
+  .site-conversion-banner .button {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .floating-whatsapp {
+    right: 12px;
+    bottom: 12px;
+    padding: 13px 15px;
+    font-size: 0.92rem;
+  }
+
+  .floating-whatsapp span:last-child {
+    display: none;
   }
 
   .footer {
