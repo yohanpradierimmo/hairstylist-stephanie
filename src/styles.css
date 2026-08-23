@@ -3018,8 +3018,12 @@ h3 {
 
 .floating-contact--mobile {
   display: none;
-  background: linear-gradient(135deg, #d986a1, #c85e84);
-  box-shadow: 0 16px 34px rgba(200, 94, 132, 0.3);
+  background: linear-gradient(135deg, rgba(236, 191, 206, 0.92), rgba(214, 154, 177, 0.9));
+  border: 1px solid rgba(255, 248, 250, 0.5);
+  box-shadow:
+    0 16px 34px rgba(183, 108, 136, 0.22),
+    0 6px 16px rgba(255, 255, 255, 0.2) inset;
+  backdrop-filter: blur(8px);
 }
 
 .floating-contact--mobile::before {
@@ -3959,14 +3963,16 @@ body.lightbox-open {
     place-items: center;
     width: 42px;
     height: 42px;
-    background: rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.2);
     font-size: 0.68rem;
     font-weight: 800;
     letter-spacing: 0.08em;
     line-height: 1.02;
     text-transform: uppercase;
-    color: #f3d7a2;
+    color: #f6deb1;
     text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow: 0 8px 18px rgba(92, 45, 61, 0.14);
     text-shadow:
       -0.6px 0 #2a1a1f,
       0 0.6px #2a1a1f,
