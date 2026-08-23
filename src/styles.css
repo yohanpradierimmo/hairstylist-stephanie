@@ -1872,6 +1872,7 @@ h3 {
 .reviews-score,
 .review-card {
   min-width: 0;
+  border-radius: 28px !important;
   border: 1px solid rgba(185, 60, 95, 0.16);
   background: rgba(255, 253, 249, 0.9);
   box-shadow: 0 20px 62px rgba(185, 60, 95, 0.08);
@@ -3135,7 +3136,7 @@ h3 {
   min-height: 0;
   height: auto;
   padding: 24px 18px 18px;
-  border-radius: 18px;
+  border-radius: 26px;
   background: linear-gradient(180deg, rgba(255, 253, 249, 0.98), rgba(255, 240, 244, 0.96));
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
 }
@@ -3722,7 +3723,7 @@ body.lightbox-open {
     flex-basis: auto;
     min-height: 220px;
     padding: 16px 12px 14px;
-    border-radius: 14px;
+    border-radius: 22px;
     cursor: pointer;
   }
 
