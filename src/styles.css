@@ -3937,8 +3937,9 @@ body.lightbox-open {
   .floating-contact {
     right: 12px;
     bottom: 12px;
-    padding: 14px;
-    font-size: 0.92rem;
+    padding: 12px 14px;
+    gap: 8px;
+    font-size: 0.8rem;
     border-radius: 20px;
   }
 
@@ -3950,7 +3951,16 @@ body.lightbox-open {
     display: inline-flex;
   }
 
-  .floating-contact span:last-child {
+  .floating-contact--mobile::after {
+    content: "SMS";
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+  .floating-contact--mobile span {
     display: none;
   }
 
