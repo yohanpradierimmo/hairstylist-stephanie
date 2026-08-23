@@ -3953,14 +3953,15 @@ body.lightbox-open {
   }
 
   .floating-contact--mobile::before {
-    content: "SMS";
+    content: "SMS\A✉";
+    white-space: pre;
     width: 38px;
     height: 38px;
     background: rgba(255, 255, 255, 0.16);
-    font-size: 0.66rem;
+    font-size: 0.58rem;
     font-weight: 800;
     letter-spacing: 0.08em;
-    line-height: 1;
+    line-height: 1.05;
     text-transform: uppercase;
     color: #fff;
   }
