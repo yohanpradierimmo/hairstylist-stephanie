@@ -39,7 +39,7 @@ window.STEPHANIE_SITE = {
     { src: "/assets/gallery/56-balayage-beige-lisse.jpg", title: "Balayage beige lisse", category: "Balayage" },
     { src: "/assets/gallery/57-balayage-caramel-long.jpg", title: "Balayage caramel long", category: "Balayage" },
     { src: "/assets/gallery/58-cuivre-wavy.jpg", title: "Cuivré wavy", category: "Couleur" },
-    { src: "/assets/gallery/59-tresse-couronne-blond.jpg", title: "Tresse couronne blonde", category: "Tresses" },
+    { src: "/assets/gallery/59-tresse-blonde.jpg", title: "Tresse blonde", category: "Tresses" },
     { src: "/assets/gallery/60-noir-rouge-wavy.jpg", title: "Noir rouge intense", category: "Couleur" },
     { src: "/assets/gallery/61-brun-caramel-wavy.jpg", title: "Brun caramel wavy", category: "Coiffage" },
     { src: "/assets/gallery/62-brun-froid-wavy.jpg", title: "Brun froid wavy", category: "Balayage" },
