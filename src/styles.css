@@ -3029,6 +3029,14 @@ h3 {
   backdrop-filter: blur(12px) saturate(1.15);
 }
 
+.floating-contact--mobile:hover {
+  box-shadow:
+    0 16px 34px rgba(196, 131, 155, 0.2),
+    0 0 22px rgba(246, 222, 177, 0.18),
+    0 1px 0 rgba(255, 255, 255, 0.56) inset,
+    0 -8px 18px rgba(255, 255, 255, 0.16) inset;
+}
+
 .floating-contact--mobile::before {
   content: "✉";
 }
