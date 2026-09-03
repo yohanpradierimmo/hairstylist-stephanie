@@ -3018,12 +3018,15 @@ h3 {
 
 .floating-contact--mobile {
   display: none;
-  background: linear-gradient(135deg, rgba(236, 191, 206, 0.92), rgba(214, 154, 177, 0.9));
-  border: 1px solid rgba(255, 248, 250, 0.5);
+  background:
+    linear-gradient(145deg, rgba(255, 246, 249, 0.72), rgba(231, 180, 198, 0.58)),
+    rgba(244, 203, 216, 0.5);
+  border: 1px solid rgba(246, 222, 177, 0.62);
   box-shadow:
-    0 16px 34px rgba(183, 108, 136, 0.22),
-    0 6px 16px rgba(255, 255, 255, 0.2) inset;
-  backdrop-filter: blur(8px);
+    0 14px 30px rgba(92, 45, 61, 0.16),
+    0 1px 0 rgba(255, 255, 255, 0.56) inset,
+    0 -8px 18px rgba(255, 255, 255, 0.16) inset;
+  backdrop-filter: blur(12px) saturate(1.15);
 }
 
 .floating-contact--mobile::before {
@@ -3942,7 +3945,7 @@ body.lightbox-open {
   .floating-contact {
     right: 12px;
     bottom: 12px;
-    padding: 12px;
+    padding: 10px;
     gap: 0;
     font-size: 0.8rem;
     border-radius: 999px;
@@ -3961,18 +3964,22 @@ body.lightbox-open {
     white-space: pre;
     display: grid;
     place-items: center;
-    width: 42px;
-    height: 42px;
-    background: rgba(255, 255, 255, 0.2);
-    font-size: 0.68rem;
+    width: 44px;
+    height: 44px;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.56), rgba(255, 255, 255, 0.08) 48%),
+      rgba(255, 247, 249, 0.18);
+    font-size: 0.66rem;
     font-weight: 800;
     letter-spacing: 0.08em;
     line-height: 1.02;
     text-transform: uppercase;
-    color: #f6deb1;
+    color: #f9dfad;
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    box-shadow: 0 8px 18px rgba(92, 45, 61, 0.14);
+    border: 1px solid rgba(246, 222, 177, 0.32);
+    box-shadow:
+      0 8px 18px rgba(92, 45, 61, 0.1),
+      0 1px 0 rgba(255, 255, 255, 0.48) inset;
     text-shadow:
       -0.6px 0 #2a1a1f,
       0 0.6px #2a1a1f,
