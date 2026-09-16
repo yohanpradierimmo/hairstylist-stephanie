@@ -4067,7 +4067,7 @@ body.lightbox-open {
 .contact-redesign {
   position: relative;
   isolation: isolate;
-  padding: clamp(28px, 5vw, 72px) clamp(16px, 4vw, 58px) clamp(72px, 8vw, 118px);
+  padding: clamp(28px, 4vw, 56px) clamp(16px, 4vw, 58px) clamp(42px, 6vw, 76px);
   background:
     radial-gradient(circle at 14% 9%, rgba(255, 232, 237, 0.86), transparent 34%),
     radial-gradient(circle at 86% 18%, rgba(238, 211, 167, 0.54), transparent 30%),
@@ -4091,34 +4091,33 @@ body.lightbox-open {
 
 .contact-atelier-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(310px, 0.72fr);
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.58fr);
   align-items: stretch;
-  gap: clamp(22px, 4vw, 48px);
-  width: min(1180px, 100%);
+  gap: clamp(18px, 2.8vw, 34px);
+  width: min(1120px, 100%);
   margin: 0 auto;
 }
 
 .contact-hero-copy,
 .contact-hero-panel,
 .contact-salon-card,
-.contact-practical-grid article,
-.contact-final-card {
+.contact-practical-grid article {
   border: 1px solid rgba(198, 158, 111, 0.25);
   background:
     linear-gradient(145deg, rgba(255, 255, 255, 0.84), rgba(255, 244, 247, 0.66)),
     rgba(255, 250, 246, 0.78);
   box-shadow:
-    0 28px 80px rgba(155, 88, 95, 0.14),
+    0 22px 64px rgba(155, 88, 95, 0.12),
     0 1px 0 rgba(255, 255, 255, 0.84) inset;
   backdrop-filter: blur(16px);
 }
 
 .contact-hero-copy {
-  min-height: 560px;
-  padding: clamp(34px, 6vw, 74px);
-  border-radius: 42px;
+  min-height: 460px;
+  padding: clamp(32px, 5vw, 58px);
+  border-radius: 34px;
   background:
-    linear-gradient(90deg, rgba(45, 32, 33, 0.52), rgba(109, 63, 72, 0.23)),
+    linear-gradient(90deg, rgba(45, 32, 33, 0.58), rgba(109, 63, 72, 0.32)),
     linear-gradient(145deg, rgba(255, 246, 239, 0.92), rgba(255, 226, 232, 0.62)),
     url("/assets/gallery/34-blond-creme-boucles.jpg") center / cover;
   color: #fffaf4;
@@ -4130,11 +4129,11 @@ body.lightbox-open {
 }
 
 .contact-hero-copy h1 {
-  max-width: 720px;
+  max-width: 640px;
   margin: 12px 0 24px;
   color: #fffdf9;
-  font-size: clamp(3.3rem, 8vw, 7.6rem);
-  line-height: 0.9;
+  font-size: clamp(3.1rem, 6.2vw, 5.85rem);
+  line-height: 0.92;
   text-shadow: 0 18px 52px rgba(52, 30, 36, 0.34);
 }
 
@@ -4158,9 +4157,9 @@ body.lightbox-open {
 .contact-hero-panel {
   display: grid;
   align-content: end;
-  min-height: 560px;
-  padding: clamp(28px, 4vw, 48px);
-  border-radius: 42px;
+  min-height: 460px;
+  padding: clamp(26px, 3.3vw, 38px);
+  border-radius: 34px;
   background:
     radial-gradient(circle at 25% 12%, rgba(255, 255, 255, 0.86), transparent 38%),
     linear-gradient(160deg, rgba(255, 248, 238, 0.96), rgba(255, 226, 233, 0.9) 58%, rgba(239, 207, 163, 0.78));
@@ -4203,17 +4202,17 @@ body.lightbox-open {
 .contact-channel-section {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-  width: min(1180px, 100%);
-  margin: clamp(18px, 3vw, 34px) auto 0;
+  gap: 14px;
+  width: min(1120px, 100%);
+  margin: clamp(16px, 2.4vw, 28px) auto 0;
 }
 
 .contact-channel-card {
   position: relative;
   display: grid;
   gap: 9px;
-  min-height: 210px;
-  padding: 24px;
+  min-height: 184px;
+  padding: 22px;
   border: 1px solid rgba(198, 158, 111, 0.22);
   border-radius: 30px;
   background:
@@ -4262,22 +4261,21 @@ body.lightbox-open {
 
 .contact-salon-card {
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.62fr);
-  gap: clamp(24px, 4vw, 54px);
+  grid-template-columns: minmax(0, 0.95fr) minmax(300px, 0.48fr);
+  gap: clamp(22px, 3.2vw, 42px);
   align-items: center;
-  width: min(1180px, 100%);
-  margin: clamp(22px, 4vw, 48px) auto 0;
-  padding: clamp(26px, 4.5vw, 58px);
-  border-radius: 42px;
+  width: min(1120px, 100%);
+  margin: clamp(18px, 3vw, 36px) auto 0;
+  padding: clamp(24px, 3.6vw, 44px);
+  border-radius: 34px;
 }
 
-.contact-salon-text h2,
-.contact-final-card h2 {
-  max-width: 760px;
+.contact-salon-text h2 {
+  max-width: 720px;
   margin: 8px 0 22px;
   color: #53383b;
-  font-size: clamp(2.1rem, 4.6vw, 4.4rem);
-  line-height: 0.96;
+  font-size: clamp(2rem, 3.7vw, 3.55rem);
+  line-height: 1;
 }
 
 .contact-checklist {
@@ -4314,7 +4312,7 @@ body.lightbox-open {
 
 .contact-image-frame {
   position: relative;
-  min-height: 430px;
+  min-height: 340px;
   overflow: hidden;
   border: 10px solid rgba(255, 255, 255, 0.58);
   border-radius: 34px;
@@ -4339,24 +4337,24 @@ body.lightbox-open {
 .contact-image-frame img {
   width: 100%;
   height: 100%;
-  min-height: 430px;
+  min-height: 340px;
   object-fit: cover;
 }
 
 .contact-practical-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-  width: min(1180px, 100%);
-  margin: clamp(20px, 3vw, 34px) auto 0;
+  gap: 14px;
+  width: min(1120px, 100%);
+  margin: clamp(18px, 2.5vw, 30px) auto 0;
 }
 
 .contact-practical-grid article {
   display: grid;
   gap: 10px;
-  min-height: 240px;
-  padding: clamp(24px, 3.5vw, 36px);
-  border-radius: 30px;
+  min-height: 210px;
+  padding: clamp(22px, 3vw, 30px);
+  border-radius: 26px;
 }
 
 .contact-practical-grid h3 {
@@ -4372,41 +4370,14 @@ body.lightbox-open {
   color: #746264;
 }
 
-.contact-final-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 26px;
-  width: min(1180px, 100%);
-  margin: clamp(22px, 4vw, 48px) auto 0;
-  padding: clamp(28px, 4.5vw, 58px);
-  border-radius: 42px;
-  background:
-    radial-gradient(circle at 12% 0%, rgba(255, 255, 255, 0.85), transparent 38%),
-    linear-gradient(135deg, rgba(250, 224, 184, 0.86), rgba(255, 224, 232, 0.9));
-}
-
-.contact-final-card p:not(.section-label) {
-  max-width: 680px;
-  margin: 0;
-  color: #705c5f;
-}
-
-.contact-final-actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 12px;
-}
-
-.contact-redesign .button.primary {
+.contact-hero-actions .button.primary {
   border-color: rgba(132, 82, 62, 0.22);
   background:
     linear-gradient(135deg, #8f5b46, #c18b72);
   box-shadow: 0 16px 38px rgba(126, 70, 69, 0.2);
 }
 
-.contact-redesign .button.secondary {
+.contact-hero-actions .button.secondary {
   border-color: rgba(198, 158, 111, 0.28);
   background: rgba(255, 255, 255, 0.46);
   color: #704b43;
@@ -4428,14 +4399,6 @@ body.lightbox-open {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .contact-final-card {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .contact-final-actions {
-    justify-content: flex-start;
-  }
 }
 
 @media (max-width: 640px) {
@@ -4452,7 +4415,7 @@ body.lightbox-open {
   .contact-hero-copy,
   .contact-hero-panel,
   .contact-salon-card,
-  .contact-final-card {
+  .contact-redesign .contact-section--final {
     border-radius: 28px;
   }
 
@@ -4465,14 +4428,12 @@ body.lightbox-open {
     font-size: clamp(3.05rem, 16vw, 4.55rem);
   }
 
-  .contact-hero-actions,
-  .contact-final-actions {
+  .contact-hero-actions {
     display: grid;
     width: 100%;
   }
 
-  .contact-hero-actions .button,
-  .contact-final-actions .button {
+  .contact-hero-actions .button {
     width: 100%;
     justify-content: center;
   }
@@ -4492,8 +4453,7 @@ body.lightbox-open {
     padding: 22px;
   }
 
-  .contact-salon-text h2,
-  .contact-final-card h2 {
+  .contact-salon-text h2 {
     font-size: clamp(2rem, 10vw, 3rem);
   }
 
