@@ -246,23 +246,22 @@ function initServiceMap() {
   }).addTo(map);
 
   const mainCoverage = [
-    [45.755, 4.205],
-    [45.705, 4.285],
-    [45.635, 4.395],
-    [45.505, 4.300],
-    [45.420, 4.160],
-    [45.420, 4.040],
-    [45.530, 3.960],
-    [45.615, 3.930],
-    [45.720, 4.020]
-  ];
-
-  const westSaintEtienneCoverage = [
-    [45.516, 4.298],
-    [45.502, 4.462],
-    [45.462, 4.460],
-    [45.432, 4.334],
-    [45.456, 4.265]
+    [45.525, 3.963],
+    [45.572, 3.966],
+    [45.636, 3.984],
+    [45.700, 4.035],
+    [45.754, 4.090],
+    [45.775, 4.165],
+    [45.765, 4.240],
+    [45.718, 4.330],
+    [45.645, 4.415],
+    [45.560, 4.475],
+    [45.480, 4.475],
+    [45.430, 4.405],
+    [45.405, 4.320],
+    [45.395, 4.190],
+    [45.402, 4.052],
+    [45.456, 3.985]
   ];
 
   const zoneStyle = {
@@ -272,12 +271,10 @@ function initServiceMap() {
     fillOpacity: 0.34
   };
 
-  L.polygon(mainCoverage, zoneStyle).addTo(map).bindPopup("Zone principale: Veauche et Plaine du Forez");
-  L.polygon(westSaintEtienneCoverage, {
+  L.polygon(mainCoverage, {
     ...zoneStyle,
-    fillColor: "#ffe9ed",
-    dashArray: "7 6"
-  }).addTo(map).bindPopup("Secteur Roche-la-Molière et Saint-Genest-Lerpt");
+    smoothFactor: 0.6
+  }).addTo(map).bindPopup("Zone de déplacement: Veauche, Plaine du Forez et alentours");
 
   const cities = [
     ["Andrézieux-Bouthéon", 45.5250887, 4.2594811],
