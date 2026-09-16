@@ -72,7 +72,6 @@ window.STEPHANIE_SITE = {
     { src: "/assets/gallery/89-rouge-bordeaux-wavy.jpg", title: "Rouge bordeaux wavy", category: "Couleur" },
     { src: "/assets/gallery/90-cuivre-roux-wavy.jpg", title: "Cuivré roux wavy", category: "Couleur" },
     { src: "/assets/gallery/91-lissage-blond-miel.jpg", title: "Lissage blond miel", category: "Coiffage" },
-    { src: "/assets/gallery/92-lissage-blond-lumineux.jpg", title: "Lissage blond lumineux", category: "Coiffage" },
     { src: "/assets/gallery/93-rouge-cerise-wavy.jpg", title: "Rouge cerise wavy", category: "Couleur" },
     { src: "/assets/gallery/94-balayage-miel-wavy.jpg", title: "Balayage miel wavy", category: "Balayage" },
     { src: "/assets/gallery/95-balayage-brun-miel-wavy.jpg", title: "Balayage brun miel", category: "Balayage" },
