@@ -279,23 +279,45 @@ function initServiceMap() {
 
   const cities = [
     ["Andrézieux-Bouthéon", 45.5250887, 4.2594811],
-    ["Bonson", 45.5225917, 4.2154175],
+    ["Arthun", 45.7732065, 4.0327678],
+    ["Aveizieux", 45.5653000, 4.3719200],
+    ["Balbigny", 45.8187228, 4.1833034],
+    ["Bellegarde-en-Forez", 45.6471727, 4.2981197],
+    ["Boën-sur-Lignon", 45.7456231, 4.0042790],
     ["Boisset-lès-Montrond", 45.6228, 4.2123],
+    ["Boisset-Saint-Priest", 45.5125000, 4.1047300],
+    ["Bonson", 45.5225917, 4.2154175],
+    ["Bussy-Albieux", 45.7938680, 4.0336478],
     ["Chalain-d'Uzore", 45.6730217, 4.0713993],
+    ["Chalain-le-Comtal", 45.6461839, 4.1691566],
     ["Chambéon", 45.6955, 4.17485],
+    ["Chamboeuf", 45.5771746, 4.3207570],
     ["Champdieu", 45.6461047, 4.0467474],
     ["Chazelles-sur-Lavieu", 45.5388, 4.00164],
+    ["Chazelles-sur-Lyon", 45.6375531, 4.3889953],
+    ["Civens", 45.7798411, 4.2521897],
+    ["Cleppé", 45.7687000, 4.1791400],
     ["Craintilleux", 45.5843, 4.23378],
     ["Cuzieu", 45.6121925, 4.2579683],
     ["Écotay-l'Olme", 45.5911649, 4.0508251],
+    ["Épercieux-Saint-Paul", 45.7913549, 4.2115436],
+    ["Feurs", 45.7440738, 4.2215124],
     ["Grézieux-le-Fromental", 45.619, 4.15155],
     ["L'Hôpital-le-Grand", 45.5939631, 4.1983685],
     ["Lézigneux", 45.567, 4.06143],
     ["Magneux-Haute-Rive", 45.6694153, 4.1717613],
+    ["Marcilly-le-Châtel", 45.6963000, 4.0346300],
+    ["Marclopt", 45.6656172, 4.2090677],
     ["Marcoux", 45.711462, 4.0131614],
+    ["Mizérieux", 45.7952674, 4.1646279],
     ["Montbrison", 45.6072875, 4.0627318],
     ["Montrond-les-Bains", 45.6433431, 4.2299344],
     ["Montverdun", 45.714882, 4.0662679],
+    ["Mornand-en-Forez", 45.6774000, 4.1236400],
+    ["Nervieux", 45.8059059, 4.1549063],
+    ["Panissières", 45.7926485, 4.3385894],
+    ["Poncins", 45.7281239, 4.1601332],
+    ["Pouilly-lès-Feurs", 45.7983498, 4.2311222],
     ["Pralong", 45.6658747, 4.0307116],
     ["Précieux", 45.5862408, 4.1501848],
     ["Rivas", 45.5858, 4.24753],
@@ -303,18 +325,28 @@ function initServiceMap() {
     ["Saint-André-le-Puy", 45.6456225, 4.2578662],
     ["Saint-Bonnet-les-Oules", 45.5439729, 4.3277946],
     ["Saint-Cyprien", 45.5377735, 4.2360503],
+    ["Saint-Cyr-les-Vignes", 45.6763000, 4.2989800],
+    ["Saint-Étienne-le-Molard", 45.7315098, 4.0884236],
     ["Saint-Galmier", 45.5903147, 4.3183716],
     ["Saint-Genest-Lerpt", 45.4460991, 4.3360534],
     ["Saint-Georges-Haute-Ville", 45.554421, 4.0992223],
+    ["Saint-Héand", 45.5296285, 4.3752871],
     ["Saint-Just-Saint-Rambert", 45.4994639, 4.2423759],
+    ["Saint-Laurent-la-Conche", 45.6844000, 4.2128900],
     ["Saint-Marcellin-en-Forez", 45.4972427, 4.1670428],
+    ["Saint-Médard-en-Forez", 45.5973395, 4.3619438],
     ["Saint-Paul-d'Uzore", 45.6765199, 4.0799376],
     ["Saint-Romain-le-Puy", 45.5549769, 4.1248446],
+    ["Saint-Thomas-la-Garde", 45.5673563, 4.0815435],
+    ["Salt-en-Donzy", 45.7372000, 4.2881600],
+    ["Salvizinet", 45.7597122, 4.2735776],
     ["Savigneux", 45.6063569, 4.0879027],
     ["Soleymieux", 45.5087757, 4.0417891],
     ["Sury-le-Comtal", 45.5381922, 4.1829539],
-    ["Veauche", 45.5622913, 4.2892399],
-    ["Veauchette", 45.562946, 4.2638619]
+    ["Unias", 45.6059450, 4.2264907],
+    ["Valeille", 45.7079000, 4.3043200],
+    ["Veauchette", 45.562946, 4.2638619],
+    ["Virigneux", 45.6888126, 4.3533265]
   ];
 
   const markerOptions = {
@@ -335,6 +367,12 @@ function initServiceMap() {
     color: "#292827",
     fillColor: "#ffc9d4"
   }).addTo(map).bindPopup("Veauche");
+
+  const bounds = L.latLngBounds([
+    ...cities.map(([, lat, lng]) => [lat, lng]),
+    [45.5622913, 4.2892399]
+  ]);
+  map.fitBounds(bounds.pad(0.12));
 }
 
 function renderWeddingGallery() {
