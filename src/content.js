@@ -81,7 +81,7 @@ window.STEPHANIE_SITE = {
     { src: "/assets/gallery/99-cuivre-chocolat-wavy.jpg", title: "Cuivré chocolat wavy", category: "Couleur" },
     { src: "/assets/gallery/100-blond-vanille-boucles.jpg", title: "Blond vanille bouclé", category: "Balayage" },
     { src: "/assets/gallery/101-balayage-blond-wavy-long.jpg", title: "Balayage blond wavy long", category: "Balayage" },
-    { src: "/assets/gallery/102-chignon-tresse-basse.jpg", title: "Chignon tressé bas", category: "Mariage" },
+    { src: "/assets/gallery/102-chignon-tresse-basse.jpg", title: "Chignon tressé bas", category: "Coiffage" },
     { src: "/assets/gallery/103-blond-lisse-lumineux.jpg", title: "Blond lisse lumineux", category: "Balayage" },
     { src: "/assets/gallery/104-rose-pastel-wavy.jpg", title: "Rose pastel wavy", category: "Couleur" },
     { src: "/assets/gallery/105-brun-glossy-wavy.jpg", title: "Brun glossy wavy", category: "Coiffage" },
