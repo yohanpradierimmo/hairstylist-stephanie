@@ -129,8 +129,8 @@ a {
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(90deg, rgba(82, 27, 48, 0.7), rgba(221, 75, 117, 0.68) 48%, rgba(82, 27, 48, 0.62)),
-    radial-gradient(circle at 50% 34%, rgba(255, 164, 192, 0.52), transparent 42%);
+    linear-gradient(90deg, rgba(70, 35, 48, 0.72), rgba(192, 91, 119, 0.36) 48%, rgba(70, 35, 48, 0.64)),
+    radial-gradient(circle at 50% 34%, rgba(255, 202, 216, 0.28), transparent 38%);
   content: "";
 }
 
@@ -148,27 +148,27 @@ a {
   object-fit: cover;
   opacity: 0;
   transform: scale(1.18);
-  animation: entryFade 30s infinite;
+  animation: entryFade 24s infinite;
 }
 
 .entry-slider img:first-child {
-  animation-delay: -2.1s;
+  animation-delay: -1.2s;
 }
 
 .entry-slider img:nth-child(2) {
-  animation-delay: 6s;
+  animation-delay: 4.8s;
 }
 
 .entry-slider img:nth-child(3) {
-  animation-delay: 12s;
+  animation-delay: 9.6s;
 }
 
 .entry-slider img:nth-child(4) {
-  animation-delay: 18s;
+  animation-delay: 14.4s;
 }
 
 .entry-slider img:nth-child(5) {
-  animation-delay: 24s;
+  animation-delay: 19.2s;
 }
 
 .entry-content {
@@ -4038,12 +4038,12 @@ body.lightbox-open {
     transform: scale(1.18);
   }
 
-  7%,
-  25% {
+  5%,
+  20% {
     opacity: 1;
   }
 
-  33%,
+  27%,
   100% {
     opacity: 0;
     transform: scale(1.28);
