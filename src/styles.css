@@ -149,6 +149,10 @@ a {
   animation: entryFade 30s infinite;
 }
 
+.entry-slider img:first-child {
+  animation-delay: -2.1s;
+}
+
 .entry-slider img:nth-child(2) {
   animation-delay: 6s;
 }
