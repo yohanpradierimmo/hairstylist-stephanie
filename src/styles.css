@@ -217,10 +217,10 @@ a {
   padding: 8px 20px 12px;
   color: var(--blush-100);
   font-family: var(--script);
-  font-size: clamp(2.15rem, 5.2vw, 4.8rem);
+  font-size: clamp(2.65rem, 6vw, 5.8rem);
   font-weight: 400;
   line-height: 0.95;
-  -webkit-text-stroke: 0.42px var(--berry);
+  -webkit-text-stroke: 0.42px var(--ink);
   text-shadow: 0 12px 34px rgba(185, 60, 95, 0.32);
 }
 
@@ -238,7 +238,8 @@ a {
 .home-slogan span {
   display: inline-block;
   margin-left: 0.08em;
-  color: var(--blush-50);
+  color: var(--berry);
+  -webkit-text-stroke: 0;
   font-family: var(--serif);
   font-size: 0.72em;
   transform: translateY(-0.02em) rotate(8deg);
@@ -248,7 +249,7 @@ a {
   justify-self: start;
   color: var(--berry);
   font-size: clamp(2rem, 3.8vw, 4.15rem);
-  -webkit-text-stroke: 0.28px rgba(185, 60, 95, 0.62);
+  -webkit-text-stroke: 0.28px var(--ink);
   text-shadow: none;
 }
 
@@ -257,7 +258,8 @@ a {
 }
 
 .home-slogan.dark span {
-  color: var(--rose);
+  color: var(--berry);
+  -webkit-text-stroke: 0;
 }
 
 .entry-content p:not(.kicker) {
