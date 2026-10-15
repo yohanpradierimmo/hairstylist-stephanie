@@ -128,8 +128,8 @@ a {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(41, 40, 39, 0.78), rgba(156, 78, 103, 0.26) 48%, rgba(41, 40, 39, 0.68)),
-    radial-gradient(circle at 50% 34%, rgba(255, 220, 229, 0.28), transparent 34%);
+    linear-gradient(90deg, rgba(41, 40, 39, 0.72), rgba(185, 60, 95, 0.46) 48%, rgba(41, 40, 39, 0.62)),
+    radial-gradient(circle at 50% 34%, rgba(255, 190, 208, 0.42), transparent 38%);
   content: "";
 }
 
