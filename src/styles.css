@@ -127,15 +127,17 @@ a {
 .entry-stage::after {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background:
-    linear-gradient(90deg, rgba(41, 40, 39, 0.72), rgba(185, 60, 95, 0.46) 48%, rgba(41, 40, 39, 0.62)),
-    radial-gradient(circle at 50% 34%, rgba(255, 190, 208, 0.42), transparent 38%);
+    linear-gradient(90deg, rgba(82, 27, 48, 0.7), rgba(221, 75, 117, 0.68) 48%, rgba(82, 27, 48, 0.62)),
+    radial-gradient(circle at 50% 34%, rgba(255, 164, 192, 0.52), transparent 42%);
   content: "";
 }
 
 .entry-slider {
   position: absolute;
   inset: 0;
+  z-index: 0;
 }
 
 .entry-slider img {
