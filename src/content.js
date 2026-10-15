@@ -19,6 +19,8 @@ window.STEPHANIE_SITE = {
   ],
   galleryFilters: ["Tout", "Balayage", "Couleur", "Coupe", "Coiffage", "Tresses", "Mariage", "Homme"],
   gallery: [
+    { src: "/assets/gallery/121-lissage-blond-beige-long.jpg", title: "Lissage blond beige long", category: "Coiffage" },
+    { src: "/assets/gallery/122-balayage-brun-dore-long.jpg", title: "Balayage brun doré long", category: "Balayage" },
     { src: "/assets/gallery/110-blond-polaire-wavy-closeup.jpg", title: "Blond polaire wavy", category: "Balayage" },
     { src: "/assets/gallery/111-tresses-collees-enfant.jpg", title: "Tresses collées enfant", category: "Tresses" },
     { src: "/assets/gallery/112-balayage-blond-naturel-long.jpg", title: "Balayage blond naturel long", category: "Balayage" },
