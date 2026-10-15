@@ -145,7 +145,7 @@ a {
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transform: scale(1.12);
+  transform: scale(1.18);
   animation: entryFade 30s infinite;
 }
 
@@ -4029,7 +4029,7 @@ body.lightbox-open {
 @keyframes entryFade {
   0% {
     opacity: 0;
-    transform: scale(1.12);
+    transform: scale(1.18);
   }
 
   7%,
@@ -4040,7 +4040,7 @@ body.lightbox-open {
   33%,
   100% {
     opacity: 0;
-    transform: scale(1.2);
+    transform: scale(1.28);
   }
 }
 
