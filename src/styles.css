@@ -220,6 +220,7 @@ a {
   font-size: clamp(2.15rem, 5.2vw, 4.8rem);
   font-weight: 400;
   line-height: 0.95;
+  -webkit-text-stroke: 0.42px var(--berry);
   text-shadow: 0 12px 34px rgba(185, 60, 95, 0.32);
 }
 
@@ -247,6 +248,7 @@ a {
   justify-self: start;
   color: var(--berry);
   font-size: clamp(2rem, 3.8vw, 4.15rem);
+  -webkit-text-stroke: 0.28px rgba(185, 60, 95, 0.62);
   text-shadow: none;
 }
 
