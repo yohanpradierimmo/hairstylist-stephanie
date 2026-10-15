@@ -147,28 +147,24 @@ a {
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transform: scale(1.18);
-  animation: entryFade 23s infinite;
-}
-
-.entry-slider img:first-child {
-  animation-delay: -2.3s;
+  transform: scale(1.08);
+  animation: entryFade 24s infinite;
 }
 
 .entry-slider img:nth-child(2) {
-  animation-delay: 4.6s;
+  animation-delay: 4.8s;
 }
 
 .entry-slider img:nth-child(3) {
-  animation-delay: 9.2s;
+  animation-delay: 9.6s;
 }
 
 .entry-slider img:nth-child(4) {
-  animation-delay: 13.8s;
+  animation-delay: 14.4s;
 }
 
 .entry-slider img:nth-child(5) {
-  animation-delay: 18.4s;
+  animation-delay: 19.2s;
 }
 
 .entry-content {
@@ -4037,7 +4033,7 @@ body.lightbox-open {
 @keyframes entryFade {
   0% {
     opacity: 0;
-    transform: scale(1.18);
+    transform: scale(1.08);
   }
 
   7%,
@@ -4048,7 +4044,7 @@ body.lightbox-open {
   33%,
   100% {
     opacity: 0;
-    transform: scale(1.28);
+    transform: scale(1.18);
   }
 }
 
