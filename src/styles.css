@@ -145,16 +145,24 @@ a {
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transform: scale(1.08);
-  animation: entryFade 24s infinite;
+  transform: scale(1.12);
+  animation: entryFade 30s infinite;
 }
 
 .entry-slider img:nth-child(2) {
-  animation-delay: 8s;
+  animation-delay: 6s;
 }
 
 .entry-slider img:nth-child(3) {
-  animation-delay: 16s;
+  animation-delay: 12s;
+}
+
+.entry-slider img:nth-child(4) {
+  animation-delay: 18s;
+}
+
+.entry-slider img:nth-child(5) {
+  animation-delay: 24s;
 }
 
 .entry-content {
@@ -4021,7 +4029,7 @@ body.lightbox-open {
 @keyframes entryFade {
   0% {
     opacity: 0;
-    transform: scale(1.08);
+    transform: scale(1.12);
   }
 
   7%,
@@ -4032,7 +4040,7 @@ body.lightbox-open {
   33%,
   100% {
     opacity: 0;
-    transform: scale(1.18);
+    transform: scale(1.2);
   }
 }
 
