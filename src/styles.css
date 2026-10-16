@@ -233,7 +233,7 @@ a {
 .home-slogan span {
   display: inline-block;
   margin-left: 0.08em;
-  color: var(--berry);
+  color: var(--cream);
   -webkit-text-stroke: 0;
   font-family: var(--serif);
   font-size: 0.72em;
@@ -252,7 +252,7 @@ a {
 }
 
 .home-slogan.dark span {
-  color: var(--berry);
+  color: var(--cream);
   -webkit-text-stroke: 0;
 }
 
