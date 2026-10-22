@@ -19,6 +19,9 @@ window.STEPHANIE_SITE = {
   ],
   galleryFilters: ["Tout", "Balayage", "Couleur", "Coupe", "Coiffage", "Tresses", "Mariage", "Homme"],
   gallery: [
+    { src: "/assets/gallery/123-balayage-blond-beige-wavy.jpg", title: "Balayage blond beige wavy", category: "Balayage" },
+    { src: "/assets/gallery/124-balayage-brun-caramel-wavy.jpg", title: "Balayage brun caramel wavy", category: "Balayage" },
+    { src: "/assets/gallery/125-balayage-blond-lisse.jpg", title: "Balayage blond lisse", category: "Balayage" },
     { src: "/assets/gallery/121-lissage-blond-beige-long.jpg", title: "Lissage blond beige long", category: "Coiffage" },
     { src: "/assets/gallery/122-balayage-brun-dore-long.jpg", title: "Balayage brun doré long", category: "Balayage" },
     { src: "/assets/gallery/110-blond-polaire-wavy-closeup.jpg", title: "Blond polaire wavy", category: "Balayage" },
