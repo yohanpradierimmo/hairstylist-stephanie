@@ -12,6 +12,8 @@ CREATE TABLE IF NOT EXISTS events (
   campaign TEXT,
   device TEXT,
   browser TEXT,
+  os TEXT,
+  screen TEXT,
   language TEXT,
   country TEXT,
   region TEXT,

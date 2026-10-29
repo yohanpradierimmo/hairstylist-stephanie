@@ -24,7 +24,8 @@
     session, page, referrer,
     source: current.searchParams.get('utm_source') || '',
     medium: current.searchParams.get('utm_medium') || '',
-    campaign: current.searchParams.get('utm_campaign') || ''
+    campaign: current.searchParams.get('utm_campaign') || '',
+    screen: `${window.screen?.width || 0}x${window.screen?.height || 0}`
   };
   function send(type, extra) {
     const body = JSON.stringify({ ...context, type, ...(extra || {}) });
