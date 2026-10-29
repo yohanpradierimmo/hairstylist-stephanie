@@ -320,6 +320,29 @@ function renderMaps(){const day=document.getElementById('map-day').value,all=[..
 async function enhanceDashboard(){try{const days=document.getElementById('days').value;const [statsResponse,liveResponse,importedResponse]=await Promise.all([fetch('/api/stats?days='+days),fetch('/api/visits?days=395'),fetch('/api/imported-visits')]);if(!statsResponse.ok||!liveResponse.ok||!importedResponse.ok)throw Error();analyticsState={stats:await statsResponse.json(),live:(await liveResponse.json()).visits||[],imported:(await importedResponse.json()).visits||[]};populateDaySelect('map-day');updateSourceFields();renderSources();renderMaps()}catch(_){document.getElementById('source-traffic').innerHTML='<p class="empty">Données indisponibles.</p>'}}
 const sourceToday=localToday();document.getElementById('source-date').value=sourceToday;document.getElementById('source-week').value=isoWeekValue(sourceToday);document.getElementById('source-month').value=sourceToday.slice(0,7);document.getElementById('source-start').value=sourceToday;document.getElementById('source-end').value=sourceToday;document.getElementById('source-range').addEventListener('change',()=>{updateSourceFields();renderSources()});['source-date','source-week','source-month','source-start','source-end'].forEach(id=>document.getElementById(id).addEventListener('change',renderSources));document.getElementById('map-day').addEventListener('change',renderMaps);document.querySelectorAll('[data-view]').forEach(link=>link.addEventListener('click',()=>setTimeout(renderMaps,0)));document.getElementById('days').addEventListener('change',enhanceDashboard);enhanceDashboard();setInterval(enhanceDashboard,60000);
 </script>
+<script>
+/* Présentation locale des dates du journal : aucun changement des données. */
+(() => {
+  const journal = document.getElementById('visits');
+  if (!journal) return;
+  const formatDate = value => {
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return value;
+    return date.toLocaleString('fr-FR', {
+      weekday: 'short', day: '2-digit', month: 'short', year: 'numeric',
+      hour: '2-digit', minute: '2-digit'
+    }).replace(',', ' ·');
+  };
+  const renderDates = () => journal.querySelectorAll('td[data-label="Début"]').forEach(cell => {
+    const original = cell.dataset.rawDate || cell.textContent.trim();
+    if (!/^\d{4}-\d{2}-\d{2}/.test(original)) return;
+    cell.dataset.rawDate = original;
+    cell.textContent = formatDate(original);
+  });
+  new MutationObserver(renderDates).observe(journal, { childList: true, subtree: true });
+  renderDates();
+})();
+</script>
 </body></html>`;
 
 export default {
