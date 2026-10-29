@@ -33,15 +33,35 @@ CREATE TABLE IF NOT EXISTS profile_groups (
   member_visitor_id TEXT PRIMARY KEY,
   profile_id TEXT NOT NULL,
   label TEXT NOT NULL,
+  exclude_from_analytics INTEGER NOT NULL DEFAULT 0 CHECK (exclude_from_analytics IN (0,1)),
   created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now'))
 );
 CREATE INDEX IF NOT EXISTS idx_profile_groups_profile ON profile_groups(profile_id);
+
+CREATE TABLE IF NOT EXISTS excluded_sessions (
+  session_id TEXT PRIMARY KEY,
+  label TEXT NOT NULL,
+  created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now'))
+);
+
+-- Private administration profiles are omitted from all dashboard aggregates.
+CREATE VIEW IF NOT EXISTS analytics_events AS
+SELECT e.* FROM events e
+WHERE NOT EXISTS (
+  SELECT 1 FROM profile_groups groups
+  WHERE groups.member_visitor_id = e.visitor_id
+    AND groups.exclude_from_analytics = 1
+)
+AND NOT EXISTS (
+  SELECT 1 FROM excluded_sessions sessions
+  WHERE sessions.session_id = e.session_id
+);
 
 CREATE TABLE IF NOT EXISTS schema_meta (
   key TEXT PRIMARY KEY,
   value TEXT NOT NULL
 );
-INSERT OR IGNORE INTO schema_meta(key,value) VALUES ('schema_version','7');
+INSERT OR IGNORE INTO schema_meta(key,value) VALUES ('schema_version','9');
 
 CREATE TABLE IF NOT EXISTS imported_reports (
   report_date TEXT PRIMARY KEY,

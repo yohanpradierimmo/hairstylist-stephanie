@@ -65,8 +65,13 @@ async function collect(request, env) {
   const duration = body.type === 'page_exit' ? Math.min(86400000, Math.max(0, Number(body.duration_ms) || 0)) : 0;
   const screen = typeof body.screen === 'string' && /^\d{2,5}x\d{2,5}$/.test(body.screen) ? body.screen : '';
   const ua = request.headers.get('User-Agent') || '';
+  const visitor = validVisitor(body.visitor) ? body.visitor : null;
+  if (visitor) {
+    const excluded = await env.DB.prepare(`SELECT 1 FROM profile_groups WHERE member_visitor_id=? AND exclude_from_analytics=1 LIMIT 1`).bind(visitor).first();
+    if (excluded) return json({ ok: true, excluded: true }, 202, cors(env));
+  }
   const row = [
-    body.session, validVisitor(body.visitor) ? body.visitor : null, body.type, page, clean(body.referrer, 150), clean(body.source, 80), clean(body.medium, 80), clean(body.campaign, 100),
+    body.session, visitor, body.type, page, clean(body.referrer, 150), clean(body.source, 80), clean(body.medium, 80), clean(body.campaign, 100),
     device(ua), browser(ua), operatingSystem(ua), screen, clean(request.headers.get('Accept-Language'), 10),
     clean(request.cf?.country, 2), clean(request.cf?.region, 100), clean(request.cf?.city, 100),
     body.type === 'contact_click' && ['telephone', 'sms', 'whatsapp', 'email', 'instagram'].includes(body.contact) ? body.contact : null, duration
@@ -84,26 +89,26 @@ async function stats(request, env) {
     query(`SELECT COUNT(DISTINCT CASE WHEN event_type='pageview' THEN session_id END) sessions,
       SUM(event_type='pageview') pageviews, SUM(event_type='contact_click') contact_clicks,
       COUNT(DISTINCT CASE WHEN event_type='pageview' THEN session_id END) - COUNT(DISTINCT CASE WHEN event_type='page_exit' THEN session_id END) AS sessions_without_exit
-      FROM events WHERE day>=?`, [since]),
+      FROM analytics_events WHERE day>=?`, [since]),
     query(`WITH session_metrics AS (
       SELECT session_id, COALESCE(SUM(duration_ms),0) / 1000.0 AS duration_seconds
-      FROM events WHERE day>=? GROUP BY session_id
+      FROM analytics_events WHERE day>=? GROUP BY session_id
     ) SELECT COUNT(*) AS engaged_visits, COALESCE(ROUND(AVG(duration_seconds),1),0) AS avg_duration_seconds
       FROM session_metrics WHERE duration_seconds >= 10`, [since]),
     query(`SELECT day, COUNT(DISTINCT CASE WHEN event_type='pageview' THEN session_id END) sessions,
       SUM(event_type='pageview') pageviews, SUM(event_type='contact_click') contact_clicks
-      FROM events WHERE day>=? GROUP BY day ORDER BY day`, [since]),
-    query(`SELECT page label, COUNT(*) value FROM events WHERE day>=? AND event_type='pageview' GROUP BY page ORDER BY value DESC LIMIT 50`, [since]),
+      FROM analytics_events WHERE day>=? GROUP BY day ORDER BY day`, [since]),
+    query(`SELECT page label, COUNT(*) value FROM analytics_events WHERE day>=? AND event_type='pageview' GROUP BY page ORDER BY value DESC LIMIT 50`, [since]),
     query(`SELECT COALESCE(NULLIF(source,''),NULLIF(referrer_host,''),'Accès direct / inconnu') label,
-      COUNT(DISTINCT session_id) value FROM events WHERE day>=? AND event_type='pageview' GROUP BY label ORDER BY value DESC LIMIT 30`, [since]),
-    query(`SELECT device label, COUNT(DISTINCT session_id) value FROM events WHERE day>=? AND event_type='pageview' GROUP BY device ORDER BY value DESC`, [since]),
-    query(`SELECT browser label, COUNT(DISTINCT session_id) value FROM events WHERE day>=? AND event_type='pageview' GROUP BY browser ORDER BY value DESC`, [since]),
-    query(`SELECT COALESCE(contact_type,'inconnu') label, COUNT(*) value FROM events WHERE day>=? AND event_type='contact_click' GROUP BY contact_type ORDER BY value DESC`, [since]),
-    query(`SELECT page label, COUNT(*) value FROM events e WHERE event_type='pageview' AND day>=? AND created_at=(SELECT MIN(created_at) FROM events x WHERE x.session_id=e.session_id AND x.event_type='pageview') GROUP BY page ORDER BY value DESC LIMIT 30`, [since]),
-    query(`SELECT page label, COUNT(*) value FROM events WHERE day>=? AND event_type='page_exit' GROUP BY page ORDER BY value DESC LIMIT 30`, [since]),
-    query(`SELECT COALESCE(NULLIF(city,''),'Inconnue') label, COUNT(DISTINCT session_id) value FROM events WHERE day>=? AND event_type='pageview' GROUP BY city ORDER BY value DESC LIMIT 50`, [since]),
-    query(`SELECT page label, COUNT(DISTINCT session_id) value FROM events WHERE event_type='pageview' AND created_at>=datetime('now','-5 minutes') GROUP BY page ORDER BY value DESC`, []),
-    query(`SELECT created_at, event_type, page, device, contact_type FROM events ORDER BY id DESC LIMIT 25`, []),
+      COUNT(DISTINCT session_id) value FROM analytics_events WHERE day>=? AND event_type='pageview' GROUP BY label ORDER BY value DESC LIMIT 30`, [since]),
+    query(`SELECT device label, COUNT(DISTINCT session_id) value FROM analytics_events WHERE day>=? AND event_type='pageview' GROUP BY device ORDER BY value DESC`, [since]),
+    query(`SELECT browser label, COUNT(DISTINCT session_id) value FROM analytics_events WHERE day>=? AND event_type='pageview' GROUP BY browser ORDER BY value DESC`, [since]),
+    query(`SELECT COALESCE(contact_type,'inconnu') label, COUNT(*) value FROM analytics_events WHERE day>=? AND event_type='contact_click' GROUP BY contact_type ORDER BY value DESC`, [since]),
+    query(`SELECT page label, COUNT(*) value FROM analytics_events e WHERE event_type='pageview' AND day>=? AND created_at=(SELECT MIN(created_at) FROM analytics_events x WHERE x.session_id=e.session_id AND x.event_type='pageview') GROUP BY page ORDER BY value DESC LIMIT 30`, [since]),
+    query(`SELECT page label, COUNT(*) value FROM analytics_events WHERE day>=? AND event_type='page_exit' GROUP BY page ORDER BY value DESC LIMIT 30`, [since]),
+    query(`SELECT COALESCE(NULLIF(city,''),'Inconnue') label, COUNT(DISTINCT session_id) value FROM analytics_events WHERE day>=? AND event_type='pageview' GROUP BY city ORDER BY value DESC LIMIT 50`, [since]),
+    query(`SELECT page label, COUNT(DISTINCT session_id) value FROM analytics_events WHERE event_type='pageview' AND created_at>=datetime('now','-5 minutes') GROUP BY page ORDER BY value DESC`, []),
+    query(`SELECT created_at, event_type, page, device, contact_type FROM analytics_events ORDER BY id DESC LIMIT 25`, []),
     query(`SELECT * FROM imported_reports ORDER BY report_date DESC LIMIT 30`, []),
     query(`SELECT COUNT(*) visits, COALESCE(SUM(actions),0) actions, COALESCE(SUM(pageviews),0) pageviews
       FROM imported_visits WHERE substr(started_at,1,10)>=?`, [since]),
@@ -158,14 +163,14 @@ async function visits(request, env) {
     COALESCE(MAX(device),'Inconnu') device, COALESCE(MAX(browser),'Inconnu') browser,
     COALESCE(MAX(os),'Inconnu') os, COALESCE(MAX(screen),'') screen,
     COALESCE(NULLIF(MAX(source),''),NULLIF(MAX(referrer_host),''),'Accès direct') source
-    FROM events WHERE day>=? GROUP BY session_id ORDER BY last_seen DESC LIMIT 100`).bind(since).all()).results;
+    FROM analytics_events WHERE day>=? GROUP BY session_id ORDER BY last_seen DESC LIMIT 100`).bind(since).all()).results;
   return json({ days, since, visits: rows });
 }
 
 async function visitDetail(request, env, session) {
   if (!validSession(session)) return json({ error: 'Visite invalide' }, 400);
   const rows = (await env.DB.prepare(`SELECT created_at,visitor_id,event_type,page,referrer_host,source,medium,campaign,device,browser,os,screen,language,country,region,city,contact_type,duration_ms
-    FROM events WHERE session_id=? ORDER BY created_at`).bind(session).all()).results;
+    FROM analytics_events WHERE session_id=? ORDER BY created_at`).bind(session).all()).results;
   if (!rows.length) return json({ error: 'Visite introuvable' }, 404);
   return json({ session_id: session, profile: rows[0], events: rows });
 }
@@ -179,7 +184,7 @@ async function profiles(request, env) {
     COUNT(CASE WHEN e.event_type='pageview' THEN 1 END) pageviews, ROUND(SUM(e.duration_ms)/1000.0,1) duration_seconds,
     SUM(e.event_type='contact_click') contact_clicks, COALESCE(MAX(e.city),'Inconnue') city,
     COALESCE(MAX(e.device),'Inconnu') device, COALESCE(MAX(e.os),'Inconnu') os
-    FROM events e LEFT JOIN profile_groups groups ON groups.member_visitor_id=e.visitor_id
+    FROM analytics_events e LEFT JOIN profile_groups groups ON groups.member_visitor_id=e.visitor_id
     WHERE e.day>=? AND e.visitor_id IS NOT NULL AND e.visitor_id<>''
     GROUP BY COALESCE(groups.profile_id,e.visitor_id) ORDER BY last_seen DESC LIMIT 100`).bind(since).all()).results;
   return json({ days, since, profiles: rows });
@@ -195,10 +200,10 @@ async function profileDetail(request, env, visitor) {
       COALESCE(MAX(e.device),'Inconnu') device, COALESCE(MAX(e.browser),'Inconnu') browser,
       COALESCE(MAX(e.os),'Inconnu') os, COALESCE(MAX(e.screen),'') screen,
       COALESCE(NULLIF(MAX(e.source),''),NULLIF(MAX(e.referrer_host),''),'Accès direct') source
-      FROM events e LEFT JOIN profile_groups groups ON groups.member_visitor_id=e.visitor_id
+      FROM analytics_events e LEFT JOIN profile_groups groups ON groups.member_visitor_id=e.visitor_id
       WHERE COALESCE(groups.profile_id,e.visitor_id)=?`).bind(visitor).all(),
     env.DB.prepare(`SELECT e.created_at,e.session_id,e.event_type,e.page,e.referrer_host,e.source,e.device,e.browser,e.os,e.screen,e.country,e.city,e.contact_type,e.duration_ms
-    FROM events e LEFT JOIN profile_groups groups ON groups.member_visitor_id=e.visitor_id
+    FROM analytics_events e LEFT JOIN profile_groups groups ON groups.member_visitor_id=e.visitor_id
     WHERE COALESCE(groups.profile_id,e.visitor_id)=? ORDER BY e.created_at DESC LIMIT 500`).bind(visitor).all()
   ]);
   const rows = events.results;
