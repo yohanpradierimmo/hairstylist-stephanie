@@ -13,6 +13,9 @@ CREATE TABLE IF NOT EXISTS events (
   device TEXT,
   browser TEXT,
   language TEXT,
+  country TEXT,
+  region TEXT,
+  city TEXT,
   contact_type TEXT,
   duration_ms INTEGER NOT NULL DEFAULT 0 CHECK (duration_ms >= 0 AND duration_ms <= 86400000)
 );
@@ -26,4 +29,4 @@ CREATE TABLE IF NOT EXISTS schema_meta (
   key TEXT PRIMARY KEY,
   value TEXT NOT NULL
 );
-INSERT OR IGNORE INTO schema_meta(key,value) VALUES ('schema_version','2');
+INSERT OR IGNORE INTO schema_meta(key,value) VALUES ('schema_version','3');
