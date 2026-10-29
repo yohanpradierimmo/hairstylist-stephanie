@@ -3067,6 +3067,13 @@ h3 {
   color: var(--blush-50);
 }
 
+.footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-left: auto;
+}
+
 .footer-link {
   border: 0;
   color: var(--cream);
@@ -4011,6 +4018,15 @@ body.lightbox-open {
 
   .footer {
     flex-direction: column;
+  }
+
+  .footer-actions {
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-left: 0;
   }
 }
 
