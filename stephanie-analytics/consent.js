@@ -38,8 +38,15 @@
     const banner = document.getElementById('cookieBanner');
     const dialog = document.getElementById('cookieDialog');
     const toggle = document.getElementById('cookieAnalytics');
-    const open = () => { toggle.checked = !!read()?.analytics; dialog.showModal(); };
-    const close = () => dialog.close();
+    const open = () => {
+      toggle.checked = !!read()?.analytics;
+      if (typeof dialog.showModal === 'function') dialog.showModal();
+      else dialog.setAttribute('open', '');
+    };
+    const close = () => {
+      if (dialog.open && typeof dialog.close === 'function') dialog.close();
+      else dialog.removeAttribute('open');
+    };
     const finish = analytics => { save(analytics); banner.hidden = true; close(); };
     document.querySelectorAll('[data-cookie-open]').forEach(button => button.addEventListener('click', open));
     document.querySelectorAll('[data-cookie-settings]').forEach(button => button.addEventListener('click', open));

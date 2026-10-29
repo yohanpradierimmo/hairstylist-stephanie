@@ -8,22 +8,29 @@
   let started = false;
 
   const consented = () => { try { return localStorage.getItem(CONSENT_KEY) === 'granted'; } catch (_) { return false; } };
+  function uuid() {
+    if (typeof crypto?.randomUUID === 'function') return crypto.randomUUID();
+    const bytes = new Uint8Array(16); crypto.getRandomValues(bytes);
+    bytes[6] = (bytes[6] & 0x0f) | 0x40; bytes[8] = (bytes[8] & 0x3f) | 0x80;
+    const hex = [...bytes].map(byte => byte.toString(16).padStart(2, '0')).join('');
+    return `${hex.slice(0,8)}-${hex.slice(8,12)}-${hex.slice(12,16)}-${hex.slice(16,20)}-${hex.slice(20)}`;
+  }
   function visitorId() {
     try {
       const saved = JSON.parse(localStorage.getItem(VISITOR_KEY) || 'null');
       if (saved?.id && saved.createdAt && Date.now() - saved.createdAt < MAX_VISITOR_AGE) return saved.id;
-      const id = crypto.randomUUID();
+      const id = uuid();
       localStorage.setItem(VISITOR_KEY, JSON.stringify({ id, createdAt: Date.now() }));
       return id;
-    } catch (_) { return crypto.randomUUID(); }
+    } catch (_) { return uuid(); }
   }
   function start() {
-    if (started || !consented() || !window.crypto?.randomUUID || !window.sessionStorage) return;
+    if (started || !consented() || !window.crypto?.getRandomValues || !window.sessionStorage) return;
     started = true;
     let session;
     try {
       session = sessionStorage.getItem('stephanie_analytics_session');
-      if (!session) { session = crypto.randomUUID(); sessionStorage.setItem('stephanie_analytics_session', session); }
+      if (!session) { session = uuid(); sessionStorage.setItem('stephanie_analytics_session', session); }
     } catch (_) { return; }
     const page = location.pathname.slice(0, 180) || '/';
     const startedAt = performance.now();
@@ -33,7 +40,10 @@
     const context = { session, visitor: visitorId(), page, referrer, source: current.searchParams.get('utm_source') || '', medium: current.searchParams.get('utm_medium') || '', campaign: current.searchParams.get('utm_campaign') || '', screen: `${window.screen?.width || 0}x${window.screen?.height || 0}` };
     function send(type, extra) {
       const body = JSON.stringify({ ...context, type, ...(extra || {}) });
-      try { fetch(ENDPOINT, { method: 'POST', mode: 'cors', headers: { 'Content-Type': 'text/plain' }, body, keepalive: true }).catch(() => {}); } catch (_) {}
+      try {
+        if (navigator.sendBeacon?.(ENDPOINT, new Blob([body], { type: 'text/plain;charset=UTF-8' }))) return;
+      } catch (_) {}
+      try { fetch(ENDPOINT, { method: 'POST', mode: 'cors', headers: { 'Content-Type': 'text/plain;charset=UTF-8' }, body, keepalive: true }).catch(() => {}); } catch (_) {}
     }
     send('pageview');
     let exited = false;
