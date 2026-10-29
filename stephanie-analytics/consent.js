@@ -21,13 +21,13 @@
   const markup = `
     <div class="cookie-banner" id="cookieBanner" role="dialog" aria-modal="true" aria-labelledby="cookieBannerTitle" hidden>
       <div><strong id="cookieBannerTitle">Vos préférences de confidentialité</strong><p>Nous utilisons des cookies nécessaires au fonctionnement du site. La mesure d’audience est facultative et vous aide à améliorer le site.</p></div>
-      <div class="cookie-actions"><button type="button" class="cookie-button cookie-button--secondary" data-cookie-refuse>Tout refuser</button><button type="button" class="cookie-button cookie-button--secondary" data-cookie-open>Personnaliser</button><button type="button" class="cookie-button" data-cookie-accept>Tout accepter</button></div>
+      <div class="cookie-actions"><button type="button" class="cookie-button cookie-button--secondary" data-cookie-open>Personnaliser</button><button type="button" class="cookie-button" data-cookie-accept>Tout accepter</button></div>
     </div>
     <dialog class="cookie-dialog" id="cookieDialog" aria-labelledby="cookieDialogTitle">
       <button class="dialog-close" type="button" data-cookie-close aria-label="Fermer">×</button>
       <h2 id="cookieDialogTitle">Panneau de gestion des cookies</h2>
       <p class="cookie-intro">Préférences pour tous les services</p>
-      <div class="cookie-actions"><button type="button" class="cookie-button" data-cookie-accept>Tout accepter</button><button type="button" class="cookie-button cookie-button--secondary" data-cookie-refuse>Tout refuser</button></div>
+      <p class="cookie-choice-note">Personnalisez les services facultatifs ci-dessous, puis enregistrez votre choix.</p>
       <section class="cookie-service"><div><h3>Cookies nécessaires</h3><p>Ce site utilise des cookies nécessaires à son bon fonctionnement. Ils ne peuvent pas être désactivés.</p></div><span class="cookie-required">Toujours actifs</span></section>
       <section class="cookie-service"><div><h3>Mesure d’audience</h3><p>Statistiques internes du site : pages consultées, appareil, navigateur, ville approximative et clics vers les moyens de contact. Aucun suivi publicitaire, aucune adresse IP brute ni donnée nominative ne sont conservés.</p></div><label class="cookie-switch"><input id="cookieAnalytics" type="checkbox"><span>Autoriser</span></label></section>
       <section class="cookie-service cookie-service--inactive"><div><h3>APIs et services Google</h3><p>Aucun Google Tag Manager, Google Analytics, service publicitaire ou API Google n’est actuellement chargé par ce site.</p></div><span class="cookie-required">Non utilisés</span></section>
