@@ -2,10 +2,11 @@
 (function () {
   'use strict';
   const ENDPOINT = 'https://REPLACE_WITH_YOUR_WORKER_DOMAIN/collect';
-  const CONSENT_KEY = 'stephanie_analytics_consent';
   if (!window.crypto?.randomUUID || !window.sessionStorage) return;
-  // Do not collect anything until the site's consent mechanism explicitly opts in.
-  if (window.localStorage?.getItem(CONSENT_KEY) !== 'granted') return;
+  // Audience-only mode: no banner is required when the CNIL exemption conditions
+  // are met. Visitors can opt out at any time from the privacy page.
+  if (window.localStorage?.getItem('stephanie_analytics_optout') === '1') return;
+  if (navigator.doNotTrack === '1' || window.doNotTrack === '1') return;
   let session;
   try {
     session = sessionStorage.getItem('stephanie_analytics_session');
@@ -51,4 +52,10 @@
       : null;
     if (contact) send('contact_click', { contact });
   }, { capture: true });
+  window.stephanieAnalyticsOptOut = function () {
+    try {
+      localStorage.setItem('stephanie_analytics_optout', '1');
+      sessionStorage.removeItem('stephanie_analytics_session');
+    } catch (_) {}
+  };
 })();

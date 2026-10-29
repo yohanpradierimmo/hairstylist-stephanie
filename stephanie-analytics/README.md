@@ -10,7 +10,7 @@ Remplacement indépendant de Matomo : Worker Cloudflare + D1, tableau de bord pr
 - Ville, région et pays approximatifs fournis par Cloudflare, sans enregistrer l'adresse IP brute.
 - Authentification Basic côté serveur, en-têtes de sécurité, vérification d'origine, validation des données et limitation légère anti-abus.
 - Conservation automatique de 395 jours via un Cron Worker, sans collecte d'IP, cookie, fingerprint, position ou contenu de formulaire.
-- Le tracker est explicitement opt-in : il ne collecte rien tant que `localStorage.stephanie_analytics_consent` n'est pas égal à `granted`.
+- Le tracker fonctionne sans popup en mode audience-only, uniquement si les conditions d'exemption CNIL sont respectées. Il respecte `Do Not Track` et expose `window.stephanieAnalyticsOptOut()` pour le retrait.
 
 ## Mise en service Cloudflare
 
@@ -22,7 +22,7 @@ Remplacement indépendant de Matomo : Worker Cloudflare + D1, tableau de bord pr
 6. Définir les secrets : `npx wrangler secret put ADMIN_USER` et `npx wrangler secret put ADMIN_PASSWORD`.
 7. Remplacer `REPLACE_WITH_YOUR_WORKER_DOMAIN` dans `tracker.js` par le domaine HTTPS du Worker.
 8. Déployer : `npx wrangler deploy`.
-9. Après validation et information/consentement conformes, charger `tracker.js` sur les pages publiques.
+9. Après validation juridique et ajout d'une information claire dans la politique de confidentialité, charger `tracker.js` sur les pages publiques.
 10. Ouvrir `/admin` sur le domaine du Worker avec les identifiants définis.
 
 Ne jamais mettre l'identifiant D1, les secrets ou un token Cloudflare dans GitHub. Le dashboard ne doit pas être ajouté au menu, au sitemap ou aux pages publiques.
