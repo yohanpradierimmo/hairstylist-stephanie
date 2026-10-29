@@ -192,7 +192,13 @@ async function visitDetail(request, env, session) {
   const rows = (await env.DB.prepare(`SELECT created_at,visitor_id,event_type,page,referrer_host,source,medium,campaign,device,browser,os,screen,language,country,region,city,contact_type,duration_ms
     FROM analytics_events WHERE session_id=? ORDER BY created_at`).bind(session).all()).results;
   if (!rows.length) return json({ error: 'Visite introuvable' }, 404);
-  return json({ session_id: session, profile: rows[0], events: rows.filter(row => row.event_type !== 'pageview') });
+  // Format dates before sending them: the dashboard must never receive ISO timestamps.
+  const formatEvent = row => ({ ...row, created_at: displayVisitDate(row.created_at) });
+  return json({
+    session_id: session,
+    profile: formatEvent(rows[0]),
+    events: rows.filter(row => row.event_type !== 'pageview').map(formatEvent)
+  });
 }
 
 async function profiles(request, env) {
