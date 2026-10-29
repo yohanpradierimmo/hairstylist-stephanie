@@ -213,7 +213,15 @@ async function profiles(request, env) {
     FROM analytics_events e LEFT JOIN profile_groups groups ON groups.member_visitor_id=e.visitor_id
     WHERE e.day>=? AND e.visitor_id IS NOT NULL AND e.visitor_id<>''
     GROUP BY COALESCE(groups.profile_id,e.visitor_id) ORDER BY last_seen DESC LIMIT 100`).bind(since).all()).results;
-  return json({ days, since, profiles: rows });
+  return json({
+    days,
+    since,
+    profiles: rows.map(row => ({
+      ...row,
+      first_seen: displayVisitDate(row.first_seen),
+      last_seen: displayVisitDate(row.last_seen)
+    }))
+  });
 }
 
 async function profileDetail(request, env, visitor) {
@@ -234,7 +242,17 @@ async function profileDetail(request, env, visitor) {
   ]);
   const rows = events.results;
   if (!rows.length) return json({ error: 'Profil introuvable' }, 404);
-  return json({ visitor_id: visitor, profile: summary.results[0], events: rows });
+  const profile = summary.results[0];
+  const formatProfileDate = row => ({ ...row, created_at: displayVisitDate(row.created_at) });
+  return json({
+    visitor_id: visitor,
+    profile: {
+      ...profile,
+      first_seen: displayVisitDate(profile.first_seen),
+      last_seen: displayVisitDate(profile.last_seen)
+    },
+    events: rows.map(formatProfileDate)
+  });
 }
 
 async function importedVisits(request, env) {
