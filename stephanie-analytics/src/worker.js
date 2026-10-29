@@ -166,7 +166,8 @@ async function visits(request, env) {
   const url = new URL(request.url);
   const days = Math.max(1, Math.min(365, Number.parseInt(url.searchParams.get('days') || '30', 10) || 30));
   const since = new Date(Date.now() - (days - 1) * 86400000).toISOString().slice(0, 10);
-  const rows = (await env.DB.prepare(`SELECT session_id, COALESCE(MAX(visitor_id),'') visitor_id, MIN(created_at) first_seen, MAX(created_at) last_seen,
+  const rows = (await env.DB.prepare(`SELECT session_id, COALESCE(MAX(visitor_id),'') visitor_id, MIN(created_at) started_at,
+    strftime('%d/%m/%Y · %H:%M', MIN(created_at)) first_seen, MAX(created_at) last_seen,
     COUNT(CASE WHEN event_type='pageview' THEN 1 END) pageviews,
     ROUND(SUM(duration_ms)/1000.0,1) duration_seconds,
     CASE WHEN SUM(duration_ms) < 10000 THEN 1 ELSE 0 END immediate_departure,
