@@ -348,15 +348,16 @@ const sourceToday=localToday();document.getElementById('source-date').value=sour
   const formatDate = value => {
     const date = new Date(value);
     if (Number.isNaN(date.getTime())) return value;
-    return date.toLocaleString('fr-FR', {
-      weekday: 'short', day: '2-digit', month: 'short', year: 'numeric',
-      hour: '2-digit', minute: '2-digit'
-    }).replace(',', ' ·');
+    return date.toLocaleDateString('fr-FR') + ' · ' + date.toLocaleTimeString('fr-FR', {
+      hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
+    });
   };
   const renderDates = () => journal.querySelectorAll('td[data-label="Début"]').forEach(cell => {
+    if (cell.dataset.journalDateFormatted === 'true') return;
     const original = cell.dataset.rawDate || cell.textContent.trim();
     if (!/^\d{4}-\d{2}-\d{2}/.test(original)) return;
     cell.dataset.rawDate = original;
+    cell.dataset.journalDateFormatted = 'true';
     cell.textContent = formatDate(original);
   });
   new MutationObserver(renderDates).observe(journal, { childList: true, subtree: true });
