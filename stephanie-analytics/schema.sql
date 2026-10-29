@@ -29,11 +29,19 @@ CREATE INDEX IF NOT EXISTS idx_events_session_page ON events(session_id,page);
 CREATE INDEX IF NOT EXISTS idx_events_visitor_day ON events(visitor_id,day);
 CREATE INDEX IF NOT EXISTS idx_events_page_day ON events(page,day);
 
+CREATE TABLE IF NOT EXISTS profile_groups (
+  member_visitor_id TEXT PRIMARY KEY,
+  profile_id TEXT NOT NULL,
+  label TEXT NOT NULL,
+  created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now'))
+);
+CREATE INDEX IF NOT EXISTS idx_profile_groups_profile ON profile_groups(profile_id);
+
 CREATE TABLE IF NOT EXISTS schema_meta (
   key TEXT PRIMARY KEY,
   value TEXT NOT NULL
 );
-INSERT OR IGNORE INTO schema_meta(key,value) VALUES ('schema_version','5');
+INSERT OR IGNORE INTO schema_meta(key,value) VALUES ('schema_version','7');
 
 CREATE TABLE IF NOT EXISTS imported_reports (
   report_date TEXT PRIMARY KEY,
