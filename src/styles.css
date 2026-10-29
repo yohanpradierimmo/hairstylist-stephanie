@@ -3093,6 +3093,20 @@ h3 {
   text-decoration: underline;
 }
 
+@media (min-width: 821px) {
+  .footer {
+    position: relative;
+  }
+
+  .footer-actions {
+    position: absolute;
+    left: 50%;
+    margin-left: 0;
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+}
+
 .info-hero .page-hero-media.logo-panel {
   min-height: 300px;
 }
