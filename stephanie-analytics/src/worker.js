@@ -192,7 +192,7 @@ async function visitDetail(request, env, session) {
   const rows = (await env.DB.prepare(`SELECT created_at,visitor_id,event_type,page,referrer_host,source,medium,campaign,device,browser,os,screen,language,country,region,city,contact_type,duration_ms
     FROM analytics_events WHERE session_id=? ORDER BY created_at`).bind(session).all()).results;
   if (!rows.length) return json({ error: 'Visite introuvable' }, 404);
-  return json({ session_id: session, profile: rows[0], events: rows });
+  return json({ session_id: session, profile: rows[0], events: rows.filter(row => row.event_type !== 'pageview') });
 }
 
 async function profiles(request, env) {
@@ -351,27 +351,34 @@ const sourceToday=localToday();document.getElementById('source-date').value=sour
 })();
 </script>
 <script>
-/* Présentation locale des dates du journal : aucun changement des données. */
+/* Présentation uniforme des dates : aucun changement des données. */
 (() => {
-  const journal = document.getElementById('visits');
-  if (!journal) return;
   const formatDate = value => {
-    const date = new Date(value);
+    const date = new Date(String(value).replace(/Z+$/, 'Z'));
     if (Number.isNaN(date.getTime())) return value;
-    return date.toLocaleDateString('fr-FR') + ' · ' + date.toLocaleTimeString('fr-FR', {
+    return date.toLocaleDateString('fr-FR') + ' ' + date.toLocaleTimeString('fr-FR', {
       hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
     });
   };
-  const renderDates = () => journal.querySelectorAll('td[data-label="Début"]').forEach(cell => {
-    if (cell.dataset.journalDateFormatted === 'true') return;
-    const original = cell.dataset.rawDate || cell.textContent.trim();
-    if (!/^\d{4}-\d{2}-\d{2}/.test(original)) return;
-    cell.dataset.rawDate = original;
-    cell.dataset.journalDateFormatted = 'true';
-    cell.textContent = formatDate(original);
-  });
-  new MutationObserver(renderDates).observe(journal, { childList: true, subtree: true });
-  renderDates();
+  const iso = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z+$/;
+  let pending = false;
+  const renderDates = () => {
+    pending = false;
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while (walker.nextNode()) {
+      const node = walker.currentNode;
+      if (iso.test(node.nodeValue.trim())) nodes.push(node);
+    }
+    nodes.forEach(node => { node.nodeValue = formatDate(node.nodeValue.trim()); });
+  };
+  const schedule = () => {
+    if (pending) return;
+    pending = true;
+    requestAnimationFrame(renderDates);
+  };
+  new MutationObserver(schedule).observe(document.body, { childList: true, subtree: true });
+  schedule();
 })();
 </script>
 </body></html>`;
