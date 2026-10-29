@@ -1,0 +1,15 @@
+name = "stephanie-analytics"
+main = "src/worker.js"
+compatibility_date = "2026-10-01"
+
+[triggers]
+crons = ["0 3 * * *"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "stephanie-analytics"
+database_id = "4a46b225-acf1-431f-a8bf-56cb6b9d41f0"
+
+[vars]
+ALLOWED_ORIGIN = "https://hairstylist-stephanie.com"
+RETENTION_DAYS = "395"
