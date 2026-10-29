@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS events (
   created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now')),
   day TEXT NOT NULL DEFAULT (date('now')),
   session_id TEXT NOT NULL,
+  visitor_id TEXT,
   event_type TEXT NOT NULL CHECK (event_type IN ('pageview','page_exit','contact_click')),
   page TEXT NOT NULL,
   referrer_host TEXT,
@@ -25,6 +26,7 @@ CREATE TABLE IF NOT EXISTS events (
 CREATE INDEX IF NOT EXISTS idx_events_created_at ON events(created_at);
 CREATE INDEX IF NOT EXISTS idx_events_day_type ON events(day,event_type);
 CREATE INDEX IF NOT EXISTS idx_events_session_page ON events(session_id,page);
+CREATE INDEX IF NOT EXISTS idx_events_visitor_day ON events(visitor_id,day);
 CREATE INDEX IF NOT EXISTS idx_events_page_day ON events(page,day);
 
 CREATE TABLE IF NOT EXISTS schema_meta (
