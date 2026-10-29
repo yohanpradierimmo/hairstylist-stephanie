@@ -1,25 +1,30 @@
-# Stéphanie Analytics (remplacement autonome de Matomo)
+# Stéphanie Analytics
 
-Prototype initial indépendant de Matomo : Cloudflare Worker + D1, tableau de bord protégé par mot de passe, collecte des pages vues et clics de contact.
+Remplacement indépendant de Matomo : Worker Cloudflare + D1, tableau de bord privé et collecte sans cookie ni adresse IP.
 
-## Mise en service
-1. Créer un compte Cloudflare et installer Node.js + Wrangler.
-2. Depuis ce dossier, exécuter `npx wrangler login`, puis `npx wrangler d1 create stephanie-analytics`.
-3. Copier le `database_id` retourné dans `wrangler.toml`.
-4. Exécuter `npx wrangler d1 execute stephanie-analytics --remote --file=./schema.sql`.
-5. Définir les secrets côté Cloudflare : `npx wrangler secret put ADMIN_USER` puis `npx wrangler secret put ADMIN_PASSWORD` (mot de passe long et unique).
-6. Déployer avec `npx wrangler deploy`.
-7. Remplacer `REPLACE_WITH_YOUR_WORKER_DOMAIN` dans `tracker.js` par le domaine Worker HTTPS réel.
-8. Intégrer `tracker.js` aux pages du site public **seulement après vérification des obligations de consentement**. Ce prototype ne modifie pas encore les pages publiques.
-9. Consulter `https://votre-worker.workers.dev/admin` avec vos identifiants.
+## Ce qui est inclus
 
-## Confidentialité
-- Aucune IP stockée ; pas de cookie, fingerprint, géolocalisation ni identification nominative.
-- Identifiant aléatoire en sessionStorage pour compter des sessions approximatives. Il peut être soumis au consentement selon les conditions d'usage et les règles applicables.
-- Aucun paramètre de requête complet ou contenu de formulaire collecté.
-- Origine CORS limitée au domaine du site, mais CORS n'est pas une protection anti-spam. Prévoir protection anti-abus, politique de conservation, et mentions d'information avant production.
-- Le tableau de bord est protégé par mot de passe sur HTTPS. Pour un usage durable, privilégier Cloudflare Access avec MFA.
-- La formule gratuite Cloudflare est soumise à des quotas et peut évoluer.
+- Pages vues, sessions techniques, pages d'entrée/sortie, sources UTM/référents, appareils, navigateurs et contacts mesurés.
+- Durée moyenne et taux de rebond estimés à partir d'un événement de sortie, avec limites clairement affichées.
+- Vue des visiteurs actifs sur les cinq dernières minutes et événements récents.
+- Authentification Basic côté serveur, en-têtes de sécurité, vérification d'origine, validation des données et limitation légère anti-abus.
+- Conservation automatique de 395 jours via un Cron Worker, sans collecte d'IP, cookie, fingerprint, position ou contenu de formulaire.
+- Le tracker est explicitement opt-in : il ne collecte rien tant que `localStorage.stephanie_analytics_consent` n'est pas égal à `granted`.
 
-## Limites de la première version
-Ce MVP n'est pas équivalent à toutes les fonctionnalités de Matomo : pas encore de géolocalisation, d'objectifs configurables, d'import d'historique, de temps réel détaillé, de funnels, ni de Search Console. Les chiffres commencent uniquement après installation du tracker. Ne pas installer en production avant tests, conformité RGPD et contrôle anti-abus.
+## Mise en service Cloudflare
+
+1. Depuis ce dossier, exécuter `npx wrangler login`.
+2. Créer la base : `npx wrangler d1 create stephanie-analytics`.
+3. Remplacer `REPLACE_WITH_D1_DATABASE_ID` dans `wrangler.toml` par l'identifiant retourné.
+4. Initialiser la base : `npx wrangler d1 execute stephanie-analytics --remote --file=./schema.sql`.
+5. Définir les secrets : `npx wrangler secret put ADMIN_USER` et `npx wrangler secret put ADMIN_PASSWORD`.
+6. Remplacer `REPLACE_WITH_YOUR_WORKER_DOMAIN` dans `tracker.js` par le domaine HTTPS du Worker.
+7. Déployer : `npx wrangler deploy`.
+8. Après validation et information/consentement conformes, charger `tracker.js` sur les pages publiques.
+9. Ouvrir `/admin` sur le domaine du Worker avec les identifiants définis.
+
+Ne jamais mettre l'identifiant D1, les secrets ou un token Cloudflare dans GitHub. Le dashboard ne doit pas être ajouté au menu, au sitemap ou aux pages publiques.
+
+## Limites assumées
+
+Ce projet ne prétend pas identifier des personnes, mesurer des appels réellement décrochés, fournir une position précise ou inventer des données SEO. Search Console, import Matomo et MFA Cloudflare Access nécessitent encore une configuration de compte séparée. Cloudflare Free inclut des quotas qui doivent être surveillés avant la mise en production.

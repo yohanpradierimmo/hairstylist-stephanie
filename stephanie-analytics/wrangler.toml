@@ -2,6 +2,9 @@ name = "stephanie-analytics"
 main = "src/worker.js"
 compatibility_date = "2026-10-01"
 
+[triggers]
+crons = ["0 3 * * *"]
+
 [[d1_databases]]
 binding = "DB"
 database_name = "stephanie-analytics"
@@ -9,3 +12,4 @@ database_id = "REPLACE_WITH_D1_DATABASE_ID"
 
 [vars]
 ALLOWED_ORIGIN = "https://hairstylist-stephanie.com"
+RETENTION_DAYS = "395"
