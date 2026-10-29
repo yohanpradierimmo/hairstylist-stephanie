@@ -11,6 +11,14 @@ const json = (value, status = 200, extra = {}) => new Response(JSON.stringify(va
 const clean = (value, max = 200) => typeof value === 'string' ? value.slice(0, max) : '';
 const validSession = value => typeof value === 'string' && /^[a-f0-9-]{36}$/.test(value);
 const validVisitor = value => typeof value === 'string' && /^[a-f0-9-]{36}$/.test(value);
+const displayVisitDate = value => {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return clean(value, 40);
+  return new Intl.DateTimeFormat('fr-FR', {
+    timeZone: 'Europe/Paris', day: '2-digit', month: '2-digit', year: 'numeric',
+    hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
+  }).format(date).replace(',', ' ·');
+};
 const originAllowed = (request, env) => request.headers.get('Origin') === env.ALLOWED_ORIGIN;
 const cors = env => ({
   'Access-Control-Allow-Origin': env.ALLOWED_ORIGIN,
@@ -167,7 +175,7 @@ async function visits(request, env) {
   const days = Math.max(1, Math.min(365, Number.parseInt(url.searchParams.get('days') || '30', 10) || 30));
   const since = new Date(Date.now() - (days - 1) * 86400000).toISOString().slice(0, 10);
   const rows = (await env.DB.prepare(`SELECT session_id, COALESCE(MAX(visitor_id),'') visitor_id, MIN(created_at) started_at,
-    strftime('%d/%m/%Y · %H:%M', MIN(created_at)) first_seen, MAX(created_at) last_seen,
+    MIN(created_at) first_seen, MAX(created_at) last_seen,
     COUNT(CASE WHEN event_type='pageview' THEN 1 END) pageviews,
     ROUND(SUM(duration_ms)/1000.0,1) duration_seconds,
     CASE WHEN SUM(duration_ms) < 10000 THEN 1 ELSE 0 END immediate_departure,
@@ -176,7 +184,7 @@ async function visits(request, env) {
     COALESCE(MAX(os),'Inconnu') os, COALESCE(MAX(screen),'') screen,
     COALESCE(NULLIF(MAX(CASE WHEN source<>'' THEN source END),''),NULLIF(MIN(CASE WHEN referrer_host<>'' AND lower(referrer_host) NOT IN ('hairstylist-stephanie.com','www.hairstylist-stephanie.com') THEN referrer_host END),''),'Accès direct') source
     FROM analytics_events WHERE day>=? GROUP BY session_id ORDER BY last_seen DESC LIMIT 100`).bind(since).all()).results;
-  return json({ days, since, visits: rows });
+  return json({ days, since, visits: rows.map(row => ({ ...row, first_seen: displayVisitDate(row.started_at) })) });
 }
 
 async function visitDetail(request, env, session) {
