@@ -47,6 +47,7 @@
     if (!anchor) return;
     const href = anchor.getAttribute('href') || '';
     const contact = href.startsWith('tel:') ? 'telephone'
+      : href.startsWith('sms:') ? 'sms'
       : href.startsWith('mailto:') ? 'email'
       : /^(https?:\/\/)?(wa\.me|api\.whatsapp\.com)\//i.test(href) ? 'whatsapp'
       : /instagram\.com/i.test(href) ? 'instagram'
