@@ -5,6 +5,8 @@
   const CONSENT_KEY = 'stephanie_analytics_consent';
   const VISITOR_KEY = 'stephanie_analytics_visitor';
   const VISITOR_COOKIE = 'stephanie_analytics_visitor_id';
+  const ACQUISITION_KEY = 'stephanie_analytics_acquisition';
+  const OWN_HOSTS = new Set(['hairstylist-stephanie.com', 'www.hairstylist-stephanie.com']);
   const MAX_VISITOR_AGE = 13 * 30 * 24 * 60 * 60 * 1000;
   let started = false;
 
@@ -44,6 +46,27 @@
       const id = uuid(); writeCookie(id); return id;
     }
   }
+  function acquisition(current) {
+    try {
+      const saved = JSON.parse(sessionStorage.getItem(ACQUISITION_KEY) || 'null');
+      if (saved && typeof saved === 'object' && typeof saved.source === 'string') return saved;
+    } catch (_) {}
+    let referrer = '';
+    try {
+      if (document.referrer) {
+        const host = new URL(document.referrer).hostname.toLowerCase();
+        if (!OWN_HOSTS.has(host)) referrer = host;
+      }
+    } catch (_) {}
+    const data = {
+      source: current.searchParams.get('utm_source') || referrer,
+      medium: current.searchParams.get('utm_medium') || '',
+      campaign: current.searchParams.get('utm_campaign') || '',
+      referrer
+    };
+    try { sessionStorage.setItem(ACQUISITION_KEY, JSON.stringify(data)); } catch (_) {}
+    return data;
+  }
   function start() {
     if (started || !consented() || !window.crypto?.getRandomValues || !window.sessionStorage) return;
     started = true;
@@ -55,9 +78,8 @@
     const page = location.pathname.slice(0, 180) || '/';
     const startedAt = performance.now();
     const current = new URL(location.href);
-    let referrer = '';
-    try { if (document.referrer) referrer = new URL(document.referrer).hostname; } catch (_) {}
-    const context = { session, visitor: visitorId(), page, referrer, source: current.searchParams.get('utm_source') || '', medium: current.searchParams.get('utm_medium') || '', campaign: current.searchParams.get('utm_campaign') || '', screen: `${window.screen?.width || 0}x${window.screen?.height || 0}` };
+    const attribution = acquisition(current);
+    const context = { session, visitor: visitorId(), page, referrer: attribution.referrer, source: attribution.source, medium: attribution.medium, campaign: attribution.campaign, screen: `${window.screen?.width || 0}x${window.screen?.height || 0}` };
     function send(type, extra) {
       const body = JSON.stringify({ ...context, type, ...(extra || {}) });
       try {

@@ -12,6 +12,7 @@
       if (!preferences.analytics) {
         localStorage.removeItem('stephanie_analytics_visitor');
         sessionStorage.removeItem('stephanie_analytics_session');
+        sessionStorage.removeItem('stephanie_analytics_acquisition');
         document.cookie = 'stephanie_analytics_visitor_id=; Max-Age=0; Path=/; SameSite=Lax; Secure';
       }
     } catch (_) {}
