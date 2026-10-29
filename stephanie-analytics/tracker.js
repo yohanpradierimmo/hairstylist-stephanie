@@ -4,10 +4,20 @@
   const ENDPOINT = 'https://stephanie-analytics.stephanie-analytics.workers.dev/collect';
   const CONSENT_KEY = 'stephanie_analytics_consent';
   const VISITOR_KEY = 'stephanie_analytics_visitor';
+  const VISITOR_COOKIE = 'stephanie_analytics_visitor_id';
   const MAX_VISITOR_AGE = 13 * 30 * 24 * 60 * 60 * 1000;
   let started = false;
 
   const consented = () => { try { return localStorage.getItem(CONSENT_KEY) === 'granted'; } catch (_) { return false; } };
+  const readCookie = name => {
+    const prefix = `${name}=`;
+    const value = document.cookie.split(';').map(item => item.trim()).find(item => item.startsWith(prefix));
+    try { return value ? decodeURIComponent(value.slice(prefix.length)) : ''; } catch (_) { return ''; }
+  };
+  const writeCookie = value => {
+    try { document.cookie = `${VISITOR_COOKIE}=${encodeURIComponent(value)}; Max-Age=${Math.floor(MAX_VISITOR_AGE / 1000)}; Path=/; SameSite=Lax; Secure`; } catch (_) {}
+  };
+  const validId = value => /^[a-f0-9-]{36}$/i.test(value || '');
   function uuid() {
     if (typeof crypto?.randomUUID === 'function') return crypto.randomUUID();
     const bytes = new Uint8Array(16); crypto.getRandomValues(bytes);
@@ -18,11 +28,21 @@
   function visitorId() {
     try {
       const saved = JSON.parse(localStorage.getItem(VISITOR_KEY) || 'null');
-      if (saved?.id && saved.createdAt && Date.now() - saved.createdAt < MAX_VISITOR_AGE) return saved.id;
+      if (validId(saved?.id) && saved.createdAt && Date.now() - saved.createdAt < MAX_VISITOR_AGE) { writeCookie(saved.id); return saved.id; }
+      const fromCookie = readCookie(VISITOR_COOKIE);
+      if (validId(fromCookie)) {
+        localStorage.setItem(VISITOR_KEY, JSON.stringify({ id: fromCookie, createdAt: Date.now() }));
+        return fromCookie;
+      }
       const id = uuid();
       localStorage.setItem(VISITOR_KEY, JSON.stringify({ id, createdAt: Date.now() }));
+      writeCookie(id);
       return id;
-    } catch (_) { return uuid(); }
+    } catch (_) {
+      const fromCookie = readCookie(VISITOR_COOKIE);
+      if (validId(fromCookie)) return fromCookie;
+      const id = uuid(); writeCookie(id); return id;
+    }
   }
   function start() {
     if (started || !consented() || !window.crypto?.getRandomValues || !window.sessionStorage) return;
