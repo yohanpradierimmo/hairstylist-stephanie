@@ -1,7 +1,7 @@
 /* Stéphanie Analytics - opt-in, cookieless, privacy-first tracker. */
 (function () {
   'use strict';
-  const ENDPOINT = 'https://REPLACE_WITH_YOUR_WORKER_DOMAIN/collect';
+  const ENDPOINT = 'https://stephanie-analytics.stephanie-analytics.workers.dev/collect';
   if (!window.crypto?.randomUUID || !window.sessionStorage) return;
   // Audience-only mode: no banner is required when the CNIL exemption conditions
   // are met. Visitors can opt out at any time from the privacy page.
